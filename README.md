@@ -24,6 +24,9 @@ Full configuration files for my
  + i3-gaps with a heavily modified config
  + Movement keys rebound to HJKL instead of JKL;
  + Close windows with $mod+q instead of $mod+Shift+q (although the 
+ + Custom rofi launcher instead of dmenu, still bound to $mod+d
+ ![rofi](https://github.com/realMoonMoon/i3wm-zsh-vim-termite-DOTFILES/blob/main/Screenshots/rofi.png?raw=true)
+
  + Easy keybind for opening up a floating vim window with $mod+Backspace
    and a specified starting directory making it easy to dump notes in one folder
  + Custom shell script for i3status
