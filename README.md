@@ -1,4 +1,5 @@
-Full configuration files for my
+Full configuration files for my customized setup of i3wm
+
 ### ZSH ###
  +  ohmyzsh
  +  vim bindings for zsh with some keybinds kept from bash like 
