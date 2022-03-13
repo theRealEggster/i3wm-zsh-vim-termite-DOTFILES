@@ -6,6 +6,8 @@ Full configuration files for my
     and going to start of line with ctrl+a and end of line with ctrl+e no mather what mode
     you are in (command/insert)
  + Multiline prompt
+ 
+![Prompt](https://github.com/realMoonMoon/i3wm-zsh-vim-termite-DOTFILES/blob/main/Screenshots/prompt.png?raw=true)
 
 ### VIM ###
  + Backups enabled with every write, saved in ~/.vim/.backup
@@ -17,7 +19,7 @@ Full configuration files for my
 
 ### Termite ###
  + Basic white background color with very readable colors
-
+![Overlook](https://github.com/realMoonMoon/i3wm-zsh-vim-termite-DOTFILES/blob/main/Screenshots/terminal-windows.png?raw=true)
 ### i3wm ###
  + i3-gaps with a heavily modified config
  + Movement keys rebound to HJKL instead of JKL;
