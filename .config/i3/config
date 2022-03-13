@@ -447,7 +447,7 @@ exec --no-startup-id i3-msg 'workspace 2:Termite; exec /usr/bin/termite'
 # Unblock bluetooth after boot
 exec --no-startup-id rfkill unblock all
 # Start SSH Agent
-exec --no-startup-id eval $(ssh-agent) 
+exec --no-startup-id eval $(ssh-agent)
 # Startup applications
 bindsym $mod+s exec --no-startup-id /bin/startup
 

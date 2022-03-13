@@ -4,6 +4,8 @@ export TERM=xterm-256color
 export EDITOR=vim
 export SYSTEMD_EDITOR=vim
 export KEYTIMEOUT=1
+SSH_AUTH_SOCK=/tmp/ssh-hZQhwQlxahPX/agent.1833; export SSH_AUTH_SOCK
+SSH_AGENT_PID=1834; export SSH_AGENT_PID
 
 unset  LSCOLORS
 unset  LS_COLORS
