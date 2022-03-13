@@ -3,6 +3,7 @@ Full configuration files for my
  +  ohmyzsh
  +  vim bindings for zsh with some keybinds kept from bash like 
     search through history with ctrl+r (ctrl+n for next suggestion)
+    and going to start of line with ctrl+a and end of line with ctrl+e
  + Multiline prompt
 
 ### VIM ###
