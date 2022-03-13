@@ -1,0 +1,7 @@
+[user]
+	name = Eggster
+	email = lindeberg.kim@gmail.com
+[core]
+	editor = vim
+[init]
+	defaultBranch = master

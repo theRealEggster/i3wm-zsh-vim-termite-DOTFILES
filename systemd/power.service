@@ -1,0 +1,7 @@
+[Unit]
+Description=Check battery and display red notification if under 20%
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /bin/power.sh
+

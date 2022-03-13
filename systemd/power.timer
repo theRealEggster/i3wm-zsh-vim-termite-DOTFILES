@@ -1,0 +1,9 @@
+[Unit]
+Description=Run once a minute
+
+[Timer]
+OnUnitActiveSec=300s
+OnBootSec=20s
+
+[Install]
+WantedBy=timers.target
