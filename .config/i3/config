@@ -142,8 +142,8 @@ bindsym $mod+Ctrl+Left workspace prev
 set $ws1 "1:Firefox"
 set $ws2 "2:Termite"
 set $ws3 "3:Teams"
-set $ws4 "4:Slack"
-set $ws5 "5:Five"
+set $ws4 "4:Email"
+set $ws5 "5:Slack"
 set $ws6 "6:Six"
 set $ws7 "7:Seven"
 set $ws8 "8:Eight"
@@ -443,7 +443,7 @@ exec --no-startup-id xautolock -time 15 -locker "blurlock; xset dpms force off"
 # Start Firefox
 exec --no-startup-id i3-msg 'workspace 1:Firefox; exec /usr/bin/firefox'
 # Start termite
-exec --no-startup-id i3-msg 'workspace 2:Termite; exec /usr/bin/termite'
+exec --no-startup-id sleep 2;i3-msg 'workspace 2:Termite; exec /usr/bin/termite'
 # Unblock bluetooth after boot
 exec --no-startup-id rfkill unblock all
 # Startup applications
