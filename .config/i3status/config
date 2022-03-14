@@ -19,15 +19,20 @@ order += "path_exists vpn"
 order += "cpu_usage"
 order += "disk /"
 # order += "disk /home"
-order += "wireless _first_"
+order += "wireless wlp2s0"
 #order += "ethernet _first_"
 order += "battery all"
 #order += "load"
-order += "memory"
+#order += "memory"
 order += "volume master"
 order += "tztime local"
 
 
+
+wireless wlp2s0 {
+        format_up = "%essid"
+        format_down = "W: down"
+}
 cpu_usage {
         format = " cpu  %usage "
 }
@@ -69,7 +74,7 @@ battery all {
 }
 
 memory {
-        format = "Free %free. Used: %used > %available"
+        format = "Used: %used Free: %free Avail:%available"
         threshold_degraded = "1G"
         format_degraded = "MEMORY < %available"
 }

@@ -2,7 +2,7 @@
 Description=Run once a minute
 
 [Timer]
-OnUnitActiveSec=300s
+OnUnitActiveSec=60s
 OnBootSec=20s
 
 [Install]
