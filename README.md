@@ -54,8 +54,8 @@ Full configuration files for my customized setup of i3wm
 
 ### Systemd ###
  + How to enable battery notifications:
-
 - Copy service file and timer file to systemd user dir
+
 $ sudo mv systemd/power* /etc/systemd/user/
 - Copy power script to /bin/
 
