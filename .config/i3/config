@@ -326,8 +326,7 @@ set_from_resource $term_color15    color15
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-	#status_command i3status
-	status_command  /home/kim/.config/i3/i3status.sh
+	status_command  /usr/bin/i3status.sh
 	position bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
@@ -430,8 +429,8 @@ popup_during_fullscreen smart
 bindsym $mod+x move workspace to output up
 
 
-# Set the background image
-exec --no-startup-id feh --bg-scale /home/kim/Pictures/Backgrounds/matteblack.jpg
+# Set the background image (handled by nitrogen in manjaro
+#exec --no-startup-id feh --bg-scale /home/kim/Pictures/Backgrounds/matteblack.jpg
 # Start redshift
 exec --no-startup-id "redshift -P -O 2500"
 # Start dropbox
@@ -448,6 +447,9 @@ exec --no-startup-id sleep 2;i3-msg 'workspace 2:Termite; exec /usr/bin/termite'
 exec --no-startup-id rfkill unblock all
 # Startup applications
 exec --no-startup-id sleep 1;/bin/startup
+# Close dunst notififacations
+bindsym $mod+space exec dunstctl close
+
 
 assign [class="firefox"] $ws1
 assign [class="Google-chrome"] $ws0
@@ -468,14 +470,13 @@ bindsym $mod+p mode "$mode_gnomescreenshot"
 
 # Open floating vim with working dir set to ~/work/vim
 bindsym $mod+BackSpace exec termite -t "vim-float" -e "vim -c 'cd /home/kim/work/vim'"
+# for urxvt instead of termite
+#bindsym $mod+BackSpace exec urxvt -T "vim-float" -cd ~/work/vim "vim -c 'cd /home/kim/work/vim'"
 for_window [title="^vim-float$"] floating enable resize set 500 400
 
 # Open floating HTOP
 bindsym $mod+shift+BackSpace exec termite -t "htop-float" -e "htop"
 for_window [title="^htop-float$"] floating enable resize set 1500 800
-
-# Close dunst notififacations
-bindsym $mod+space exec dunstctl close
 
 # Redshsift modes
 bindsym $mod+ctrl+r mode "$mode_redshift"
