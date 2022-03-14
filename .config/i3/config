@@ -459,9 +459,9 @@ assign [class="Spotify"] $ws9
 # Set gnome screenshot bindings
 set $mode_gnomescreenshot [1] Selection | [2] Active window | [3] Whole screen
 mode "$mode_gnomescreenshot" {
-    bindsym --release 1 mode "default", exec gnome-screenshot -cap --file=/home/kim/Pictures/Screenshots/Screenshots-$(date +%F-%T).png
-    bindsym --release 2 mode "default", exec gnome-screenshot -cwp --file=/home/kim/Pictures/Screenshots/Screenshots-$(date +%F-%T).png
-    bindsym --release 3 mode "default", exec gnome-screenshot -pc  --file=/home/kim/Pictures/Screenshots/Screenshots-$(date +%F-%T).png 
+    bindsym --release 1 mode "default", exec gnome-screenshot -cap --file=~/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png
+    bindsym --release 2 mode "default", exec gnome-screenshot -cwp --file=~/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png
+    bindsym --release 3 mode "default", exec gnome-screenshot -pc  --file=~/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png 
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
