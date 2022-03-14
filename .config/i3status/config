@@ -14,8 +14,7 @@ general {
         color_degraded = "#DC322F"
 }
 
- order += "ipv6"
-order += "thermals"
+#order += "ipv6"
 order += "path_exists vpn"
 order += "cpu_usage"
 order += "disk /"
