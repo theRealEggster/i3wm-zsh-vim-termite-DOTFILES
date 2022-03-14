@@ -54,16 +54,20 @@ Full configuration files for my customized setup of i3wm
 
 ### Systemd ###
  + How to enable battery notifications:
-Copy service file and timer file to systemd user dir
+
+- Copy service file and timer file to systemd user dir
 $ sudo mv systemd/power* /etc/systemd/user/
-Copy power script to /bin/
+- Copy power script to /bin/
+
 $ sudo cp bin/power.sh /bin/
-Enable the power timer and service
+
+- Enable the power timer and service
 systemctl --user enable power.timer 
 systemctl --user start power.timer 
 systemctl --user enable power.service
 systemctl --user start power.service
-Done, every 5 minutes a red nagging window will remind you of how much
+
+- Done, every 5 minutes a red nagging window will remind you of how much
   battery is left over
 
 ### SSH ###
