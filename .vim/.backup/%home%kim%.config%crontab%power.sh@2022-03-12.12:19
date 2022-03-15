@@ -1,3 +1,0 @@
-#!/bin/bash
-[ $(cat /sys/class/power_supply/BAT0/capacity) -lt 50 ] && [ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ] && notify-send -u critical "BATTERY LOW $(cat /sys/class/power_supply/BAT0/capacity)% REMAINING"
-

@@ -1,5 +1,0 @@
-#!/bin/bash
-#!/bin/bash
-LOG() { $* |& tee;}
-LOG(ping -c5 google.e \
-&& echo YES || echo NOOPE && exit 1)

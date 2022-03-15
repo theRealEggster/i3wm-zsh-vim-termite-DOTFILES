@@ -1,9 +1,0 @@
-#!/bin/bash
-#!/bin/bash
-set -o pipefail
-function log {
-  $* |& while read out; do eho "$(date '+[%m/%d %H:%M:%S]')" $out; done |& tee
-}
-log ping -c5 google.sxe && log echo yes \
-|| log echo nope \
-&& log exit 1

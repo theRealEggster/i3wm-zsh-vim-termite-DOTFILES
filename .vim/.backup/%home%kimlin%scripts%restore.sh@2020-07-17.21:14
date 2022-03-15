@@ -1,5 +1,0 @@
-#!/bin/sh
-
-i3-msg "workspace Terms; append_layout .config/i3/fireawarentui.json" 
-(firefox --new-window)
-(firefox --new-window)

@@ -1,5 +1,0 @@
-VITLISTA FRÅN CAG TILL ELX ALLA STAGE NODE IPs port 6443
-från ELX till CAG > 3000-32767
-
-installera kubectl apt get om det inte finns.
-curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl

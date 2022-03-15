@@ -1,7 +1,0 @@
-#!/bin/bash
-#!/bin/bash
-function log {
-    echo "[$(date --rfc-3339=seconds)]: $*"
-}
-log ping -c5 google.e \
-&& echo YES || echo NOOPE && exit 1

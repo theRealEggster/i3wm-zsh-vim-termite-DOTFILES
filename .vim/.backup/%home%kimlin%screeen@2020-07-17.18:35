@@ -1,7 +1,0 @@
-screen -t left
-screen -t right
-select 1
-split -v
-focus right
-select 2
-

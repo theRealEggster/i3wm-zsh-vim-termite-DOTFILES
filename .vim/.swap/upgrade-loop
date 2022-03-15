@@ -1,2 +1,0 @@
-./lfp-tools.sh info && ./lfp-tools.sh kube get pods && ./lfp-tools.sh save nystart-dev_$(/bin/date +\%Y\%m\%dT\%H\%M\%S)_$(/usr/bin/git describe --tags) && ./lfp-tools.sh switch v6.10.0-build.11 && ./lfp-tools.sh install && ./lfp-tools.sh start && sleep 30 && sleep 10 && ./lfp-tools.sh kube get pods && ./lfp-tools.sh info && ./lfp-tools.sh open-ports on
-

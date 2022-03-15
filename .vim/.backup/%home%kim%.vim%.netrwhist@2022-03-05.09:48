@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
-let g:netrw_dirhist_5='/home/kim/work/vim'
-let g:netrw_dirhist_4='/etc/cron.d'
-let g:netrw_dirhist_3='/home/kim/Dropbox/lenovo-yoga-x1/latest/home/kimlin/.config/i3status'
-let g:netrw_dirhist_2='/home/kim/.local/share/gem/ruby/3.0.0/bin'
-let g:netrw_dirhist_1='/home/kim/Downloads'

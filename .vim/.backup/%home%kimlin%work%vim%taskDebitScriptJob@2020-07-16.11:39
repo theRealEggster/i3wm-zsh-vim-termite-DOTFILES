@@ -1,4 +1,0 @@
-SIE jobb heter accounting transfer job i LFP kl 0800
-Send withdrawal file 0045
-Skapa jobb som kollar i mongodob job log efter när dessa jobb failar. 
-Mongodb > Operation > Collections > JobbLog

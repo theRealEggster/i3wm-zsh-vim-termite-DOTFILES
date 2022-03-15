@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo hi && read -p "Enter / ^C: " || exit
-ping google.se
-

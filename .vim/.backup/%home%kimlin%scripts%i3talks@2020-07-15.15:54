@@ -1,3 +1,0 @@
-use IO::Socket::UNIX;
-chomp(my $path = qx(i3 --get-socketpath));
-my $sock = IO::Socket::UNIX->new(Peer => $path);
