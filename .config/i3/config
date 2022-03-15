@@ -427,7 +427,7 @@ bindsym $mod+x move workspace to output up
 
 
 # Set the background image (handled by nitrogen in manjaro
-#exec --no-startup-id feh --bg-scale /home/kim/Pictures/Backgrounds/matteblack.jpg
+exec --no-startup-id feh --bg-scale /home/kim/Pictures/Backgrounds/matteblack.jpg
 # Start redshift
 exec --no-startup-id "redshift -P -O 2500"
 # Start dropbox
@@ -451,6 +451,7 @@ bindsym $mod+space exec dunstctl close
 assign [class="firefox"] $ws1
 assign [class="Google-chrome"] $ws0
 assign [class="Microsoft Teams - Preview"] $ws3
+assign [class="teams-for-linux"] $ws3
 assign [class="Spotify"] $ws9
 
 # Set gnome screenshot bindings
