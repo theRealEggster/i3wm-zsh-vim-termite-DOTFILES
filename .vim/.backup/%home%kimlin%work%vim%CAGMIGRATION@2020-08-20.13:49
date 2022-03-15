@@ -1,0 +1,44 @@
+VITLISTA FRÅN CAG TILL ELX ALLA STAGE NODE IPs port 6443
+Whitelist outgoing traffic on port 6443 from CAG to both master and worker nodes at ELX
+Whitelist outgoing traffic on port range 30000-32767 from CAG to the worker nodes at ELX, not master.
+
+Master nodes:
+212.237.150.156
+212.237.150.146
+212.237.150.154
+
+Worker nodes:
+212.237.150.149
+212.237.150.161
+212.237.150.139
+212.237.150.251
+212.237.150.155
+212.237.150.138
+212.237.150.96
+212.237.150.211
+212.237.150.179
+212.237.150.31
+212.237.150.218
+212.237.150.214
+
+välj resume
+installera kube+helm på CAG
+kör prepare på cag
+
+
+
+mkdir nystart-migration
+cd nystart-migration
+git clone git@docker.leandev.se:/docker/leandev/gitrepo/lfp.git
+cd lfp
+./lfp-tools.sh switch v6.10.0-build.11
+./lfp-tools.sh prepare
+/data/lfp/./lfp-tools.sh stop
+./lfp-tools.sh migrate start -d /data/lfp/
+
+installera kubectl apt get om det inte finns.
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+
+15:10 start prepp work
+15:16 migrate start

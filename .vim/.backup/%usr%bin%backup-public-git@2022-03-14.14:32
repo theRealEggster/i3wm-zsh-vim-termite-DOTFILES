@@ -1,0 +1,65 @@
+#!/bin/bash
+
+
+# check to see is git command line installed in this machine
+IS_GIT_AVAILABLE="$(git --version)"
+if [[ $IS_GIT_AVAILABLE == *"version"* ]]; then
+  echo "Git is Available"
+else
+  echo "Git is not installed"
+  exit 1
+fi
+
+cd $HOME
+
+# Create dirs
+mkdir -p ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/i3wm,zsh,vim,termite-DOTFILES/.config/termite
+mkdir -p ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/i3wm,zsh,vim,termite-DOTFILES/.config/i3
+mkdir -p ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/i3wm,zsh,vim,termite-DOTFILES/.config/i3status
+mkdir -p ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/i3wm,zsh,vim,termite-DOTFILES/.ssh
+mkdir -p ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/i3wm,zsh,vim,termite-DOTFILES/CERT
+mkdir -p ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/i3wm,zsh,vim,termite-DOTFILES/work
+mkdir -p ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/i3wm,zsh,vim,termite-DOTFILES/systemd
+mkdir -p ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/i3wm,zsh,vim,termite-DOTFILES/bin
+# copy dotfiles
+
+cp -r .vimrc .zshrc .zsh_history .Xresources .gitconfig ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES
+cp -r .zsh_custom ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES
+cp -r .vim ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES
+cp -r .ssh ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES
+cp .config/termite/config ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/.config/termite
+cp /bin/startup ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/bin
+cp /bin/power.sh ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/bin
+cp /usr/bin/i3status.sh ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/bin
+cp /etc/systemd/user/power.timer ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/systemd
+cp /etc/systemd/user/power.service ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/systemd
+cp .config/i3/config ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/.config/i3
+cp .config/i3status/config ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/.config/i3status
+
+rm -f ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/.vim/view/*
+rm -f ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/.vim/.backup/*
+rm -f ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/.vim/.swap/*
+rm -f ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/.ssh/id*
+rm -f ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/.ssh/bastion-vilja*
+rm -f ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES/.zsh_history
+
+cd ~/BACKUP/i3wm,zsh,vim,termite-DOTFILES
+git pull
+
+# Check git status
+gs="$(git status | grep -i "modified")"
+echo "${gs}"
+
+# If there is a ncp -r .zshrc .zsh_history .zsh_custom .Xresources .vimrc .vim .config/termite/config .config/i3/config .config/i3/i3status.sh .config/i3status/config .ssh i3wm,zsh,vim,termite-DOTFILESew change
+if [[ $gs == *"modified"* ]]; then
+  echo "push"
+fi
+
+
+# push to Github
+#for item in *; do git add $item; done
+#for item in .*; do git add $item; done
+# Lol learned about the --all...
+git add --all
+git commit -m "New backup `date +'%Y-%m-%d %H:%M:%S'`";
+git push origin main

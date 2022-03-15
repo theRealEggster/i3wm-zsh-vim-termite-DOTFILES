@@ -1,0 +1,53 @@
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+HIST_STAMPS="|%Y/%m/%d|%H:%M:%S|"
+#DISABLE_AUTO_UPDATE="true"
+#export UPDATE_ZSH_DAYS=13
+stty erase 
+
+if [ -d /home/kim/.oh-my-zsh ]; then
+    export ZSH=/home/kim/.oh-my-zsh
+    ZSH_THEME="steeef"
+    plugins=(themes git colorize)
+    [ ! -d $ZSH/cache ] && mkdir $ZSH/cache
+    source $ZSH/oh-my-zsh.sh
+fi
+if [ -d /home/kim/.zsh_custom ]; then
+    export ZSH_CUSTOM=/home/kim/.zsh_custom
+    for conf in env vars; do
+        [ -f $ZSH_CUSTOM/${conf}.zsh ] && . $ZSH_CUSTOM/${conf}.zsh
+    done
+else 
+    export TERM=xterm-256color
+    export EDITOR=vim
+    export SYSTEMD_EDITOR=vim
+    DISABLE_LS_COLORS="true"
+fi
+
+function zle-line-init zle-keymap-select {
+    RPS1=""
+    #RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+    RPS2=$RPS1
+    zle reset-prompt
+}
+    
+bindkey -v
+bindkey -M viins "^A" beginning-of-line
+bindkey -M vicmd "^A" beginning-of-line
+bindkey -M viins "^E" end-of-line
+bindkey -M vicmd "^E" end-of-line
+bindkey -M viins "^D" delete-char-or-list
+bindkey -M vicmd "^D" delete-char
+bindkey -M viins "^F" backward-delete-char
+bindkey -M vicmd "^F" backward-delete-char
+bindkey -M viins "^R" redo
+bindkey -M viins "^U" undo
+bindkey -M viins "^S" vi-change-whole-line
+bindkey -M viins "^H" backward-delete-char
+bindkey -M viins "^?" backward-delete-char
+bindkey -M viins "^[[3~" delete-char
+bindkey -M viins "^R" vi-history-search-backward
+bindkey -M viins "^N" vi-repeat-search
+
+zle -N zle-line-init
+zle -N zle-keymap-select

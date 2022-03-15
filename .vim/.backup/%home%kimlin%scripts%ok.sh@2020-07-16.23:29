@@ -1,0 +1,6 @@
+#!/bin/bash
+#!/bin/bash
+function log {
+  $* |& while read out; do echo "[$(date --rfc-3339=seconds)]:" $out; done |& tee
+}
+log ping -c5 google.e && log echo yes || log echo nope && log exit 1

@@ -1,0 +1,20 @@
+#!/bin/bash
+while [ -n "$1" ]; do # while loop starts
+	case "$1" in
+	-n)
+		ns="$2"
+		echo "-n option passed, with value $ns"
+		shift
+		;;
+	-m) echo "(-m)ockers enabled" ;;
+	-p) echo "-(p)orts opened" ;;
+        --no-mocker) echo "--no-mocker" ;;
+        --no-ports) echo "--no-ports" ;;
+	*) echo "Option $1 not recognized" 
+           exit
+           ;;
+	esac
+	shift
+done
+
+echo hi

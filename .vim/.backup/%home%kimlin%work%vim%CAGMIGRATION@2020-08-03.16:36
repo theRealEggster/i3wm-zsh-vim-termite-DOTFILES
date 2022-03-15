@@ -1,0 +1,15 @@
+VITLISTA FRÅN CAG TILL ELX ALLA STAGE NODE IPs port 6443
+Whitelist from old environment, outgoing 
+Source IPs
+91.240.252.121
+91.240.252.245 
+från ELX till CAG > 3000-32767
+
+välj resume
+installera kube+helm på CAG
+kör prepare på cag
+
+
+
+installera kubectl apt get om det inte finns.
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl

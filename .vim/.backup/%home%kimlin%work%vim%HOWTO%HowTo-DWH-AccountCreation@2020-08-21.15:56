@@ -1,0 +1,23 @@
+Start a rollback point with begin
+BEGIN;
+CREATE ROLE namespace-dwh WITH LOGIN ENCRYPTED PASSWORD 'passwd';
+GRANT CONNECT ON DATABASE "lfp-loan-mart" TO namespace-dwh;
+GRANT USAGE ON SCHEMA public TO namespace-dwh;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO namespace-dwh;
+GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO namespace-dwh;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO namespace-dwh;
+
+# check with \l+, \dp+, \dn+ that everything looks good.
+# If OK, do 
+COMMIT;
+# If not OK or if any errors occured do rollback
+ ROLLBACK
+# After commit, test login with new account from office. 
+STAGE: cluster.staging.leandev.se <namespace node number>
+PROD: cluster.leandev.se <namespace node number>
+
+update config_singleresult set value = '<?xml version="1.0"?><license signature="εξδθδξωπυφζπιεαγγωφκεγδυιοιρεφγπ"><modules><module><name>lfp-direct-debit</name><active>false</active></module><module><name>lfp-step-up-coupon</name><active>false</active></module><module><name>lfp-reinvestment</name><active>false</active></module><module><name>lfp-corporate-customers</name><active>false</active></module><module><name>lfp-dashboard-page</name><active>false</active></module><module><name>lfp-two-way-message</name><active>false</active></module><module><name>lfp-name-block-deposit</name><active>false</active></module><module><name>lfp-broker-check</name><active>false</active></module><module><name>lfp-insurance-check</name><active>false</active></module><module><name>lfp-revolving-credit</name><active>false</active></module></modules></license>' where name = 'core.license'; 
+
+
+OLD bodil2 license:
+<?xml version="1.0"?><license signature="οδδζχημεμηζοβοχβλωερππαψφπθκεωμε"><modules><module><name>lfp-direct-debit</name><active>false</active></module><module><name>lfp-step-up-coupon</name><active>true</active></module><module><name>lfp-reinvestment</name><active>true</active></module><module><name>lfp-corporate-customers</name><active>true</active></module><module><name>lfp-dashboard-page</name><active>true</active></module><module><name>lfp-two-way-message</name><active>true</active></module><module><name>lfp-name-block-deposit</name><active>true</active></module><module><name>lfp-broker-check</name><active>false</active></module><module><name>lfp-insurance-check</name><active>false</active></module><module><name>lfp-revolving-credit</name><active>true</active></module></modules></license>

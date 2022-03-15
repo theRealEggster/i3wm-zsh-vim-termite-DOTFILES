@@ -1,0 +1,97 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 11 (0xb)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=SE, ST=STOCKHOLM, L=KISTA, O=LEANDEV, OU=IT, CN=ARROW-PROD1/name=EasyRSA/emailAddress=support@leandev.se
+        Validity
+            Not Before: May 15 10:19:22 2020 GMT
+            Not After : May 13 10:19:22 2030 GMT
+        Subject: C=SE, ST=Stockholm, L=Kista, O=LeanDev, OU=IT, CN=kim.lindeberg/name=EasyRSA/emailAddress=support@leandev.se
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:c9:34:28:9b:b7:33:35:2e:54:3b:4a:c2:a1:16:
+                    65:69:ae:59:99:ce:21:b5:1d:49:3f:57:a7:aa:e4:
+                    1d:80:75:30:bd:c7:d1:0c:15:43:75:b3:bb:e2:3e:
+                    17:c9:a2:68:24:a9:65:57:59:48:6c:5e:79:ef:c4:
+                    60:7d:fa:df:4f:ac:ee:df:26:bf:9a:39:e7:42:3f:
+                    b5:e5:9a:dd:04:e6:0f:4c:fa:95:5b:91:3a:ac:5b:
+                    f9:1f:2f:c2:31:6c:7e:6b:da:59:a5:de:8c:eb:3a:
+                    56:5f:01:e5:b5:ac:7e:93:f8:22:1f:a5:a6:bb:f4:
+                    0d:04:cd:f2:0e:ae:6a:52:ea:7e:78:13:86:95:c5:
+                    b6:1e:18:8f:ad:4c:a8:db:42:54:6e:1b:cc:ff:c5:
+                    69:f3:76:3b:40:72:05:5c:99:a9:00:39:13:a2:99:
+                    7d:c9:ea:2a:87:d4:c7:44:72:d0:e9:0b:1d:86:79:
+                    58:05:a2:3e:cf:6e:45:69:d5:40:62:1a:34:c4:b5:
+                    59:d0:2a:92:05:e9:2e:bf:4f:9d:5e:2e:69:09:af:
+                    24:9d:78:c0:e1:3f:46:d7:c2:38:77:cd:5e:ed:19:
+                    9b:f2:8d:1b:bd:80:46:4b:50:43:8f:44:ce:c5:4f:
+                    66:d3:12:3d:c4:fd:63:1c:83:26:86:63:44:6e:96:
+                    ed:43
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                Easy-RSA Generated Certificate
+            X509v3 Subject Key Identifier: 
+                68:13:B1:19:39:A6:AB:AA:DB:0C:79:EC:33:E3:92:53:BA:3A:BE:80
+            X509v3 Authority Key Identifier: 
+                keyid:2C:A1:71:9A:EF:8E:7D:8A:CE:C0:71:4E:E3:F9:55:67:A9:F4:02:72
+                DirName:/C=SE/ST=STOCKHOLM/L=KISTA/O=LEANDEV/OU=IT/CN=ARROW-PROD1/name=EasyRSA/emailAddress=support@leandev.se
+                serial:B6:E4:68:A6:AF:76:4C:21
+
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication
+            X509v3 Key Usage: 
+                Digital Signature
+            X509v3 Subject Alternative Name: 
+                DNS:kim.lindeberg
+    Signature Algorithm: sha256WithRSAEncryption
+         3f:62:20:0f:1d:ac:cf:6f:0b:83:82:8e:9d:e5:b8:78:3b:dd:
+         6a:47:3d:0d:0c:88:11:81:bb:1c:88:e3:f1:7c:04:d8:31:32:
+         81:04:cc:21:90:c9:c5:38:f9:01:07:09:e4:47:f4:fa:1b:80:
+         bd:29:6c:4c:c0:db:6a:86:ff:e2:d2:a7:f7:5f:8a:f3:59:00:
+         b1:16:05:68:7f:f9:3e:ba:b2:9d:0e:ed:73:ce:f4:5e:27:dc:
+         2b:3f:ba:f2:e7:e9:74:9d:53:a7:11:ae:83:9a:b2:31:77:5d:
+         7b:ad:da:9c:10:e1:50:5c:e7:96:13:36:9a:72:50:af:25:e2:
+         17:80:31:e5:07:4d:cd:a8:62:d4:d0:06:a0:84:83:08:9f:fc:
+         54:ba:a2:3b:96:8c:18:15:fa:91:c6:ad:be:ce:c2:b7:a0:dc:
+         c3:b0:e8:d6:8c:8c:d8:7b:64:3d:d1:cf:3c:30:85:93:8b:4f:
+         02:6a:f1:c6:13:c4:6d:5d:04:7c:ea:a4:78:92:55:97:21:ca:
+         19:cc:d2:fc:78:11:87:86:ea:e5:d6:0d:c3:98:19:ae:09:e5:
+         27:cd:52:d3:2e:35:63:fa:78:9f:01:ae:05:2a:2d:9e:61:8b:
+         b4:ab:1b:84:77:89:51:6d:f0:28:a7:b0:d5:8b:82:30:90:ca:
+         ef:58:9b:0f
+-----BEGIN CERTIFICATE-----
+MIIFIzCCBAugAwIBAgIBCzANBgkqhkiG9w0BAQsFADCBmzELMAkGA1UEBhMCU0Ux
+EjAQBgNVBAgTCVNUT0NLSE9MTTEOMAwGA1UEBxMFS0lTVEExEDAOBgNVBAoTB0xF
+QU5ERVYxCzAJBgNVBAsTAklUMRQwEgYDVQQDEwtBUlJPVy1QUk9EMTEQMA4GA1UE
+KRMHRWFzeVJTQTEhMB8GCSqGSIb3DQEJARYSc3VwcG9ydEBsZWFuZGV2LnNlMB4X
+DTIwMDUxNTEwMTkyMloXDTMwMDUxMzEwMTkyMlowgZ0xCzAJBgNVBAYTAlNFMRIw
+EAYDVQQIEwlTdG9ja2hvbG0xDjAMBgNVBAcTBUtpc3RhMRAwDgYDVQQKEwdMZWFu
+RGV2MQswCQYDVQQLEwJJVDEWMBQGA1UEAxMNa2ltLmxpbmRlYmVyZzEQMA4GA1UE
+KRMHRWFzeVJTQTEhMB8GCSqGSIb3DQEJARYSc3VwcG9ydEBsZWFuZGV2LnNlMIIB
+IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyTQom7czNS5UO0rCoRZlaa5Z
+mc4htR1JP1enquQdgHUwvcfRDBVDdbO74j4XyaJoJKllV1lIbF5578RgffrfT6zu
+3ya/mjnnQj+15ZrdBOYPTPqVW5E6rFv5Hy/CMWx+a9pZpd6M6zpWXwHltax+k/gi
+H6Wmu/QNBM3yDq5qUup+eBOGlcW2HhiPrUyo20JUbhvM/8Vp83Y7QHIFXJmpADkT
+opl9yeoqh9THRHLQ6QsdhnlYBaI+z25FadVAYho0xLVZ0CqSBekuv0+dXi5pCa8k
+nXjA4T9G18I4d81e7Rmb8o0bvYBGS1BDj0TOxU9m0xI9xP1jHIMmhmNEbpbtQwID
+AQABo4IBbDCCAWgwCQYDVR0TBAIwADAtBglghkgBhvhCAQ0EIBYeRWFzeS1SU0Eg
+R2VuZXJhdGVkIENlcnRpZmljYXRlMB0GA1UdDgQWBBRoE7EZOaarqtsMeewz45JT
+ujq+gDCB0AYDVR0jBIHIMIHFgBQsoXGa7459is7AcU7j+VVnqfQCcqGBoaSBnjCB
+mzELMAkGA1UEBhMCU0UxEjAQBgNVBAgTCVNUT0NLSE9MTTEOMAwGA1UEBxMFS0lT
+VEExEDAOBgNVBAoTB0xFQU5ERVYxCzAJBgNVBAsTAklUMRQwEgYDVQQDEwtBUlJP
+Vy1QUk9EMTEQMA4GA1UEKRMHRWFzeVJTQTEhMB8GCSqGSIb3DQEJARYSc3VwcG9y
+dEBsZWFuZGV2LnNlggkAtuRopq92TCEwEwYDVR0lBAwwCgYIKwYBBQUHAwIwCwYD
+VR0PBAQDAgeAMBgGA1UdEQQRMA+CDWtpbS5saW5kZWJlcmcwDQYJKoZIhvcNAQEL
+BQADggEBAD9iIA8drM9vC4OCjp3luHg73WpHPQ0MiBGBuxyI4/F8BNgxMoEEzCGQ
+ycU4+QEHCeRH9PobgL0pbEzA22qG/+LSp/dfivNZALEWBWh/+T66sp0O7XPO9F4n
+3Cs/uvLn6XSdU6cRroOasjF3XXut2pwQ4VBc55YTNppyUK8l4heAMeUHTc2oYtTQ
+BqCEgwif/FS6ojuWjBgV+pHGrb7Owreg3MOw6NaMjNh7ZD3RzzwwhZOLTwJq8cYT
+xG1dBHzqpHiSVZchyhnM0vx4EYeG6uXWDcOYGa4J5SfNUtMuNWP6eJ8BrgUqLZ5h
+i7SrG4R3iVFt8CinsNWLgjCQyu9Ymw8=
+-----END CERTIFICATE-----

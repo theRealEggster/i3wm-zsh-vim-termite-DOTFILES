@@ -1,0 +1,11 @@
+Description='Automatically generated profile by wifi-menu'
+Interface=wlp2s0
+Connection=wireless
+Security=wpa
+ESSID=Winternet\ is\ coming...
+IP=static
+Address='192.168.10.23/24'
+Gateway='192.168.10.1'
+DNS=('192.168.10.1')
+Key=Googlemesilly
+

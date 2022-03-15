@@ -1,0 +1,7 @@
+#!/bin/env expect -v
+
+set timeout 10
+send_user "Checking for file in /home/kimlin/tmp/expectfile/file1..\n"
+
+spawn "/bin/ls -l /home/kimlin/tmp/expectfile/file1"
+expect "file1"

@@ -1,0 +1,62 @@
+### Whitelists
+### From CAG to K8S
+Whitelist outgoing traffic on port 6443 from CAG to both master and worker nodes at ELX
+Whitelist outgoing traffic on port range 30000-32767 from CAG to the worker nodes at ELX, not master.
+### Helm repo
+Contact Neil Liu for this
+### Check if ports are open
+# Masters 
+python -c "import sys; import socket; print(socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect_ex(('212.237.149.105', 6443)))"
+# Workers
+python -c "import sys; import socket; print(socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect_ex(('212.237.149.176', 30000)))"
+
+### Install kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+mv kubectl /usr/bin/
+chmod +x /usr/bin/kubectl
+### Configure kubectl
+copy .kube/config from k8s production
+Check status with some command like kubectl get nodes or kubectl cluster-info.
+
+###  Install helm
+wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
+tar zxfv helm-v3.2.4-linux-amd64.tar.gz 
+mv linux-amd64/helm /usr/local/bin/
+chmod +x /usr/local/bin/helm 
+### Configure Helm
+mkdir -p .config/helm
+helm repo add leandev --username leandev --password l34nd3vHELMR3p0 https://helm.kubernetes.leandev.se
+helm repo add leandev-lfp --username gitlab --password '39s5y!#gyd2%pTYR' https://hub.service.leandev.com/chartrepo/lfp/
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo update
+
+### Migration
+### Create directory in CAG, pref under /data
+mkdir /data/nystart
+cd /data/nystart
+git clone git@docker.leandev.se:/docker/leandev/gitrepo/lfp.git
+cd lfp
+./lfp-tools.sh switch v6.10.0-build.11
+./lfp-tools.sh prepare
+### Disable all jobs in the old environment before stopping
+#######
+####### This might need more work, this is how we disable jobs before making anon backups
+####### but maybe some other command needs to be run to, or manually disabled in LFP
+#######
+mongo 127.0.0.1:27027/Operation -u MongoAdmin -p PASSWORD \
+    --authenticationDatabase "admin" --verbose \
+    --eval 'db.JobDefinitionEntity.update({}, {$set: {"enabled" : false}},  {multi: true});'
+### Stop the old environment
+/data/lfp/./lfp-tools.sh stop
+./lfp-tools.sh migrate start -d /data/lfp/
+### When it's done browse to the URL given from the output at the end (ex: migration-nystart.kubernetes.leandev.se)
+### Click the DO ALL button to initiate migration
+### When done log in to k8s and continue installation.
+### Create directory, clone lfp, switch and prepare. Choose to continue when issuing prepare command
+mkdir /prod/nystart
+cd /prod/nystart
+git clone git@docker.leandev.se:/docker/leandev/gitrepo/lfp.git
+cd lfp
+./lfp-tools.sh switch v6.10.0-build.11
+./lfp-tools.sh prepare
+./lfp-tools.sh start

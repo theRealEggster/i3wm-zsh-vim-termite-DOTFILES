@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function LOG {
+$* |& while read out; do
+          echo "$(date '+[%y/%m/%d %H:%M:%S]')" "$out"
+      done |& tee
+}
+
+LOG echo hi && LOG  read -p "Enter / ^C: "
+ping google.se
+

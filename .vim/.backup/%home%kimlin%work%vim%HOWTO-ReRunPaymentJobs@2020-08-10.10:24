@@ -1,0 +1,8 @@
+Kika job log om det står något vettigt. Troligen inte. 
+Check if the Job Log tells you something, most likeley not. 
+Log > View Job Log
+B
+Kolla vilka filer som laddats ned. 
+Ladda sedan antingen upp dom till samma sftp dom hämtades ner från eller ladda upp till vår egen. 
+
+Stäng sen av duplicate file check i jobbet som hittas under Modules > Payment

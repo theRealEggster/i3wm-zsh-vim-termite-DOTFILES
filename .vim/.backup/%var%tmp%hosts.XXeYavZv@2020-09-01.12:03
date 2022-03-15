@@ -1,0 +1,44 @@
+127.0.0.1	localhost netdata stage stage.lan 
+127.0.1.1	workdawg
+172.27.8.2      nystart-prod                   nystartfinans.leandev.se
+172.27.8.3      nystart-staging                nystart-staging.leandev.se
+172.27.8.4      nystart-staging2               nystart-staging2.leandev.se
+
+172.23.194.38   hoist-lfp-stage1.hoistspar.se  hoist-lfp-stage1
+172.23.194.39   hoist-lfp-stage2.hoistspar.se  hoist-lfp-stage2
+172.23.194.40   hoist-lfp-stage3.hoistspar.se  hoist-lfp-stage3
+172.27.2.10     hoist-lfp-prod1.hoistspar.se   hoist-lfp-prod1
+172.27.2.11     hoist-lfp-prod2.hoistspar.se   hoist-lfp-prod2
+172.27.2.12     hoist-lfp-prod3.hoistspar.se   hoist-lfp-prod3
+172.23.194.10   hoist-vpn
+172.23.194.14   hoist-prodcopy
+172.23.194.20   hoist-dw1.hoistspar.se         hoist-dw1
+172.23.194.56   hoist-dw2.hoistspar.se         hoist-dw2
+172.23.194.57   hoist-dw3.hoistspar.se         hoist-dw3
+172.23.194.61   hoist-lfp-stagemobiento1
+172.23.194.62   hoist-lfp-stagemobiento2       mobiento.hoistspar.se   mobiento-stage.hoistspar.se
+172.23.194.63   hoist-lfp-stagemobiento3
+172.27.0.10     hoist-arrow-prod1
+172.27.0.11     hoist-arrow-prod2              hoist-arrow-prod2.hoistspar.se
+172.27.0.12     hoist-arrow-dw1
+91.240.252.122  hoist-arrow-ext
+172.27.7.20     hoist-arrow-stage1
+172.27.7.21     hoist-arrow-stage2
+172.27.7.22     hoist-arrow-dws
+91.240.252.124  hoist-arrow-exts
+172.27.19.10    hoist-penny-prod1
+172.27.19.11    hoist-penny-prod2
+172.27.19.12    hoist-penny-dw1
+91.240.252.237  hoist-penny-ext1
+91.240.252.238  hoist-Penny-ext2
+172.23.93.15    nordiska-prod 
+172.23.93.16    nordiska-staging               staging.nordiska-internal.com
+
+
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

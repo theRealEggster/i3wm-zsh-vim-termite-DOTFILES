@@ -1,0 +1,19 @@
+Start a rollback point with begin
+BEGIN;
+CREATE ROLE namespace-dwh WITH LOGIN ENCRYPTED PASSWORD 'passwd';
+GRANT CONNECT ON DATABASE "lfp-loan-mart" TO namespace-dwh;
+GRANT USAGE ON SCHEMA public TO namespace-dwh;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO namespace-dwh;
+GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO namespace-dwh;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO namespace-dwh;
+
+# check with \l+, \dp+, \dn+ that everything looks good.
+# If OK, do 
+COMMIT;
+# If not OK or if any errors occured do rollback
+ ROLLBACK
+# After commit, test login with new account from office. 
+STAGE: cluster.staging.leandev.se <namespace node number>
+PROD: cluster.leandev.se <namespace node number>
+
+

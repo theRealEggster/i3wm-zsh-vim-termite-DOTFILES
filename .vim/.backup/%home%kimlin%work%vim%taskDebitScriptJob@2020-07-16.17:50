@@ -1,0 +1,19 @@
+SIE jobb heter accounting transfer job i LFP kl 0800
+Send withdrawal file 0045
+Skapa jobb som kollar i mongodob job log efter när dessa jobb failar. 
+Mongodb > Operation > Collections > JobbLog
+
+
+penserstaging
+penser-staging-mongo-mongodb-arbiter-0    10.233.98.100
+penser-staging-mongo-mongodb-primary-0    10.233.96.13 
+penser-staging-mongo-mongodb-secondary-0  10.233.96.6  
+mongo 
+212.237.150.139 30523 
+db: admin
+user MongoAdmin
+pw: l34nd3vMongo4dm1n
+db.getCollection('JobLog').find({})
+Name/Path   Value
+"jobName" : "jobs.interest.name",
+

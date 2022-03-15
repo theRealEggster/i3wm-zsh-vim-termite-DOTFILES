@@ -1,0 +1,83 @@
+30 June
+11-13 5h OPRSE signicat and CDE  troubleshooting with testers. Whitelisting added for oprse prod env. 
+primal prod, open ports
+2h proxy test in stage. Problems with GO dependency, asked elx to build it instead. First build had trouble with root permissions, asked elx for fix and the second was able to run in the cluster.
+restarts of bodil-staging and stage2 and custom mocker file upload.
+
+1 July
+45 min ops
+12: 6h oprse bankid trbleshoot + signicat config trial 'n error with testers. Signicat had missed some config on their end which finally got it working. basebackups taken on prod and restored to after tests. CDE module had trouble starting up, needed a restart to fix.
+30m helping osvar with sftp
+1h elastx meeting
+15: 30m ronnie
+1h30m primal anon backup applied on staging and stage upgraded after ok from tester.
+
+2 July
+3h node port setup, tcp-ingress, network policys with ronnie for opr dwh access. And SFTP account for oprse
+30m sftp sie setup for anna in oprse
+nystart prod troubleshooting for broker communication issues. dug out logs and passed on.
+13-17 6h in call w ronnie, proxie pod testing in stage + local sftp setup to test against.
+
+3 July
+45m OPs Standup
+30m weekly ops prod  meeting
+2h w ronnie, proxy pod testing in stage
+1h figuring out why we cant sftp telia test files...
+45m nystart log hunting.. sent matches to madde
+30m wi oprse christian
+
+July 6
+1h VP Operations Weekly Meeting
+1h elx prod node crash, trouble shooting with ops team + elastx. elx found out what cause this and last mondays problem. A pod that overallocates resources eventually brins down the node.
+1h lfp sftp function debugging to get better understanding of the tool. Created new accounts for Peter.
+10: 30 min trello planning with ronnie
+30m sftp account create and sie folder setup for anna in oprfi-svea prod
+1h CAG whitelisting for nystart and procedure to generate and update license key with ronnie
+30m oprfi svea staging anon db refresh.
+15 Tried to collect info about license note in RL, hunting for anyone who knew for some time during the day, then by 15 Upgraded bodil-staging to alpha121 as requested. Stressed with the install and forgot to take backup before starting. Asked testers to check if OK before proceeding with bodil-staging2, 10 min later i got a thumbs up and did the upgrade. Shortly after nothing apparently works for the customer. Ola told me to install alpha134 which he found in the developers release channel which made everything worse, confirmed with him first that it was okey to install it... No backups of either installations had been done for the last month alpha134 had problem with database tool so no backup could be done. And no document with all config params existed. With risk of loosing all configs we asked CH to see if they could fix the problems.
+
+July 7
+2-3h bodil, Ch was able to fix all issues with db tool so we could save backup. After reading through all the listed issues collected in the testing channel, i checked release notes and noticed they where all listed. Informed testers about it. Customer was then able to access installation. Proceeded to upgrade bodil2 to alpha134, taking backups on both installations before and also new backup after bodil2 upgrade.. Most likley that issues reported on alpha121 could have been fixed according to RL on alpha121.
+
+July 8
+    0:30 Sync meeting with elastx
+   0:30 oprse updrade/deploy discussion
+  ## oprfi-svea - Applied latest anon db in stage again.
+
+July 9
+5-6h. opr contacted us about not being able to access dev env for oprfi-svea. Turns out that oprfi-svea is used by customer and we should use oprfi-svea2. Total confusion between me, Madeleine and Christian. Rollbacked to several different versions before landing on one taken in beginning of june. Lots of time spent between us sorting out how to avoid this in the future..
+   45min morning meet
+
+July 10
+2h30m Another node crash at elx. 
+30m added monitor hd space script for stage bastion. 
+4h oprse prod, upload statefile to telia. Opend ports on oprfi stage and prod. oprfi-svea prod, some reports failed to send. Random restart of operations pod fixed it.
+
+July 13
+0830  30m Morning meeting
+0915  30m oprse staging sftp upload telia testfile
+0945  10m oprfi prod open ports
+1100  20m-nystart stage, helped Gina with admin acc and discussion about which version it should use. diff ver in stage vs dev.
+11:30 2h30m time reporting for 1-10 July....
+ --   graylog learning, using oprse dashboard as exempel. Tried for find logs mentioned in dashboard and general filtering.
+1600  15m why earchive service was affected by malfunctioning aware service.
+1650 oprfi staging refreshed with latest anondb
+
+July 14
+### 0800+4h Another elastic node reported not ready causing various trouble for penser, primal, promentor, aros-prod, retail, retail-demo, froda, opr, oprfi-svea, oprse. One by one we brought them back up to operational status and confirmed with CSR's and Customers it was back to normal.
+### 1200+1h lunch
+### 1300+1h Meeting with CSR/product owners to inform about current status, road forward, how we can improve communication internally (for now a teams group was used) and what our response to the customers should be.
+###1400+1h Meeting with Elastx about why the nodes keep crashing, why there has been no response from them during the night and what solutions we can use to get rid of the problem. It was decided that elastx add three new nodes and monitoring instance so they can get alarms from the cluster, which they did not have today and the reason for no response during nighttime.
+### 1500+30m Nystart-stage2 refreshed with latest anondb and password for lfp resetted via mongo db.
+### 1530+2h Yet another elast cluster crash. This time it was caused by the addition of the three new nodes. Why is still unkown and under investigation. - new group chat with csr/product owners helped with providing information and requesting help to double check all services where up and running.
+### 1800+30m oprse-stagin refreshed with latest anondb and password for lfp resetted via mongo db.
+### 1845+15m timereporting!
+
+July 15
+###0800+1h30m ops standup. We had missed to add Sendgrid to our SPF for viljasolutions.com(addded DKIM also)
+###0930+30m opr going through what domain should be used for sending out mail for all lfp instances. Seems that they want to change it. 
+###1000+10m Christian wants new egress added for oprse, checked to make sure it was indeed a new addition and needs whitelisting for prod sftp -oHostKeyAlgorithms=+ssh-dss ftp1.svea.com
+###1030+30m Nystart-staging2, Discusssion with Madde on how to best proceed with restoring nystart-stageing to older date.
+###1100+30m Trello tickets mangling, asked Jason for clarification about alarms for pod.
+###1130+1h30m OPRSE verification of email config, what is emailed, to who, from whom, double and triple check on spf records 
+

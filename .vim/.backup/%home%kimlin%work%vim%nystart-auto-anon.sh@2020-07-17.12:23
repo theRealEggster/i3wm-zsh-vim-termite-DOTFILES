@@ -1,0 +1,31 @@
+#!/bin/bash
+#NOTES
+#Project nystart successfully restarted, version: v4.11.3-build.1, environment: nystart-staging2:STAGING
+#Snapshot nystart-prod-backup-20200712000001_v4.11.3-build.1 loaded successfully !
+#db.getCollection('JobLog').find({})
+
+function LOG { $* |& while read out; 
+    do echo "$(date '+[%y/%m/%d %H:%M:%S]')" "$out"
+done |& tee }
+LOG Lets get NYSTARTED
+bash /data/lfp/lfp-tools.sh start nystart
+LOG nystart exit = $?
+
+LOG ### Time to start mongo loop ###
+while true; do 
+mongo 127.0.0.1:27027/Operation -u MongoAdmin -p l34nd3vMongo4dm1n \
+--authenticationDatabase "admin" --verbose \
+--eval 'db.JobDefinitionEntity.update({}, {$set: {"enabled" : false}},  {multi: true});' \
+&& break \
+|| echo "No contact, sleeping 5 sec" && sleep 5 
+done
+echo "#### loopy exit=$? ####"
+
+backup_name=$(echo nystart-Anon-backup-20200713220001_nystart-stage2_$(/bin/date +\%Y\%m\%dT\%H\%M\%S)_$(/usr/bin/git describe --tags))
+echo "#### $(date) Backup_name is $backup_name ####"
+bash /data/lfp/lfp-tools.sh save-unidentify $backup_name
+echo "#### save-unidentify exit=$? ####"
+echo "#### $(date) Save complete perhaps, let's stop ####"
+bash /data/lfp/lfp-tools.sh stop
+echo "#### stop exit=$? ####"
+

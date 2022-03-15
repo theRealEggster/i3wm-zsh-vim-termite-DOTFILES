@@ -1,0 +1,90 @@
+#!/bin/bash
+# Set SFTP user, password and host
+SFTP_USER='fedelta01'
+SFTP_PASS="CyGkOCLgMGt7MOBIXg07XjcEh2"
+SFTP_HOST='sftp-loadbalancer.lfp-public'
+SSHOPT="-e sftp -o PubkeyAuthentication=no -o StrictHostKeyChecking=no -o BatchMode=no -b -"
+export SSHPASS="$SFTP_PASS" 
+
+
+###
+### Download BGMax file
+###
+[ ! -d "/tmp/IPFE-FromNordiska-BGmax" ] && mkdir /tmp/IPFE-FromNordiska-BGmax
+cd /tmp/IPFE-FromNordiska-BGmax 
+lftp -u ipfe_script_test,Viie9514Aa99,er -e "set ftp:ssl-protect-data true set ftp:ssl-force true set ssl:verify-certificate no" coreftp.nordiskacore.com:21638 <<- DOWNLOAD
+mget -E /TestFilesGoHere/IPFE-FromNordiska-BGmax/BFEP*
+DOWNLOAD
+
+if [ ! $? -eq 0 ]; then
+    echo "$(date "+%d/%m/%Y-%T") Cant download files from PFE-FromNordiska-BGmax. Make sure the credentials and server information are correct"
+else
+# Remove file from lftp
+    lftp -u ipfe_script_test,Viie9514Aa99,er -e "set ftp:ssl-protect-data true set ftp:ssl-force true set ssl:verify-certificate no" coreftp.nordiskacore.com:21638 <<- REMOVE
+mrm /TestFilesGoHere/IPFE-FromNordiska-BGmax/BFEP*
+REMOVE
+
+### Upload BGMax to our sftp
+
+export SSHPASS="$SFTP_PASS"
+echo -e "put BFEP*\n" |/usr/bin/sshpass $SSHOPT $SFTP_USER'@'$SFTP_HOST:/IPFE-FromNordiska-BGmax/ >&- 2>&-
+STATUS="$?"
+[[ $STATUS == '0' ]]   && { echo -n "Uploaded file successfully, "; rm -rf /tmp/IPFE-FromNordiska-BGmax; }
+[[ $STATUS == '1' ]]   && { echo "Upload failed, no file found"; exit 1; }
+[[ $STATUS == '5' ]]   && { echo "Authentication failed for $UPLOAD_USER'@'$UPLOAD_HOST"; exit 1; }
+[[ $STATUS == '255' ]] && { echo "Could not resolve hostname $UPLOAD_HOST"; exit 1; }
+fi
+
+###
+### Download Autogiro file
+###
+
+[ ! -d "/tmp/IPFE-FromNordiska-Autogiro" ] && mkdir /tmp/IPFE-FromNordiska-Autogiro
+cd /tmp/IPFE-FromNordiska-Autogiro
+lftp -u ipfe_script_test,Viie9514Aa99,er -e "set ftp:ssl-protect-data true set ftp:ssl-force true set ssl:verify-certificate no" coreftp.nordiskacore.com:21638 <<- DOWNLOAD
+mget -E /TestFilesGoHere/IPFE-FromNordiska-Autogiro/BFEP*
+DOWNLOAD
+
+if [ ! $? -eq 0 ]; then
+    echo "$(date "+%d/%m/%Y-%T") Cant download files from IPFE-FromNordiska-Autogiro. Make sure the credentials and server information are correct"
+else
+# Remove file from lftp
+    lftp -u ipfe_script_test,Viie9514Aa99,er -e "set ftp:ssl-protect-data true set ftp:ssl-force true set ssl:verify-certificate no" coreftp.nordiskacore.com:21638 <<- REMOVE
+mrm /TestFilesGoHere/IPFE-FromNordiska-Autogiro/BFEP*
+REMOVE
+   
+# Upload Autogiro file to our sftp 
+
+export SSHPASS="$SFTP_PASS"
+echo -e "put BFEP*\n" |/usr/bin/sshpass $SSHOPT $SFTP_USER'@'$SFTP_HOST:/IPFE-FromNordiska-Autogiro/ >&- 2>&-
+STATUS="$?"
+[[ $STATUS == '0' ]]   && { echo -n "Uploaded file successfully, "; rm -rf /tmp/IPFE-FromNordiska-Autogiro; }
+[[ $STATUS == '1' ]]   && { echo "Upload failed, no file found"; exit 1; }
+[[ $STATUS == '5' ]]   && { echo "Authentication failed for $UPLOAD_USER'@'$UPLOAD_HOST"; exit 1; }
+[[ $STATUS == '255' ]] && { echo "Could not resolve hostname $UPLOAD_HOST"; exit 1; }
+fi
+
+###
+### Upload  && autogiro file to nordiska lftp
+###
+[ ! -d "/tmp/IPFE-ToNordiska-Autogiro" ] && mkdir /tmp/IPFE-ToNordiska-Autogiro 
+cd /tmp/IPFE-ToNordiska-Autogiro 
+
+echo -e "get /IPFE-ToNordiska-Autogiro/BFEP.IAGAG.K0367056*\nrm /IPFE-ToNordiska-Autogiro/BFEP.IAGAG.K0367056*\n" |/usr/bin/sshpass $SSHOPT $SFTP_USER'@'$SFTP_HOST >&- 2>&-
+STATUS="$?"
+[[ $STATUS == '0' ]]   && { echo -n "Downloaded $(ls BFEP.IAGAG.K0367056*), "; }
+[[ $STATUS == '1' ]]   && { echo "Download failed, no file found at $DOWNLOAD_HOST:/tmp/"; exit 0; }
+[[ $STATUS == '5' ]]   && { echo "Authentication failed for $DOWNLOAD_USER'@'$DOWNLOAD_HOST"; exit 1; }
+[[ $STATUS == '255' ]] && { echo "Could not resolve hostname $DOWNLOAD_HOST"; exit 1; }
+
+if [[ $STATUS -eq 0 ]];then
+    lftp -u ipfe_script_test,Viie9514Aa99,er -e "set ftp:ssl-protect-data true set ftp:ssl-force true set ssl:verify-certificate no" coreftp.nordiskacore.com:21638:/TestFilesGoHere/IPFE-ToNordiska-Autogiro <<- UPLOAD
+mput BFEP.IAGAG.K0367056* 
+UPLOAD
+    if [[ $? -eq 0 ]]; then
+        rm /tmp/IPFE-ToNordiska-Autogiro/BFEP.IAGAG.K0367056*
+        echo "File uploaded to Nordiska SFTP"
+    else 
+        echo "Could not upload autogiro file to lftp"
+    fi
+fi

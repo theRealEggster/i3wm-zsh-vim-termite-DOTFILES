@@ -1,0 +1,10 @@
+./lfp-tools.sh kube cp a02775300012001.txt operation-7b457f5788-5kzfj:/tmp/
+
+
+PASS_a0280=0vpk33d
+echo -e "put a028028t00012018.txt\n" |sftp -oHostKeyAlgorithms=ssh-dss oprvakuus@ftp1.svea.com:/ostosraha/
+
+PASS_nor=hwCTMR256y8Anz1Ro9eG
+echo -e "put /tmp/$NOR\n" |sftp oprvakuus@sftp.analyste-saas.com:/OUT/Viitteet/OPR/
+
+

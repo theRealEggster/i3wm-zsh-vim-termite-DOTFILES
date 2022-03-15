@@ -1,0 +1,24 @@
+#!/bin/bash
+SSHPASS="/usr/bin/sshpass"
+SSHOPT="-e sftp -o PubkeyAuthentication=no -o StrictHostKeyChecking=no -o BatchMode=no -b -"
+FILE=""
+PATH=""
+USR="share-lfp"
+HOST="103.69.155.83"
+export SSHPASS="Lfp!@#"
+
+
+while [ -n "$1" ]; do # while loop starts
+	case "$1" in
+	-u) 
+            FP="$2"
+            if [[ "$2" =~ '/' ]]; then PATH=${2: && FILE=${2##*/}; fi
+            echo "put $FILE\n" |$SSHPASS $SSHOPT $USR'@'$HOST:$PATH >&- 2>&
+        ;;
+	-d) echo "-b option passed" ;; # Message for -b option
+	-l) echo "-c option passed" ;; # Message for -c option
+	-rm) echo "-c option passed" ;; # Message for -c option
+	*) echo "Option $1 not recognized" ;; # In case you typed a different option other than a,b,c
+	esac
+	shift
+done

@@ -1,0 +1,5 @@
+#!/bin/bash
+#!/bin/bash
+ping -c5 google.e \
+&& echo YES || exit NOOPE 0
+

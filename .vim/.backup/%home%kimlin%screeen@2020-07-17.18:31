@@ -1,0 +1,4 @@
+screen -t right
+split -v
+focus left
+screen -t left

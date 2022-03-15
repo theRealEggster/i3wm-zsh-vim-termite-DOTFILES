@@ -1,0 +1,952 @@
+: 1601157140:0;sudo su -
+: 1601157245:0;mkdir back
+: 1601157263:0;cp -r .zshrc .oh-my-zsh .zsh_custom back/
+: 1601157278:0;vim .zshrc
+: 1601157351:0;sudo su -
+: 1601157381:0;cp /root/.zsh_custom/env.zsh .zsh_custom
+: 1601157401:0;cp /root/.zsh_custom/vars.zsh .zsh_custom/
+: 1601157410:0;sudo chown kim:kim .zsh_custom/*
+: 1601157419:0;ls -l .zsh_custom
+: 1601157428:0;vim .zsh_custom/env.zsh
+: 1601157438:0;vom 
+: 1601157450:0;vim .zsh_custom/alias.zsh
+: 1601157486:0;vim .oh-my-zsh/themes/steeef.zsh-theme
+: 1601157497:0;vim .zsh_custom/env.zsh
+: 1601157531:12;vim .zshrc
+: 1601157590:0;vim .zsh_custom/alias.zsh
+: 1601157603:0;vim .zshrc
+: 1601157618:0;vim .oh-my-zsh/themes/steeef.zsh-theme
+: 1601157643:0;zalias
+: 1601157651:0;vim .zsh_custom/alias.zsh
+: 1601157656:0;vim .zsh_custom/vars.zsh
+: 1601157773:0;echo G test
+: 1601157775:0;echo asd G test
+: 1601157778:0;echo asd 
+: 1601157781:0;alias
+: 1601157786:0;export
+: 1601157901:0;ls -l /usr/share/terminfo/*/
+: 1601157907:0;ls -l /usr/share/terminfo/*/ |grep xter
+: 1602268836:0;dialog
+: 1602269243:0;sudo netctl start hot
+: 1602270271:0;sudo netctl status hot
+: 1602270386:0;sudo netctl start hot
+: 1602270388:0;sudo netctl status hot
+: 1602270396:0;sudo netctl stop hot
+: 1602270399:0;sudo netctl status hot
+: 1602270428:0;sudo vim /etc/netctl/winternet
+: 1602270440:0;sudo vim /etc/netctl/hot
+: 1602270661:0;sudo netctl status hot
+: 1602270667:0;sudo netctl start hot
+: 1602270674:0;sudo netctl status hot
+: 1602270740:0;iw list
+: 1602270822:0;iw
+: 1602270902:0;netctl
+: 1602270929:0;spac iw
+: 1602270933:0;iw
+: 1602270943:0;sudo iw
+: 1602270954:0;pacman -Q
+: 1602270957:0;pacman -Q |grep iw
+: 1602270963:0;spac iw
+: 1602270972:0;upac
+: 1602272247:0;sudo snapper-gui
+: 1602272316:0;sudoedit  /etc/snapper/config-templates/default 
+: 1602272375:0;sudo ls -l /etc/snapper/configs
+: 1602272380:0;sudo ls -l /etc/snapper/filters
+: 1602272441:0;history
+: 1602272468:0;sudo su -
+: 1602272528:0;snapper-gui
+: 1602272648:0;sudo snapper-gui
+: 1602273328:0;snapper-gui
+: 1602273410:0;sudo snapper-gui
+: 1602345506:0;dmesg
+: 1602345519:0;ls -lth /dev
+: 1602345522:0;ls -lth /dev |head
+: 1602345525:0;dmesg
+: 1602345577:0;ls -lth /dev |head
+: 1602345698:0;sudo fdisk -l
+: 1602345723:0;spac thunar
+: 1602345769:0;spac thunar-volman
+: 1602345774:0;spac gvfs
+: 1602345802:0;sudo pacman -Syu
+: 1602345834:0;spac gvfs
+: 1602345999:0;dmesg
+: 1602346033:0;sudo su -
+: 1602346114:0;lsblk -l
+: 1602346152:0;reboot
+: 1602346227:0;startx
+: 1602346270:0;du -hd1 /run/media/kim/3134-3732
+: 1602346281:0;du -hd1 /run/media/kim/3134-3732/DCIM
+: 1602346383:0;spac
+: 1602346386:0;upac
+: 1602346398:0;sudo netctl start hot
+: 1602346420:0;sudo netctl stop hot
+: 1602346424:0;sudo netctl start hot
+: 1602346455:0;spac feh
+: 1602347595:0;ps aux |grep vlc
+: 1602347597:0;pkill vlc
+: 1602347599:0;ps aux |grep vlc
+: 1602347603:0;kill 9173
+: 1602347605:0;ps aux |grep vlc
+: 1602347610:0;sudo kill -9  9173
+: 1602347613:0;ps aux |grep vlc
+: 1602350304:0;man feh
+: 1602350413:0;which feh
+: 1602350504:0;/bin/feh -Z --auto-rotate --cache-size 4048
+: 1602350526:0;/bin/feh -Z --auto-rotate --cache-size 4048m
+: 1602350538:0;/bin/feh -Z --auto-rotate
+: 1602350541:0;/bin/feh -Z
+: 1602350547:0;spac Imlib2
+: 1602350550:0;spac mlib2
+: 1602350609:0;/bin/feh -Z
+: 1602350696:0;yay -Ssa imlib2
+: 1602350724:0;yay -Sa imlib2-webp-git
+: 1602350759:0;yay -Sa imlib2-heic
+: 1602350790:0;/bin/feh -Z
+: 1602350848:0;xrandr
+: 1602350978:14;sudo vim /usr/bin/feh1080
+: 1602351001:0;sudo chmod +x /usr/bin/feh1080
+: 1602351005:0;ls -l /usr/bin/feh1080
+: 1602351012:0;feh1080
+: 1602351039:0;ls -lth /run
+: 1602351057:0;ls -lth /run  |cat -
+: 1602351074:0;cd /run/media/kim/3134-3732
+: 1602351076:0;ls -l
+: 1602351080:0;bash
+: 1602351094:0;cd DCIM
+: 1602351099:0;echo $LS_COLORS
+: 1602351113:0;export LS_COLORS=
+: 1602351115:0;ls -l
+: 1602351128:0;cd 102MSDCF
+: 1602351129:0;ls -l
+: 1602351151:0;/bin/feh -Z --auto-rotate --cache-size 2048 DSC01680.JPG
+: 1602351168:0;sudo cat /usr/bin/feh1080
+: 1602351205:0;man feh
+: 1602351231:0;/bin/feh -Z --auto-rotate --cache-size=2048 DSC01680.JPG
+: 1602351245:0;/bin/feh -Z --auto-rotate --cache-size=2048 DSC01680.JPG -g 1920x1080 --scale-down 
+: 1602351280:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 
+: 1602351294:0;/bin/feh -Z --auto-rotate --cache-size=2048 DSC01680.JPG -g 1920x1080 --scale-down 
+: 1602351313:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down 
+: 1602351348:0;man feh
+: 1602351409:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC01680.JPG
+: 1602351424:0;/bin/feh -Z --auto-rotate --cache-size=2048  --start-at DSC01680.JPG
+: 1602351639:0;/bin/feh -Z --auto-rotate --cache-size=2048   DSC017**.JPG 
+: 1602351661:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC01796.JPG
+: 1602352456:0;spac gimp
+: 1602357226:0;cd /run/media/kim/3134-3732/DCIM/102MSDCF
+: 1602357228:0;ls
+: 1602357231:0;cd ..
+: 1602357287:0;export LS_COLORS=
+: 1602357326:0;cp -r 102MSDCF ../../9FA6-80B1/
+: 1602358633:0;mount
+: 1602359187:0;umount /run/media/kim/9FA6-80B
+: 1602359193:0;umount /run/media/kim/9FA6-80B1
+: 1602359206:0;sync
+: 1602359386:0;iw 
+: 1602359395:0;wifi-menu
+: 1602359399:0;sudo wifi-menu
+: 1602359903:0;ls -l /run/media/kim/3134-3732/DCIM/102MSDCF
+: 1602359928:0;ls -l /run/media/kim/3134-3732/DCIM/102MSDCF | vim -
+: 1602359958:0;feh 102MSDCF/DSC00001.JPG
+: 1602360196:0;feh --start-at 102MSDCF/DSC03234.JPG
+: 1602360346:0;feh -Z --auto-rotate --start-at 102MSDCF/DSC03234.JPG
+: 1602360532:0;identity 102MSDCF/DSC03234.JPG
+: 1602360603:0;identity -verbose 102MSDCF/DSC03234.JPG |grep "exif:"
+: 1602360630:0;cd 102MSDCF
+: 1602360632:0;identi
+: 1602360633:0;identify
+: 1602360716:0;identify -verbose DSC03234.JPG
+: 1602360725:0;identify -verbose DSC03234.JPG |grep exif:
+: 1602361183:0;pkill thunar
+: 1602361734:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC03200.JPG
+: 1602361820:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC02400.JPG
+: 1602362001:0;startx
+: 1602362121:0;sudo netctl stop hot
+: 1602362139:0;sudo netctl start hot
+: 1602362225:0;sudo netctl status hot
+: 1602362239:0;sudo netctl stop hot
+: 1602362240:0;sudo netctl status hot
+: 1602362252:0;sudo netctl start hot
+: 1602364149:0;cd /run/media/kim/3134-3732/DCIM/102MSDCF
+: 1602364150:0;ls
+: 1602364157:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC02500.JPG
+: 1602364198:0;history
+: 1602364208:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC02400.JPG
+: 1602364239:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC02450.JPG
+: 1602364307:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC02550.JPG
+: 1602364311:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC02750.JPG
+: 1602364334:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC02350.JPG
+: 1602364345:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC02300.JPG
+: 1602364351:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC02000.JPG
+: 1602365895:0;cd ..
+: 1602365904:0;du -hd1 
+: 1602365962:0;du -hd1 DCIM
+: 1602365990:0;cp -r DCIM ~/
+: 1602366066:0;date
+: 1602367577:0;vim .config/dunst/dunstrc 
+: 1602367615:0;notify-send 
+: 1602367631:0;du -hd1 DCIM
+: 1602367640:0;cd /run/media/kim/3134-3732/DCIM/102MSDCF
+: 1602367641:0;cd ..
+: 1602367644:0;ls
+: 1602367646:0;cd DCIM
+: 1602367646:0;ls
+: 1602367650:0;export LS_COLORS=
+: 1602367651:0;ls
+: 1602367662:0;rm -rf *
+: 1602367807:0;sync
+: 1602367810:0;cd ..
+: 1602367810:0;ls
+: 1602367831:0;ls -l 
+: 1602367840:0;cat export |grep color
+: 1602367846:0;export |grep -i color
+: 1602368132:0;cat AVF_INFO/AVIN0001.BNP
+: 1602368140:0;cat -e AVF_INFO/AVIN0001.BNP 
+: 1602368153:0;cat  AVF_INFO/AVIN0001.INP
+: 1602368173:0;cat -e  AVF_INFO/AVIN0001.INP
+: 1602368211:0;cat -e  AVF_INFO/AVIN0001.INT
+: 1602368223:0;cat -e  AVF_INFO/PRV00001.BIN
+: 1602368226:0;cat  AVF_INFO/PRV00001.BIN
+: 1602368271:0;cd /run/media/kim/3134-3732/PRIVATE/M4ROOT/
+: 1602368274:0;cat MEDIAPRO.XML
+: 1602368349:0;cat STATUS.BIN
+: 1602368500:0;cat CLIP
+: 1602372007:0;sudo netctl switch-to angelique
+: 1602373001:0;sync 
+: 1602373020:0;mount
+: 1602373067:0;umount /dev/mmcblk0p1
+: 1602373069:0;sudo umount /dev/mmcblk0p1
+: 1602373202:0;write 
+: 1602373208:0;sync
+: 1602373369:0;mount |grep mm
+: 1602373370:0;dmesg
+: 1602375050:0;ls -l /dev/mmcblk0
+: 1602375058:0;fdisk -l
+: 1602375060:0;sudo fdisk -l
+: 1602375098:0;fsck /dev/mmcblk0
+: 1602375102:0;sudo fsck /dev/mmcblk0
+: 1602375532:0;sudo su -
+: 1602377297:0;sudo netctl start hot
+: 1602377300:0;sudo netctl stop hot
+: 1602377354:0;sudo netctl stop-all
+: 1602377359:0;sudo netctl start hot
+: 1602377399:0;sudo netctl stop angelique
+: 1602377443:0;sudo netctl stop-all
+: 1602377446:0;sudo netctl start hot
+: 1602378211:0;dmesg
+: 1602378674:0;feh Pictures
+: 1602379517:0;mount
+: 1602379519:0;mount |grep mm
+: 1602379522:0;sync
+: 1602380282:0;sudo netctl stop hot
+: 1602380290:0;sudo netctl start angelique
+: 1602380307:0;date
+: 1602380352:0;spac geeqie
+: 1602380476:0;dmesg
+: 1602380491:0;sudo  fdisk -l
+: 1602381679:0;mount
+: 1602381682:0;mount |grep mm
+: 1602381705:0;sync
+: 1602382529:0;sudo  fdisk -l
+: 1602382537:0;sudo netctl stop-all
+: 1602382541:0;sudo netctl start hot
+: 1602382620:0;mount |grep mm
+: 1602382629:0;umount /dev/mmcblk0p1
+: 1602382649:0;sync
+: 1602382656:0;dmesg
+: 1602384761:0;upac
+: 1602384781:0;yay -Syua
+: 1602401598:0;sudo pacman -Syu
+: 1602436686:0;xrandr
+: 1602437106:0;sync
+: 1602437300:0;#/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC02000.JPG
+: 1602437313:0;cd /run/media/kim/DF9F-718C/DCIM
+: 1602437314:0;ls
+: 1602437315:0;ls -l 
+: 1602437317:0;cd 10301011
+: 1602437318:0;ls -l 
+: 1602437334:0;cd
+: 1602437342:0;cd Pictures/
+: 1602437343:0;ls
+: 1602437346:0;cd Angelique/Ulrika
+: 1602437346:0;ls
+: 1602437371:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC00371.JPG
+: 1602437849:0;vim 
+: 1602439451:0;cd Pictures/Angelique/Ulrika
+: 1602439458:0;mkdir star
+: 1602439552:0;#for i in "495 537 556 564 570 602 604 605 608 609 611 612 625 639 642 645 689 691 705 711 713 757 766 811 829 842 843 912 917 946 947 970"; do echo 
+: 1602439553:0;ls
+: 1602439577:0;for i in "495 537 556 564 570 602 604 605 608 609 611 612 625 639 642 645 689 691 705 711 713 757 766 811 829 842 843 912 917 946 947 970"; do echo DSC00$i.JPG; done 
+: 1602439585:0;for i in "495 537 556 564 570 602 604 605 608 609 611 612 625 639 642 645 689 691 705 711 713 757 766 811 829 842 843 912 917 946 947 970"; do echo "DSC00$i.JPG"; done 
+: 1602439606:0;for i in "495 537 556 564 570 602 604 605 608 609 611 612 625 639 642 645 689 691 705 711 713 757 766 811 829 842 843 912 917 946 947 970"; do echo "DSC00${i}.JPG"; done 
+: 1602439614:0;bash
+: 1602439644:0;for i in 495 537 556 564 570 602 604 605 608 609 611 612 625 639 642 645 689 691 705 711 713 757 766 811 829 842 843 912 917 946 947 970; do echo "DSC00${i}.JPG"; done 
+: 1602439662:0;for i in 495 537 556 564 570 602 604 605 608 609 611 612 625 639 642 645 689 691 705 711 713 757 766 811 829 842 843 912 917 946 947 970; do cp "DSC00${i}.JPG" star; done 
+: 1602439666:0;ls -l star
+: 1602446971:0;sync
+: 1602446983:0;mount |grep dev
+: 1602447031:0;sync
+: 1602776656:0;sudo netctl start winternet
+: 1602776664:0;sudo netctl stop-all
+: 1602776666:0;sudo netctl start winternet
+: 1602868309:0;ls -l 
+: 1602868315:0;vim .zshrc
+: 1602868369:0;ls -l 
+: 1602868378:0;ls -l .zsh_custom/vars.zsh
+: 1602868387:0;cat .zsh_custom/env.zsh
+: 1602868393:0;vim .zsh_custom/env.zsh
+: 1602868415:0;ls -l
+: 1602868424:0;vim .zsh_custom/vars.zsh
+: 1602868429:0;vim .zsh_custom/alias.zsh
+: 1602868439:0;cat .zsh_custom/vars.zsh
+: 1602868441:0;cat .zsh_custom/alais
+: 1602868443:0;cat .zsh_custom/alias.zsh
+: 1602868459:0;vim .zsh_custom/alias.zsh
+: 1602868485:0;ls -l
+: 1602868497:0;export
+: 1602868506:0;ls -l 
+: 1602868524:0;env
+: 1602868589:0;alias
+: 1602868604:0;vim .zshrc
+: 1602868630:0;ls -l
+: 1602868648:0;vim .oh-my-zsh/plugins/colorize/README.md
+: 1602868686:0;vim .oh-my-zsh/plugins/colorize/colorize.plugin.zsh
+: 1602868727:0;vim .zshrc
+: 1602868735:0;ls -l 
+: 1602868744:0;pat 
+: 1602868755:0;vim .oh-my-zsh/plugins/colorize/colorize.plugin.zsh
+: 1602868804:0;upac
+: 1602868840:0;sudo snapper-gui
+: 1602868859:0;sudo su -
+: 1602869141:0;spac chroma
+: 1602869148:0;yay -Syua
+: 1602869221:0;yay -Ssa chroma
+: 1602869243:0;yay -Ssa pygmentize
+: 1602869253:0;pacman -Ss chroma
+: 1602869259:0;pacman -Ss pygment
+: 1602869267:0;vim .oh-my-zsh/plugins/colorize/colorize.plugin.zsh
+: 1602869277:0;vim .oh-my-zsh/plugins/colorize/README.md
+: 1602869347:0;pacman -Ss pygment
+: 1602869359:0;yay -Ssa pygmen
+: 1602869378:0;pip
+: 1602869383:0;pip install pygmentize
+: 1602869399:0;pacman -Ss pygment
+: 1602869406:0;spac pygments
+: 1602869412:0;spac pythonpygments
+: 1602869415:0;spac python-pygments
+: 1602869422:0;pat
+: 1602869426:0;pat .zshrc
+: 1602869564:0;history
+: 1602869626:0;vim .zshrc
+: 1602869634:0;vim .zsh_custom/vars.zsh
+: 1602869639:0;vim .zsh_custom/env.zsh
+: 1602869663:0;ls -l
+: 1602869668:0;env
+: 1602869830:0;export LS_COLORS=di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43
+: 1602869834:0;export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+: 1602869836:0;ls -l 
+: 1602869847:0;export LSCOLORS=exfxcxdxbxegedabagacad
+: 1602869857:0;vim .zsh_custom/vars.zsh
+: 1602869865:0;vim .zsh_custom/env.zsh
+: 1602874613:0;ls 
+: 1602874615:0;cd Pictures
+: 1602874615:0;l 
+: 1602874616:0;ls -l
+: 1602874623:0;cd Angelique
+: 1602874623:0;ls
+: 1602874625:0;cd Ulrika
+: 1602874626:0;ls
+: 1602874628:0;ls -l star
+: 1602874639:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down --start-at DSC01000.JPG
+: 1602874736:0;vim
+: 1602875356:0;history|grep for
+: 1602875506:0;for i in 1018 1023 1033 1038 1046 1053  1055 1083 1177 1183 1274 1276 1279 1335;do cp "DSC0${i}.JPG" star; done
+: 1602875522:0;/bin/feh -Z --auto-rotate --cache-size=2048 -g 1920x1080 --scale-down star
+: 1602879550:0;mount
+: 1602879570:0;sync
+: 1602879775:0;cat .zsh_history
+: 1603295919:0;sudo netctl start hot
+: 1603295922:0;sudo netctl stop-all
+: 1603295926:0;sudo netctl start hot
+: 1603295992:0;iw liat
+: 1603295993:0;iw list
+: 1603296003:0;upac
+: 1603296424:0;spac iw
+: 1603296836:0;iw liat
+: 1603296840:0;iw list
+: 1603296924:0;iw list | vim -
+: 1603297115:0;iw
+: 1603297152:0;iw list
+: 1603297156:0;ip link
+: 1603297167:0;man iw
+: 1603297205:0;ip dev
+: 1603297209:0;iw dev
+: 1603297266:0;iw dev wlp2s0 add wlp2s0_sta type managed addr  9c:b6:d0:f7:a5:c8
+: 1603297269:0;sudo iw dev wlp2s0 add wlp2s0_sta type managed addr  9c:b6:d0:f7:a5:c8
+: 1603297296:0;sudo iw dev wlp2s0 interface add wlp2s0_sta type managed addr 9c:b6:d0:f7:a5:c8
+: 1603297322:0;sudo iw dev wlp2s0 interface add wlp2s0_ap type managed addr 9c:b6:d0:f7:a5:c9
+: 1603297380:0;spac hostapd
+: 1603297394:0;sudo vim /etc/hostapd/hostapd.conf
+: 1603297736:0;sudo systemtl start hostapd
+: 1603297740:0;sudo systemctl start hostapd
+: 1603297745:0;sudo systemctl status hostapd
+: 1603793503:0;curl icanhazip.com
+: 1603793774:0;nmap -Pn -p22 212.237.150.26
+: 1603793780:0;spac nmap
+: 1603793789:0;nmap -Pn -p22 212.237.150.26
+: 1603793812:0;sftp opr3@212.237.150.26
+: 1603793891:0;sftp opr3@212.237.150.26:22
+: 1603794077:0;sftp opr3@212.237.150.26
+: 1603794088:0;sftp opr03@212.237.150.26:22
+: 1603794156:0;man sftp
+: 1604766488:0;startx
+: 1604766545:0;sudo netctl start winternet
+: 1604767082:0;pwgen
+: 1604767143:0;vim pw
+: 1604767677:0;pwgen
+: 1604768517:0;dropbox status
+: 1604768619:0;vim Downloads/config
+: 1604768672:0;vim .config/i3/config
+: 1604768720:0;echo $((1920/4))
+: 1604768732:0;echo $((1080/4))
+: 1604768761:0;echo $((1920/2))
+: 1604768763:0;echo $((1080/2))
+: 1604768794:0;xpr
+: 1604768799:0;xprop
+: 1604787551:0;sudo reboot
+: 1604787810:0;startx
+: 1604787848:0;sudo netctl switch-to winternet
+: 1604791814:0;xset
+: 1604791820:0;xset q
+: 1604791833:0;xset q s
+: 1604791845:0;xset
+: 1604791923:0;xset s activate
+: 1604791939:0;xset s blank
+: 1604791941:0;xset s activate
+: 1604791952:0;xset s default
+: 1604791954:0;xset s activate
+: 1604791967:0;sleep 5; xset s activate
+: 1604792870:0;on
+: 1604792905:0;pacman -S archlinux-wallpaper\
+
+: 1604792910:0;sudo pacman -S archlinux-wallpaper\
+
+: 1604793032:0;upac
+: 1604794826:0;sudo pacman -S archlinux-wallpaper\
+
+: 1604795356:0;spac virtualbox
+: 1604795618:0;spac qbittorent
+: 1604796381:0;pactl load-module module-echo-cancel aec_method=webrtc source_name=ec-source sink_name=ec-sink
+: 1604798386:0;fdisk /dev/nvme0n1p1
+: 1604798409:0;sudo fdisk /dev/nvme0n1p1
+: 1604798671:0;sudo fdisk /dev/nvme0n1
+: 1604800045:0;cat /etc/fstab
+: 1604800098:0;ls
+: 1604800108:0;ls -l Pictures
+: 1604800116:0;cat .config/i3/config 
+: 1604800291:0;cat /usr/share/zoneinfo/Europe/Stockholm
+: 1604800419:0;vim /etc/locale.gen
+: 1604801427:0;ip link
+: 1604802830:0;pacman -Ss os-prober
+: 1604803752:0;useradd
+: 1604803832:0;ip link
+: 1604803878:0;ip
+: 1604803881:0;ip addr
+: 1604803890:0;dmesg
+: 1604803896:0;dmesg |grep wlp
+: 1604803952:0;wifi-menu
+: 1604803964:0;rfkill
+: 1604804229:0;which rfkill
+: 1604804334:0;which
+: 1604804337:0;which which
+: 1604804399:0;whereis 
+: 1604804421:0;locate 
+: 1604804541:0;dmesg |grep wl
+: 1604954080:0;dmesg
+: 1604954143:0;sync
+: 1604954145:0;mount
+: 1604954155:0;mount|grep -v Oh
+: 1604954157:0;mount|grep -v OH
+: 1604954223:0;history
+: 1604954278:0;dmesg
+: 1604954283:0;dmesg -w
+: 1604954467:0;sudo reboot now 
+: 1604954539:0;vim .zshrc
+: 1604954567:0;vim .xinitrc
+: 1604954578:0;vim .zshrc
+: 1604954591:0;.xinitrc
+: 1604954593:0;. .xinitrc
+: 1604954612:0;. .xinitrc 
+: 1604954615:0;source .xinitrc 
+: 1604954630:0;cat.xinitrc 
+: 1604954632:0;cat .xinitrc 
+: 1604954656:0;startx
+: 1604955105:0;sudo netctl start hot
+: 1604955284:0;sudo pacman -Syu
+: 1604955453:0;sudo snapper-gui
+: 1604955490:0;sudo su -
+: 1604955591:0;spac thumbler
+: 1604955601:0;sudo pacman -Ss thunar
+: 1604955626:0;sudo pacman -S thunar-media-tags thunar-archive-plugin
+: 1604955635:0;sudo pacman -S thunar-media-tags-plugin thunar-archive-plugin
+: 1604955644:0;yay -Ss thumbler
+: 1604955676:0;yay -Ss tumbler
+: 1604955695:0;sudo pacman -Ss tumble
+: 1604955702:0;spac tumbler
+: 1604956225:0;sudo netctl start angelique
+: 1604956229:0;sudo netctl stop-all
+: 1604956241:0;sudo netctl start angelique
+: 1605914856:0;netctl stop-all
+: 1605914885:0;ip addr
+: 1605914896:0;startx
+: 1605914937:0;ps aux
+: 1605914949:0;rkhunter
+: 1605914954:0;sudo rkhunter
+: 1605914995:0;sudo su -
+: 1605915062:0;sudo rkhunter -c
+: 1605915139:0;history
+: 1605915147:0;sudo su -
+: 1605915246:0;sudo clamtk
+: 1605916893:0;sudo netctl start winternet
+: 1605918187:0;htop
+: 1605974651:0;sudo shutdown now 
+: 1606995493:0;netctl start winternet
+: 1606995501:0;sudo netctl start winternet
+: 1606995509:0;ip addr
+: 1606995513:0;exit
+: 1606995519:0;startx
+: 1607004574:0;sudo shutdown
+: 1607004577:0;sudo shutdown now
+: 1608134353:0;startx
+: 1608136789:0;sudo netctl start winternet
+: 1608136811:0;sudo netctl edit winternet
+: 1608136821:0;export EDITOR=vim
+: 1608136822:0;sudo netctl edit winternet
+: 1608136825:0;sudo export EDITOR=vim
+: 1608136837:0;sudo su -
+: 1608136910:0;export SYSTEMD_EDITOR=vim
+: 1608136914:0;sudo netctl edit winternet
+: 1608136917:0;netctl edit winternet
+: 1608136961:0;sudo export SYSTEMD_EDITOR=vim
+: 1608136983:0;sudo visudo
+: 1608137033:0;sudoedit a
+: 1608137041:0;sudoedit
+: 1608137052:0;sudoedit pw
+: 1608137061:0;sudoedit /etc/netctl/winternet
+: 1608137143:0;which editor
+: 1608137177:0;sudo SYSTEMD_EDITOR=vim
+: 1608137183:0;sudo su -
+: 1608137212:0;netctl edit winternet
+: 1608137216:0;sudo netctl edit winternet
+: 1608137235:0;sudo visudo
+: 1608137259:0;sudo su -
+: 1608137267:0;sudo netctl edit winternet
+: 1608137276:0;sudo echo $SYSTEMD_EDITOR
+: 1608137287:0;sudo systemctl show-environment
+: 1608137303:0;sudo systemctl edit
+: 1608137347:0;sudo systemctl set-environment SYSTEMD_EDITOR=/usr/bin/vim\
+
+: 1608137351:0;sudo netctl edit winternet
+: 1608137356:0;spac nanno
+: 1608137358:0;spac nano
+: 1608137366:0;sudo pacman -Syu
+: 1608137424:0;sudo su -
+: 1608137451:0;sudo netctl edit winternet
+: 1608137464:0;spac nano
+: 1608137468:0;sudo netctl edit winternet
+: 1608137486:0;export SYSTEMD_EDITOR=vim
+: 1608137494:0;grep SYST .bashrc
+: 1608137500:0;vim .bashrc
+: 1608137530:0;grep SYST .zshrc
+: 1608137538:0;sudo netctl edit winternet
+: 1608137549:0;sudo visudo
+: 1608137572:0;sudo systemctl edit avahi-daemon.service
+: 1608137581:0;sudo netctl edit winternet
+: 1608137613:0;systemd-analyze blame
+: 1608137627:0;sudo systemctl edit netctl@winternet.servic
+: 1608137744:0;systemd-analyze blame
+: 1608137840:0;systemd-analyze blame |grep muli
+: 1608137842:0;systemd-analyze blame |grep mul
+: 1608137870:0;sudo systemctl is-enabled netctl@*
+: 1608137878:0;sudo systemctl is-enabled netctl@winternet.service
+: 1608139031:0;sudo shutdown now
+: 1610823820:0;startx
+: 1610823862:0;sudo netctl start winternet
+: 1623591483:0;startx
+: 1623591506:0;sudo netctl start winternet
+: 1623591523:0;sudo netctl enable winternet
+: 1623591534:0;sudo netctl status hot
+: 1623591539:0;sudo netctl disable hot
+: 1623591547:0;sudo netctl disable angelique
+: 1623591581:0;df h
+: 1623591583:0;df -h
+: 1623591615:0;ping 8.8.8.8
+: 1623591636:0;ip addr
+: 1623591668:0;sudoedit /etc/netctl/winternet
+: 1623591693:0;sudoedit /etc/netctl/ho
+: 1623591703:0;sudoedit /etc/netctl/hot
+: 1623591712:0;ip addr
+: 1623591718:0;sudo netctl start winternet
+: 1623591722:0;ip addr
+: 1623591727:0;sudo netctl stop winternet
+: 1623591732:0;sudo netctl start winternet
+: 1623591743:0;ip addr
+: 1623591826:0;blkid -t TYPE=crypto_LUKS -o device
+: 1623591840:0;history
+: 1623592016:0;gpasswd -a kim bumblebee
+: 1623592020:0;sudo gpasswd -a kim bumblebee
+: 1623592035:0;sudo systemctl status bumblebeed.service
+: 1623592065:0;spac mesa-demos 
+: 1623592075:0;optirun glxgears -info\
+
+: 1623592098:0;optirun glxspheres64
+: 1623592115:0;optirun glxspheres32
+: 1623592147:0;optirun -b none nvidia-settings -c :8
+: 1623592213:0;cat /proc/acpi/bbswitch
+: 1623592225:0;sudo tee /proc/acpi/bbswitch <<< ON
+: 1623592238:0;cat /etc/modprobe.d/bbswitch.conf\
+
+: 1623592262:0;cat /etc/bumblebee/bumblebee.conf\
+
+: 1623592286:0;lspci | grep VGA
+: 1623592345:0;sudo systemctl status nvidia-persistenced.service
+: 1623592394:0;sudo pacman -Syu
+: 1623592791:0;pacman -Sy archlinux-keyring
+: 1623592794:0;sudo pacman -Sy archlinux-keyring
+: 1623592808:0;sudo pacman -Syu
+: 1623592904:0;sudo reboot now 
+: 1623592946:0;startx
+: 1623592985:0;sudo pacman -s wine
+: 1623592995:0;spac wine
+: 1623593015:0;spac lutris
+: 1623593028:0;sudo pacman -S giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
+: 1623593047:0;sudo pacman -S lib32-gnutls lib32-libldap lib32-libgpg-error lib32-sqlite lib32-libpulse
+: 1623593058:0;sudo pacman -S vulkan-icd-loader lib32-vulkan-icd-loader
+: 1623594582:0;sudo find /usr/ -name libgamemodeauto.so
+: 1623594609:0;sudo gamemoded -s\
+\
+
+: 1623594615:0;spac gamemode
+: 1623594625:0;sudo find /usr/ -name libgamemodeauto.so
+: 1623595969:0;sudo pacman -S vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader\
+\
+
+: 1623759157:0;ps aux 
+: 1623759176:0;kill 13229
+: 1623759339:0;cd Downloads
+: 1623759342:0;unzip
+: 1623759346:0;unzip elvui.zip
+: 1623759471:0;spac thunar-archive-plugin
+: 1623759481:0;spac file-roller
+: 1623762735:0;ps aux
+: 1623762741:0;ps aux |grep world
+: 1623762748:0;kill 12193
+: 1623762763:0;ps aux |grep world
+: 1623762766:0;ps aux |grep woq
+: 1623762770:0;ps aux |grep wow
+: 1623762778:0;ps aux |grep battle
+: 1623762792:0;ps aux |grep -i world
+: 1623762797:0;ps aux |grep -i wow
+: 1623762801:0;ps aux |grep -i battle
+: 1623762822:0;ps aux |vim -
+: 1623762884:0;reboot now 
+: 1623762888:0;sudo reboot now 
+: 1623762991:0;startx
+: 1623763127:0;ps aux 
+: 1623763131:0;ps aux  |grep wow
+: 1623763138:0;kill 2863
+: 1623763225:0;ps aux  |grep wow
+: 1623763231:0;kill 3194
+: 1623763366:0;ps aux  |grep wow
+: 1623763371:0;kill 3371
+: 1623763593:0;ps aux  |grep wow
+: 1623763598:0;kill 3564
+: 1623763623:0;sudo reboot now 
+: 1623763686:0;startx
+: 1623763881:0;ps aux |grep wow
+: 1623763886:0;kill 5206
+: 1623763998:0;ps aux |grep wow
+: 1623764003:0;kill 5588
+: 1623764024:0;cat .config/i3status
+: 1623764026:0;cat .config/i3status/config
+: 1623764054:0;dropbox
+: 1623764089:0;cp .config/i3status/config Dropbox/backup
+: 1623764281:0;cp .config/i3status/config Dropbox/
+: 1623764284:0;spac qbitttorent
+: 1623764290:0;spac qbittorent
+: 1623764294:0;spac qbit
+: 1623764299:0;sudo pacman -Ss qbit
+: 1623764311:0;spac qbittorrent
+: 1623764953:0;sudo pacman -Ss unrar
+: 1623764963:0;spac unrar 
+: 1623764977:0;pacman -yu
+: 1623764981:0;pacman -Syu
+: 1623764983:0;sudo pacman -Syu
+: 1623765078:0;spac unrar 
+: 1623765118:0;unar e Downloads/Microsoft_Windows_10_Enterprise_Version_21H1_X64-CYGiSO/cyg-21h1w10x64en.rar
+: 1623765123:0;unrar e Downloads/Microsoft_Windows_10_Enterprise_Version_21H1_X64-CYGiSO/cyg-21h1w10x64en.rar
+: 1623765204:0;ls
+: 1623765212:0;df -h
+: 1623765229:0;lspci
+: 1623765288:0;lsusb
+: 1623765310:0;dmesg
+: 1623765314:0;sudo dmesg
+: 1623765321:0;sudo dmesg -f
+: 1623765323:0;sudo dmesg -F
+: 1623765327:0;sudo dmesg -w
+: 1623765358:0;dd if=cyg_en_windows_10_business_editions_version_21h1_x64_dvd_ec5a76c1.iso of=dev/sda
+: 1623765362:0;sudo dd if=cyg_en_windows_10_business_editions_version_21h1_x64_dvd_ec5a76c1.iso of=dev/sda
+: 1623765367:0;sudo dd if=cyg_en_windows_10_business_editions_version_21h1_x64_dvd_ec5a76c1.iso of=/dev/sda
+: 1623765540:0;spac imagewriter
+: 1623765546:0;yay -S imagewriter
+: 1623765553:0;yay -Syu imagewriter
+: 1623765557:0;yay -Syu
+: 1623765578:0;cd Downloads
+: 1623765586:0;tar zxfv imagewriter.tar.gz
+: 1623765588:0;cd imagewriter
+: 1623765602:0;makepkg -csi imagewrier
+: 1623765605:0;makepkg -csi imagewriter
+: 1623766103:0;sudo reboot now
+: 1623766949:0;startx
+: 1623767173:0;fdisk -l
+: 1623767177:0;sudo fdisk -l
+: 1623767198:0;sudo dd BS=4M if=cyg_en_windows_10_business_editions_version_21h1_x64_dvd_ec5a76c1.iso of=/dev/sda
+: 1623767209:0;sudo dd bs=4M if=cyg_en_windows_10_business_editions_version_21h1_x64_dvd_ec5a76c1.iso of=/dev/sda
+: 1623767479:0;cd Downloads
+: 1623767486:0;tar zxfv multibootusb.tar.gz
+: 1623767488:0;cd multibootusb
+: 1623767496:0;makepkg -csi multibootusb
+: 1623767561:0;multibootusb
+: 1623767566:0;sudo multibootusb
+: 1623767579:0;sync
+: 1623767592:0;sudo multibootusb
+: 1623767644:0;cd Downloads
+: 1623767648:0;tar zxfv unetbootin.tar.gz
+: 1623767650:0;cd unetbootin
+: 1623767658:0;makepkg -csi unetbootin
+: 1623767693:0;mv cyg_en_windows_10_business_editions_version_21h1_x64_dvd_ec5a76c1.iso win10.iso
+: 1623767711:0;unetbootin
+: 1623767715:0;sudo unetbootin
+: 1623767948:0;dmesg
+: 1623767953:0;sudo dmesg
+: 1623767974:0;sudo reboot now 
+: 1623768257:0;startx
+: 1623768613:0;sudo pacman -Ss gnome-multi-writer
+: 1623768619:0;sudo pacman -S gnome-multi-writer
+: 1623768692:0;sudo pacman -Ss etcher
+: 1623768707:0;sudo unetbootin
+: 1623768752:0;ls Downloads
+: 1623768756:0;cd Downloads
+: 1623768760:0;unzip balena-etcher-electron-1.5.120-linux-x64.zip
+: 1623768767:0;ls 
+: 1623768948:0;cd Microsoft_Windows_10_Enterprise_Version_21H1_X64-CYGiSO
+: 1623768949:0;ls
+: 1623768959:0;mv cyg_en_windows_10_business_editions_version_21h1_x64_dvd_ec5a76c1.iso win10.iso
+: 1623768986:0;sudo dd bs=10M if=win10.iso of=/dev/sda
+: 1623769384:0;sudo reboot 
+: 1623769550:0;startxx
+: 1623769552:0;startx
+: 1623770368:0;ps aux |grep wow
+: 1623770809:0;kill 4450
+: 1623770845:0;ps aux |grep wow
+: 1623770953:0;kill 4829
+: 1623771036:0;ps aux |grep wow
+: 1623771042:0;kill 5020
+: 1623771283:0;sudo shutdown now 
+: 1629446183:0;startx
+: 1629446207:0;cd Dropbox
+: 1629446208:0;ls
+: 1629446250:0;tar zcfv Dropbox.tar.gz Dropbox
+: 1629446337:0;ls -l
+: 1629446349:0;mv Dropbox.tar.gz ..
+: 1629446414:0;sudo pacman -Syu
+: 1629446661:0;sudo restart
+: 1629446678:0;yay -Syu
+: 1629446681:0;sudo restart
+: 1629446689:0;sudo reboot
+: 1629446735:0;startx
+: 1629446782:0;spac networkmanager
+: 1629446929:0;sudo systemctl status NetworkManager.service
+: 1629446937:0;sudo systemctl enable NetworkManager.service
+: 1629446943:0;sudo systemctl start NetworkManager.service
+: 1629446965:0;sudo systemctl status NetworkManager.service
+: 1629447008:0;sudo systemctl stop NetworkManager.service
+: 1629447035:0;spac network-manager-applet
+: 1629447050:0;sudo systemctl start NetworkManager.service
+: 1629447068:0;ps auxx
+: 1629447119:0;sudo systemctl status dhcpcd
+: 1629447126:0;sudo systemctl stop dhcpcd
+: 1629447128:0;sudo systemctl status dhcpcd
+: 1629447307:0;pkill dhcpcd
+: 1629447310:0;sudo pkill dhcpcd
+: 1629447322:0;sudo systemctl disable dhcpcd
+: 1629447329:0;ps auxx
+: 1629447340:0;sudo pkill wpa_supp
+: 1629447342:0;ps auxx
+: 1629447372:0;nmcli
+: 1629448699:0;systemctl --type=service
+: 1629448726:0;sudo systemctl netctl status
+: 1629448732:0;sudo systemctl netctl.service status
+: 1629448751:0;sudo systemctl status netctl
+: 1629448756:0;sudo systemctl status netctl@winternet.servic
+: 1629448768:0;sudo systemctl stop netctl@winternet.servic
+: 1629448782:0;sudo systemctl disable netctl@winternet.servic
+: 1629448787:0;systemctl --type=service
+: 1629448815:0;sudo reboot
+: 1629448967:0;startx
+: 1629448978:0;systemctl --type=service
+: 1629449005:0;sudo systemctl status netctl@winternet.service 
+: 1629449012:0;sudo systemctl stop netctl@winternet.service 
+: 1629449018:0;sudo systemctl disable netctl@winternet.service 
+: 1629449020:0;sudo systemctl status netctl@winternet.service 
+: 1629449023:0;systemctl --type=service
+: 1629449037:0;sudo systemctl stop wpa_supplicant.service
+: 1629449047:0;sudo systemctl disable wpa_supplicant.service
+: 1629449049:0;systemctl --type=service
+: 1629449071:0;sudo reboot
+: 1629449164:0;startx
+: 1629449273:0;spac networkmanager-openconnect 
+: 1629449353:0;spac networkmanager-openvpn networkmanager-pptp networkmanager-vpnc networkmanager-strongswan networkmanager-l2tp network-manager-sstp
+: 1629449443:0;ls -l Dropbox
+: 1629449562:0;vim 
+: 1629452368:0;exit
+: 1629452381:0;spac teams
+: 1629452410:0;yaya
+: 1629452412:0;yay
+: 1629452434:0;sudo pacman -R yay
+: 1629452440:0;sudo pacman -S yay
+: 1629452444:0;sudo pacman -Ss yay
+: 1629452457:0;ls -l
+: 1629452475:0;cat /etc/fstab
+: 1629452494:0;ls  /var/cache/pacman/pkg
+: 1629452517:0;cd
+: 1629452520:0;mkdir GIT
+: 1629452522:0;cd GIT
+: 1629452524:0;git clone https://aur.archlinux.org/yay.git
+: 1629452532:0;cd yay
+: 1629452545:0;makepkg -si
+: 1629452646:0;yay
+: 1629453274:0;cd
+: 1629453287:0;ls Dropbox/Backup/lenovo-yoga-x1/latest/home/kimlin/.config/i3
+: 1629453293:0;ls Dropbox/Backup/lenovo-yoga-x1/latest/home/kimlin/.config/i3/config
+: 1629453296:0;cat Dropbox/Backup/lenovo-yoga-x1/latest/home/kimlin/.config/i3/config
+: 1629453333:0;vim .config/i3
+: 1629453514:0;yay teams
+: 1629457986:0;vim .Xresources
+: 1629458013:0;cd .config/i3
+: 1629458016:0;vim config
+: 1629458249:0;cd Games
+: 1629458254:0;ls ~/
+: 1629458274:0;ls ~/work/vim
+: 1629458361:0;xterm -e "cd Games"
+: 1629458364:0;ls
+: 1629458398:0;xterm --hold -cd ~/Games
+: 1629458408:0;urxvt --hold -cd ~/Games
+: 1629458433:0;xterm --hold -cd ~/Games
+: 1629458438:0;xterm -cd ~/Games
+: 1629458445:0;xterm -e cd ~/Games
+: 1629458451:0;xterm -e "cd ~/Games"
+: 1629458480:0;xterm -cd ~/Games
+: 1629458493:0;xterm -e ~/Games
+: 1629458496:0;xterm -e cd ~/Games
+: 1629458512:0;xterm -e cd ~/Games -e ls
+: 1629458519:0;xterm -e ls
+: 1629458527:0;xterm
+: 1629458543:0;urxvt --hold -cd ~/Games -e vim
+: 1629458612:0;urxvt --help
+: 1629458669:0;xterm -e sh -c "cd ~/work/vim"
+: 1629458678:0;xterm -e bash -c "cd ~/work/vim"
+: 1629458683:0;xterm -e bash
+: 1629458687:0;xterm -e zsh
+: 1629458694:0;xterm -e zsh -e ls
+: 1629458703:0;xterm -e zsh -c "ls"
+: 1629458758:0;man xterm
+: 1629458778:0;urxvt -e zsh
+: 1629458794:0;urxvt -e zsh -c "cd ~/Games"
+: 1629458801:0;urxvt --hold -e zsh -c "cd ~/Games"
+: 1629458810:0;urxvt --hold -c "cd ~/Games"
+: 1629458832:0;urxvt --hold -e "cd ~/Games"
+: 1629458839:0;urxvt --hold -e zsh -e "cd ~/Games"
+: 1629458846:0;urxvt --hold -e zsh -e cd ~/Games
+: 1629458854:0;man xterm
+: 1629459068:0;xterm -clas UXTerm
+: 1629459219:0;vim .Xresources
+: 1629459262:0;xterm -clas UXTerm
+: 1629459265:0;vim .Xresources
+: 1629459290:0;xterm -clas UXTerm
+: 1629459294:0;vim .Xresources
+: 1629459394:0;xterm -e zsh -e ls
+: 1629459397:0;xterm -e zsh
+: 1629459404:0;xterm -e cd ~/work/vim
+: 1629459418:0;xterm -hold -e cd ~/work/vim
+: 1629459424:0;xterm -hold -e "cd ~/work/vim"
+: 1629459432:0;xterm -hold -e "zsh; cd ~/work/vim"
+: 1629459441:0;xterm -hold -e "zsh && cd ~/work/vim"
+: 1629459455:0;xterm -hold -e "zsh" -e cd ~/work/vim"
+: 1629459457:0;xterm -hold -e "zsh" -e "cd ~/work/vim"
+: 1629459465:0;xterm -hold -e "zsh" -e "cd work/vim"
+: 1629459470:0;xterm -hold -e "zsh" -e "cd"
+: 1629459475:0;xterm -hold -e "zsh" "cd"
+: 1629459480:0;xterm -hold -e "zsh" cd
+: 1629459530:0;xterm -hold -leftbar -e "zsh" 
+: 1629459569:0;xterm -hold -leftbar -e "bash; cd Games" 
+: 1629459576:0;xterm -hold -leftbar -e "bash cd Games" 
+: 1629459587:0;xterm -hold -leftbar -e "zsh cd Games" 
+: 1629459601:0;xterm -hold -leftbar -e "bash cd i~/Games" 
+: 1629459606:0;xterm -hold -leftbar -e "bash cd ~/Games" 
+: 1629459613:0;xterm -hold -leftbar -e "bash pwd" 
+: 1629459626:0;xterm -hold -e "bash cd ~/Games" 
+: 1629459635:0;xterm -hold -e "cd ~/Games" 
+: 1629459642:0;xterm -hold -ls -e "cd ~/Games" 
+: 1629459656:0;xterm -hold -e "bash; cd ~/Games" 
+: 1629459713:0;xterm -hold -e "ls" 
+: 1629459721:0;xterm -hold -e "cd work" 
+: 1629459731:0;xterm -hold -e "vim work/vim" 
+: 1629459766:0;ls
+: 1629459769:0;rm test
+: 1629459798:0;xterm -hold -e "vim -c 'cd work/vim'" 
+: 1629459821:0;xterm -hold -title "vim-float" -e "vim -c 'cd work/vim'" 
+: 1629459888:0;cd Dropbox
+: 1629459889:0;ls
+: 1629459892:0;ls Dropbox
+: 1629459902:0;rm Dropbox
+: 1629459905:0;rmdir Dropbox
+: 1629459907:0;ls Dropbox
+: 1629459908:0;ls
+: 1629459947:0;ls -l Backup
+: 1629459954:0;rm Backup/i3status_config
+: 1629459955:0;ls
+: 1629460599:0;xterm -rightbar
+: 1629460809:0;vim config
+: 1629462126:0;vim .config/dunst
+: 1629462334:0;notify-send
+: 1629462336:0;notify-send test
+: 1629462340:0;notify-send test test
+: 1629462346:0;notify-send test testadasdsadsadsadsadsadddddddddddddddd
+: 1629462451:0;ps aux |grep dunst
+: 1629462465:0;kill 544128
+: 1629462468:0;ps aux |grep dunst
+: 1629462476:0;kill 2696
+: 1629462477:0;ps aux |grep dunst
+: 1629462484:0;notify-send test tesatasfsfdllmdsåomgåogmåfg
+: 1629463280:0;vim .config/i3/config
+: 1629464033:0;yay slack
+: 1629464322:0;vim .Xresources
+: 1629464342:0;xrdb -merge .Xresources
+: 1629464371:0;asdsad
+: 1629464372:0;asd
+: 1629464372:0;sad
+: 1629464373:0;asd
+: 1629464373:0;das
+: 1629464374:0;asd
+: 1629464374:0;g
+: 1629464374:0;h
+: 1629464375:0;hh
+: 1629464375:0;h
+: 1629464375:0;hh
+: 1629464375:0;h
+: 1629464376:0;e
+: 1629464376:0;g
+: 1629464376:0;df
+: 1629464418:0;g
+: 1629464517:0;history
+: 1629464522:0;vim .zsh_history

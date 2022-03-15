@@ -1,0 +1,14 @@
+### Editing /home/kim/.config/systemd/user/power.service.d/override.conf
+### Anything between here and the comment below will become the new contents of the file
+
+
+
+### Lines below this comment will be discarded
+
+### /etc/xdg/systemd/user/power.service
+# [Unit]
+# Description=Check battery and display red notification if under 20%
+# 
+# [Service]
+# Type=oneshot
+# ExecStart=/bin/bash /bin/power.sh

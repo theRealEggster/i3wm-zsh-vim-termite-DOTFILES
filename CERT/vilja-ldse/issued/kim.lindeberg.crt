@@ -1,0 +1,79 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            0a:11:ed:95:12:4d:16:ad:b3:2b:2b:ed:d3:fc:8f:97
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=SE, ST=Stockholm, L=Stockholm, O=LeanDev AB, CN=LeanDev AB CA/emailAddress=root@leandev.se
+        Validity
+            Not Before: Apr  6 06:53:38 2021 GMT
+            Not After : Jul 10 06:53:38 2023 GMT
+        Subject: CN=kim.lindeberg
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:d7:7b:f4:c8:3c:4c:db:28:ab:5e:78:06:f0:cf:
+                    13:d5:c7:4a:7e:7c:a4:9f:73:9d:65:65:87:1d:bf:
+                    f5:ef:85:c2:4f:53:df:85:47:ce:f7:64:bd:25:4f:
+                    1c:20:45:ce:08:d2:0f:e4:25:e7:1a:6a:b0:01:df:
+                    c1:1e:58:73:3a:9f:74:af:a6:da:8a:54:14:dd:e1:
+                    a8:75:30:97:39:47:25:a4:57:68:e1:63:b1:76:07:
+                    c0:8d:09:70:24:16:52:e1:0b:f5:1f:f9:a6:da:b8:
+                    57:0e:36:c3:17:c3:a3:15:e3:c6:a8:46:0c:95:09:
+                    15:c3:cc:23:e8:3b:cd:c1:cb:1a:50:55:73:a3:93:
+                    b9:49:f1:12:ea:f1:f0:9c:5a:e5:02:b1:a9:df:72:
+                    2e:97:35:03:1d:6b:1a:f7:0f:9c:fd:df:b7:f3:c2:
+                    0e:78:60:e1:44:e6:67:23:98:b3:bd:f8:f6:c2:07:
+                    e5:2f:29:f0:13:39:82:0e:36:39:fe:20:53:20:0f:
+                    f1:69:7c:a5:47:5e:c0:42:83:96:30:2e:3e:6c:47:
+                    74:6c:74:a5:58:05:0c:46:a1:49:91:5a:c7:5c:a5:
+                    6c:d3:c1:2b:46:3c:f7:54:32:f8:00:fc:9d:2b:f5:
+                    f7:d3:07:3c:08:ba:4f:ad:ac:8d:07:78:e9:69:a1:
+                    5d:23
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Subject Key Identifier: 
+                B3:D8:1C:59:20:69:EE:28:D2:E2:84:75:08:D6:4D:81:A5:60:57:65
+            X509v3 Authority Key Identifier: 
+                keyid:FD:38:63:44:C0:AA:80:B5:FB:0A:D8:A6:ED:17:84:D8:AB:CB:37:DE
+                DirName:/C=SE/ST=Stockholm/L=Stockholm/O=LeanDev AB/CN=LeanDev AB CA/emailAddress=root@leandev.se
+                serial:82:7F:FC:D0:AA:69:72:FB
+
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication
+            X509v3 Key Usage: 
+                Digital Signature
+    Signature Algorithm: sha256WithRSAEncryption
+         2a:80:db:13:90:2d:d1:91:95:b7:47:1b:d8:73:1e:5e:c2:ac:
+         60:ca:47:e2:ea:55:1f:f6:ad:9b:de:29:e3:36:3c:98:da:41:
+         c0:2c:ae:df:f9:24:69:bf:e8:71:0f:c2:e3:91:61:be:77:1e:
+         7b:e5:dd:91:31:fc:0a:dc:e7:95:35:60:8e:72:75:56:1a:37:
+         c4:0d:1a:a8:55:d8:e7:02:7b:1f:78:92:63:41:f9:4c:85:fa:
+         2f:89:e6:3b:fa:1b:2d:0e:b5:29:da:af:9f:30:d2:ed:a8:f8:
+         03:f6:d9:7f:9d:c5:1e:a3:fe:94:d2:89:d1:02:fd:d9:cb:62:
+         3a:a4
+-----BEGIN CERTIFICATE-----
+MIIDsDCCAxmgAwIBAgIQChHtlRJNFq2zKyvt0/yPlzANBgkqhkiG9w0BAQsFADCB
+gjELMAkGA1UEBhMCU0UxEjAQBgNVBAgTCVN0b2NraG9sbTESMBAGA1UEBxMJU3Rv
+Y2tob2xtMRMwEQYDVQQKEwpMZWFuRGV2IEFCMRYwFAYDVQQDEw1MZWFuRGV2IEFC
+IENBMR4wHAYJKoZIhvcNAQkBFg9yb290QGxlYW5kZXYuc2UwHhcNMjEwNDA2MDY1
+MzM4WhcNMjMwNzEwMDY1MzM4WjAYMRYwFAYDVQQDEw1raW0ubGluZGViZXJnMIIB
+IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA13v0yDxM2yirXngG8M8T1cdK
+fnykn3OdZWWHHb/174XCT1PfhUfO92S9JU8cIEXOCNIP5CXnGmqwAd/BHlhzOp90
+r6bailQU3eGodTCXOUclpFdo4WOxdgfAjQlwJBZS4Qv1H/mm2rhXDjbDF8OjFePG
+qEYMlQkVw8wj6DvNwcsaUFVzo5O5SfES6vHwnFrlArGp33IulzUDHWsa9w+c/d+3
+88IOeGDhROZnI5izvfj2wgflLynwEzmCDjY5/iBTIA/xaXylR17AQoOWMC4+bEd0
+bHSlWAUMRqFJkVrHXKVs08ErRjz3VDL4APydK/X30wc8CLpPrayNB3jpaaFdIwID
+AQABo4IBCjCCAQYwCQYDVR0TBAIwADAdBgNVHQ4EFgQUs9gcWSBp7ijS4oR1CNZN
+gaVgV2UwgbcGA1UdIwSBrzCBrIAU/ThjRMCqgLX7Ctim7ReE2KvLN96hgYikgYUw
+gYIxCzAJBgNVBAYTAlNFMRIwEAYDVQQIEwlTdG9ja2hvbG0xEjAQBgNVBAcTCVN0
+b2NraG9sbTETMBEGA1UEChMKTGVhbkRldiBBQjEWMBQGA1UEAxMNTGVhbkRldiBB
+QiBDQTEeMBwGCSqGSIb3DQEJARYPcm9vdEBsZWFuZGV2LnNlggkAgn/80Kppcvsw
+EwYDVR0lBAwwCgYIKwYBBQUHAwIwCwYDVR0PBAQDAgeAMA0GCSqGSIb3DQEBCwUA
+A4GBACqA2xOQLdGRlbdHG9hzHl7CrGDKR+LqVR/2rZveKeM2PJjaQcAsrt/5JGm/
+6HEPwuORYb53Hnvl3ZEx/Arc55U1YI5ydVYaN8QNGqhV2OcCex94kmNB+UyF+i+J
+5jv6Gy0OtSnar58w0u2o+AP22X+dxR6j/pTSidEC/dnLYjqk
+-----END CERTIFICATE-----

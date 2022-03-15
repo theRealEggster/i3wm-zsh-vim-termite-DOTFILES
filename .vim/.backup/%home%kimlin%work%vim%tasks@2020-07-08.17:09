@@ -1,0 +1,8 @@
+#### Automation of all things
+#### Links: https://itop.leandev.se/wiki/index.php?title=Set_staging_env_4.8.sh
+Automate upgrades with status checks. All options should be optionable
+Spawn expect script from local environment for the sake of being able to generate a msg popup when done or on error
+Check pod status and scan logs for errors/warnings. 
+Open ports
+Start mocker.
+

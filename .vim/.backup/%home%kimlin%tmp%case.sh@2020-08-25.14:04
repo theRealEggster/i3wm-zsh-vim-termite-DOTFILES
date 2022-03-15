@@ -1,0 +1,14 @@
+#!/bin//bash
+case "$1" in
+# Count number of lines matches
+-n) echo -n "namespace: $1 "
+    ;;
+# Count number of words matches
+-m) echo "mockers yes"
+    ;;
+# print all the matched lines
+-p) echo "ports yes"
+    ;;
+*) echo "Invalid option"
+   ;;
+esac

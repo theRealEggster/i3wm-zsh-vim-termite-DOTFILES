@@ -5,3 +5,6 @@ Description=Check battery and display red notification if under 20%
 Type=oneshot
 ExecStart=/bin/bash /bin/power.sh
 
+[Install]
+WantedBy=multi-user.target
+

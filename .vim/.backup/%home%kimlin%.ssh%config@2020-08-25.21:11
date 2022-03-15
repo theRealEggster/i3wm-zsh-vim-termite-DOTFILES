@@ -1,0 +1,11 @@
+Host sb
+    HostName bastion.staging.leandev.se
+    User ubuntu
+    Port 22
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h-%p
+    ControlPersist 600
+Host pb
+    HostName bastion.kubernetes.leandev.se
+    Hostname 212.237.150.204
+    Port 22

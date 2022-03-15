@@ -1,0 +1,10 @@
+#!/bin/bash
+
+function LOG {
+$* |& while read out; do
+          echo "$(date '+[%y/%m/%d %H:%M:%S]')" "$out"
+      done |& tee
+}
+
+LOG echo "Press Enter to load backup or exit script with ^C" && read -p "Enter / ^C: "
+ls -lh .

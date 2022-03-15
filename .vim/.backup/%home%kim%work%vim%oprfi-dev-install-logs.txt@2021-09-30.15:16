@@ -1,0 +1,1531 @@
+15:58:48 [INFO] Full command is: ./lfp-tools.sh install
+15:58:48 [INFO] Checking clients ...  ./lfp-tools.sh install
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/kimlin/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/kimlin/.kube/config
+15:58:48 [INFO] helm is installed with up to date version: v3.6.3 (3.0 and above), 
+15:58:48 [INFO] kubectl is installed with up to date version: v1.20.11 (1.17 and above), 
+15:58:48 [INFO] Clients are supported
+15:58:49 [INFO] Mirror hub: hub.service.leandev.com/mirror
+15:58:49 [INFO] lfp-tools is authenticated with user: kimlin
+158
+15:58:51 [WARN] Detected running project, will stop it for upgrade
+15:58:51 [INFO] Stop Metabase
+15:58:51 [CMD] ./bin/clients/kubectl/bin/kubectl delete -f ./bin/k8s-manifests/metabase/job-init-data.yaml --ignore-not-found --force --grace-period 0
+warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+NAME: lfp-metabase
+LAST DEPLOYED: Tue Sep 28 15:12:31 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+15:58:51 [CMD] ./bin/clients/helm/bin/helm uninstall lfp-metabase
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+W0929 15:58:52.228720    3381 warnings.go:70] extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.22+; use networking.k8s.io/v1 Ingress
+release "lfp-metabase" uninstalled
+Waiting for Metabase to stop:  Ok
+Waiting for Metabase database to stop: ...................................... Ok
+15:59:36 [CMD] ./bin/clients/kubectl/bin/kubectl delete networkpolicy,deploy,svc,ds,configmaps,secrets,ingress -l lfp.product.lifecycle=runtime --ignore-not-found=true
+deployment.apps "adapter" deleted
+deployment.apps "auditlog" deleted
+deployment.apps "auth" deleted
+deployment.apps "awarent" deleted
+deployment.apps "awarentui" deleted
+deployment.apps "bankid" deleted
+deployment.apps "bpm-admin-ui" deleted
+deployment.apps "bpm-fedelta" deleted
+deployment.apps "bpm-task-ui" deleted
+deployment.apps "bpm-template" deleted
+deployment.apps "broker" deleted
+deployment.apps "changelog" deleted
+deployment.apps "compliance-lists" deleted
+deployment.apps "configuration" deleted
+deployment.apps "coupon" deleted
+deployment.apps "credit" deleted
+deployment.apps "dwh" deleted
+deployment.apps "earchive" deleted
+deployment.apps "ekspres-adapter" deleted
+deployment.apps "externalparty" deleted
+deployment.apps "file-generator" deleted
+deployment.apps "file-transfer" deleted
+deployment.apps "finnish-adapter" deleted
+deployment.apps "instore-web" deleted
+deployment.apps "insurance" deleted
+deployment.apps "invoices-scheduler" deleted
+deployment.apps "invoices-service" deleted
+deployment.apps "lfp-api-gateway" deleted
+deployment.apps "lfp-collateral" deleted
+deployment.apps "lfp-collection" deleted
+deployment.apps "lfp-deposit" deleted
+deployment.apps "lfp-deposit-mypage" deleted
+deployment.apps "lfp-loan" deleted
+deployment.apps "lfp-mypages-style" deleted
+deployment.apps "lfp-nystart-adapter" deleted
+deployment.apps "lfp-opr-adapter" deleted
+deployment.apps "lfp-origination" deleted
+deployment.apps "mandate" deleted
+deployment.apps "message" deleted
+deployment.apps "mocker" deleted
+deployment.apps "mongo-exporter" deleted
+deployment.apps "operation" deleted
+deployment.apps "payment" deleted
+deployment.apps "payments" deleted
+deployment.apps "questionnaire" deleted
+deployment.apps "raisin" deleted
+deployment.apps "report" deleted
+deployment.apps "revolving-loan" deleted
+deployment.apps "vilja-mypages" deleted
+deployment.apps "vp-application" deleted
+deployment.apps "vp-deposit-solutions" deleted
+deployment.apps "vp-metrics-collector" deleted
+service "bankidmocker" deleted
+service "businesscheckmocker" deleted
+service "creditsafemocker" deleted
+service "instinctmocker" deleted
+service "mocky" deleted
+service "open-ports-lfp-deposit-4848" deleted
+service "open-ports-lfp-loan-4848" deleted
+service "open-ports-lfp-metabase" deleted
+service "open-ports-lfp-mongo-0" deleted
+service "open-ports-lfp-mongo-1" deleted
+service "open-ports-lfp-mongo-2" deleted
+service "open-ports-lfp-postgres" deleted
+service "open-ports-lfp-postgres-dwh" deleted
+service "open-ports-lfp-postgres-slave" deleted
+service "open-ports-lfp-redis-master" deleted
+service "open-ports-sftp-local" deleted
+service "signicatdocumentmocker" deleted
+service "signicatpackagingmocker" deleted
+service "soliditetmocker" deleted
+service "trapetsmocker" deleted
+service "uc3mocker" deleted
+service "uccreditmocker" deleted
+service "ucstrategyonemocker" deleted
+service "vtjmocker" deleted
+configmap "glassfish-config" deleted
+15:59:52 [CMD] ./bin/clients/kubectl/bin/kubectl delete pods -l lfp.product.lifecycle=runtime --ignore-not-found=true
+pod "awarent-6c4794c966-zmks5" deleted
+pod "credit-66bd8fb759-s7jmj" deleted
+pod "externalparty-75c46c7758-8dmrp" deleted
+pod "file-generator-789b47fb58-48qp7" deleted
+pod "file-transfer-5b64b5d5d9-xcvws" deleted
+pod "finnish-adapter-55d4f8ff44-j6xhw" deleted
+pod "lfp-api-gateway-58f5b4b5bf-4trff" deleted
+pod "lfp-collection-dd6556c97-md4g4" deleted
+pod "lfp-loan-c94fd985c-dsrxm" deleted
+pod "lfp-opr-adapter-68784d8496-92qs5" deleted
+pod "message-8b568c9-rzbhf" deleted
+pod "mocker-5759f54946-xzth8" deleted
+pod "payment-545588dc4d-q274r" deleted
+pod "revolving-loan-84dbb577fd-59cxc" deleted
+pod "vp-application-79c978dff-t4bfn" deleted
+pod "vp-metrics-collector-5bc9bc965b-m9mrf" deleted
+16:00:32 [INFO] Stopping kong...
+NAME: oprfi-dev-gateway
+LAST DEPLOYED: Tue Sep 28 15:12:24 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+16:00:32 [CMD] ./bin/clients/helm/bin/helm delete oprfi-dev-gateway --namespace oprfi-dev
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+release "oprfi-dev-gateway" uninstalled
+16:00:33 [CMD] ./bin/clients/kubectl/bin/kubectl delete jobs -l app.kubernetes.io/instance=oprfi-dev-gateway --ignore-not-found=true
+No resources found
+16:00:33 [SUCCESS] Stop kong successfully.
+16:00:33 [INFO] Stopping imdg ... 
+16:00:33 [INFO] IMDG already stopped
+No resources found
+wait for oprfi-dev-copy pvc to be stopped:  Ok
+wait for oprfi-dev-copy pod to be stopped:  Ok
+16:00:35 [INFO] The database copy has closed.
+16:00:35 [INFO] Skip database stop.
+16:00:35 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots delete --grace-period 5 --ignore-not-found=true -f ./bin/k8s-manifests/database-client/lfp-tools-database-client.yaml
+16:00:35 [SUCCESS] Project stopped.
+16:00:37 [INFO] Begin upgrade version to 632, target version is 712
+16:00:37 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "632"}}
+configmap/profile patched
+16:00:39 [INFO] Begin upgrade version to 700, target version is 712
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "leandev" chart repository
+...Successfully got an update from the "leandev-lfp" chart repository
+Update Complete. ⎈Happy Helming!⎈
+persistentvolumeclaim/data-oprfi-dev-postgres-dwh-postgresql-0 labeled
+persistentvolumeclaim/datadir-oprfi-dev-mongo-mongodb-0 not labeled
+persistentvolumeclaim/datadir-oprfi-dev-mongo-mongodb-1 not labeled
+NAME                                STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+datadir-oprfi-dev-mongo-mongodb-2   Bound    pvc-e7f0f7ec-cd9e-431e-a705-ac9b59617b2b   50Gi       RWO            16kenc         24h
+persistentvolumeclaim/datadir-oprfi-dev-mongo-mongodb-2 not labeled
+NAME: oprfi-dev
+LAST DEPLOYED: Tue Sep 28 15:04:52 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+16:00:41 [CMD] ./bin/clients/helm/bin/helm delete oprfi-dev
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+W0929 16:00:42.249815    7783 warnings.go:70] rbac.authorization.k8s.io/v1beta1 RoleBinding is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 RoleBinding
+W0929 16:00:42.281142    7783 warnings.go:70] rbac.authorization.k8s.io/v1beta1 Role is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 Role
+release "oprfi-dev" uninstalled
+Waiting for mongo to stop:  Ok
+16:00:42 [INFO] Mirror hub: hub.service.leandev.com/mirror
+16:00:42 [INFO] Generate files by template start, arguments are: ./bin/templates/database ./bin/k8s-manifests/database --default-variables-file --customer-variables-file --configMap=profile --configMap=user-config --configMap=resource-limitation-config --env=NAMESPACE=oprfi-dev --env=LFP_ENVIRONMENT=STAGING --env=DATABASE_CLIENT_IMAGE_REPOSITORY=hub.service.leandev.com/lfp/database-client --env=DATABASE_CLIENT_IMAGE_TAG=v3.4.0 --env=DATABASE_TOOLS_MASTER_ONLY=false --env=DATABASE_TOOLS_POSTGRES_EXISTING_CLAIM= --env=DOCKER_REGISTRY_MIRROR_REPO=hub.service.leandev.com/mirror --env=DATABASE_TOOLS_POSTGRES_DWH_EXISTING_CLAIM=
+16:00:42 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:00:43 [INFO] Begin fetch ConfigMap [user-config] as template variables.
+16:00:43 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:00:48 [SUCCESS] Generate files by template finish, template path: ./bin/templates/database, target path: ./bin/k8s-manifests/database
+16:00:48 [INFO] Clean template cache
+16:00:48 [INFO] Init certs secret for the database.
+16:00:48 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/database/db-certs/db-certificates-tls-secret.yaml
+secret/db-certificates-tls-secret created
+16:00:49 [INFO] Starting databases ... 
+16:00:49 [CMD] ./bin/clients/helm/bin/helm install oprfi-dev --values ./bin/k8s-manifests/database/lfp-database-values.yaml --set mongo-mongodb.enabled=true,postgres-postgresql.job.autoCreateCluster=false --version 3.0.1 leandev-lfp/lfp-database
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+W0929 16:00:52.360543    8450 warnings.go:70] rbac.authorization.k8s.io/v1beta1 Role is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 Role
+W0929 16:00:52.364932    8450 warnings.go:70] rbac.authorization.k8s.io/v1beta1 RoleBinding is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 RoleBinding
+W0929 16:00:52.611486    8450 warnings.go:70] rbac.authorization.k8s.io/v1beta1 Role is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 Role
+W0929 16:00:52.641829    8450 warnings.go:70] rbac.authorization.k8s.io/v1beta1 RoleBinding is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 RoleBinding
+NAME: oprfi-dev
+LAST DEPLOYED: Wed Sep 29 16:00:50 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Wait for mongo to start ... ...pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+.pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+.pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+.pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+.pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+ Ok
+16:02:00 [INFO] Initialize MongoDB when needed
+16:02:00 [INFO] Start Database Client on cluster
+16:02:00 [INFO] Generate files by template start, arguments are: ./bin/templates/database-client ./bin/k8s-manifests/database-client --default-variables-file --customer-variables-file --configMap=profile --configMap=user-config --configMap=resource-limitation-config
+16:02:00 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:02:00 [INFO] Begin fetch ConfigMap [user-config] as template variables.
+16:02:00 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:02:03 [SUCCESS] Generate files by template finish, template path: ./bin/templates/database-client, target path: ./bin/k8s-manifests/database-client
+16:02:03 [INFO] Clean template cache
+16:02:03 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots apply -Rf ./bin/k8s-manifests/database-client
+secret/elx-certs unchanged
+secret/database-client-oprfi-dev created
+pod/database-client-oprfi-dev created
+Wait for database tool to start .. Ok
+16:02:07 [INFO] Database client started within cluster, scripts will be put into /leandev/scripts/ and snapshots to /leandev/snapshots
+16:02:07 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots cp -c database-client ./bin/k8s-manifests/database/init-mongo-user-and-hidden-node.js database-client-oprfi-dev:/leandev/scripts/init-mongo-user-and-hidden-node.js
+16:02:07 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- chmod +x /leandev/scripts/init-mongo-user-and-hidden-node.js
+16:02:08 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- waitMongo.sh oprfi-dev-mongo-mongodb-rs.oprfi-dev 27017
+Replica Set detected: rs0
+Root password detected, will check status using it
+running mongo rs0/oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017 --username root --password ***** --authenticationDatabase admin --eval 'db.stats()'
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+{"t":{"$date":"2021-09-29T14:02:23.704Z"},"s":"I",  "c":"NETWORK",  "id":4333208, "ctx":"ReplicaSetMonitor-TaskExecutor","msg":"RSM host selection timeout","attr":{"replicaSet":"rs0","error":"FailedToSatisfyReadPreference: Could not find host matching read preference { mode: \"primary\", tags: [ {} ] } for set rs0"}}
+Error: Could not find host matching read preference { mode: "primary", tags: [ {} ] } for set rs0 :
+connect@src/mongo/shell/mongo.js:374:17
+@(connect):2:6
+exception: connect failed
+exiting with code 1
+mongodb is not started yet, will try again in 5 seconds ...
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("d1c7c4bf-5d36-4a03-aada-13eed41acfa7") }
+MongoDB server version: 4.4.6
+{
+	"db" : "test",
+	"collections" : 0,
+	"views" : 0,
+	"objects" : 0,
+	"avgObjSize" : 0,
+	"dataSize" : 0,
+	"storageSize" : 0,
+	"totalSize" : 0,
+	"indexes" : 0,
+	"indexSize" : 0,
+	"scaleFactor" : 1,
+	"fileSize" : 0,
+	"fsUsedSize" : 0,
+	"fsTotalSize" : 0,
+	"ok" : 1
+}
+Mongo is up
+All servers are running, continue...
+16:02:37 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- mongo --host rs0/oprfi-dev-mongo-mongodb-rs.oprfi-dev /leandev/scripts/init-mongo-user-and-hidden-node.js
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017/?compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("8df007b6-295d-4272-94e7-252f6563bbce") }
+MongoDB server version: 4.4.6
+Already initialted
+16:02:37 [INFO] Wait for Postgres database initialize
+16:02:37 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots cp -c database-client ./bin/k8s-manifests/database/init-postgres-db.sh database-client-oprfi-dev:/leandev/scripts/init-postgres-db.sh
+16:02:38 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- chmod +x /leandev/scripts/init-postgres-db.sh
+16:02:38 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- bash -c /leandev/scripts/init-postgres-db.sh oprfi-dev-postgres-postgresql-proxy.oprfi-dev "$POSTGRES_USER" "$POSTGRES_PASS"
+Waiting for postgres to start
+Creating initial databases
+Creating lfp if not exists
+Creating lfp-loan-main if not exists
+Creating lfp-loan-pending if not exists
+Creating lfp-loan-timer if not exists
+Creating lfp-revolving if not exists
+Creating lfp-deposit-main if not exists
+Creating lfp-deposit-pending if not exists
+Creating lfp-deposit-timer if not exists
+Creating lfp-deposit-mypages-timer if not exists
+Creating camunda-origination if not exists
+Creating kong if not exists
+Creating konga if not exists
+Creating initial user lfpreplication
+Creating initial user glassfish
+CREATE EXTENSION
+NOTICE:  extension "dblink" already exists, skipping
+CREATE EXTENSION
+Database initialized
+Init timer table for loan timer
+psql:<stdin>:15: NOTICE:  relation "EJB__TIMER__TBL" already exists, skipping
+CREATE TABLE
+GRANT
+Init timer table for deposit timer
+CREATE TABLE
+psql:<stdin>:15: NOTICE:  relation "EJB__TIMER__TBL" already exists, skipping
+GRANT
+Init timer table for deposit mypages timer
+CREATE TABLE
+psql:<stdin>:15: NOTICE:  relation "EJB__TIMER__TBL" already exists, skipping
+GRANT
+Init timer table complete
+16:02:40 [CMD] ./bin/clients/kubectl/bin/kubectl delete jobs -l release=oprfi-dev --ignore-not-found=true
+No resources found
+16:02:40 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots delete --grace-period 5 --ignore-not-found=true -f ./bin/k8s-manifests/database-client/lfp-tools-database-client.yaml
+secret "database-client-oprfi-dev" deleted
+pod "database-client-oprfi-dev" deleted
+16:02:48 [CMD] ./bin/clients/kubectl/bin/kubectl label pods oprfi-dev-postgres-postgresql-proxy-7b6b9cfc56-5jp6w stolon.proxy.open.port=true
+pod/oprfi-dev-postgres-postgresql-proxy-7b6b9cfc56-5jp6w labeled
+16:02:48 [SUCCESS] Database start successfully.
+configmap/oprfi-dev-postgres-dwh-postgresql-extended-configuration patched
+16:02:48 [CMD] ./bin/clients/kubectl/bin/kubectl exec oprfi-dev-postgres-postgresql-proxy-7b6b9cfc56-5jp6w -- stolonctl --cluster-name=oprfi-dev-postgres-postgresql --store-backend kubernetes --kube-resource-kind configmap update --patch { "pgParameters" : {"max_connections" : "300","shared_preload_libraries": "pg_stat_statements","track_activity_query_size": "2048","pg_stat_statements.track": "all"}}
+16:02:49 [INFO] Start Database Client on cluster
+16:02:49 [INFO] Generate files by template start, arguments are: ./bin/templates/database-client ./bin/k8s-manifests/database-client --default-variables-file --customer-variables-file --configMap=profile --configMap=user-config --configMap=resource-limitation-config
+16:02:49 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:02:49 [INFO] Begin fetch ConfigMap [user-config] as template variables.
+16:02:49 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:02:52 [SUCCESS] Generate files by template finish, template path: ./bin/templates/database-client, target path: ./bin/k8s-manifests/database-client
+16:02:52 [INFO] Clean template cache
+16:02:52 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots apply -Rf ./bin/k8s-manifests/database-client
+secret/elx-certs unchanged
+secret/database-client-oprfi-dev created
+pod/database-client-oprfi-dev created
+Wait for database tool to start .. Ok
+16:02:55 [INFO] Database client started within cluster, scripts will be put into /leandev/scripts/ and snapshots to /leandev/snapshots
+16:02:55 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots cp -c database-client ./bin/upgrade/700/files/upgrade_mongo_and_add_pg_stat_statements_extension.sh database-client-oprfi-dev:/leandev/scripts/upgrade_mongo_and_add_pg_stat_statements_extension.sh
+16:02:56 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- chmod +x /leandev/scripts/upgrade_mongo_and_add_pg_stat_statements_extension.sh
+16:02:56 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- bash -c /leandev/scripts/upgrade_mongo_and_add_pg_stat_statements_extension.sh
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-0.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017,oprfi-dev-mongo-mongodb-1.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017,oprfi-dev-mongo-mongodb-2.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("dcb5869c-6da9-44bc-81a5-8c5a9d7c061c") }
+MongoDB server version: 4.4.6
+{
+	"db" : "test",
+	"collections" : 0,
+	"views" : 0,
+	"objects" : 0,
+	"avgObjSize" : 0,
+	"dataSize" : 0,
+	"storageSize" : 0,
+	"totalSize" : 0,
+	"indexes" : 0,
+	"indexSize" : 0,
+	"scaleFactor" : 1,
+	"fileSize" : 0,
+	"fsUsedSize" : 0,
+	"fsTotalSize" : 0,
+	"ok" : 1,
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1632924166, 1),
+		"signature" : {
+			"hash" : BinData(0,"lDw0qjCZ6YyGMVX40Px4Kb3N5Ko="),
+			"keyId" : NumberLong("7012970008481366020")
+		}
+	},
+	"operationTime" : Timestamp(1632924166, 1)
+}
+Mongo is up
+featureCompatibilityVersion before set:
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-0.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017,oprfi-dev-mongo-mongodb-1.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017,oprfi-dev-mongo-mongodb-2.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("3c37cd3c-3782-44ae-8b49-727b0f32d2f4") }
+MongoDB server version: 4.4.6
+{
+	"featureCompatibilityVersion" : {
+		"version" : "4.2"
+	},
+	"ok" : 1,
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1632924183, 1),
+		"signature" : {
+			"hash" : BinData(0,"n6DKof47lkkRNC5k01WU+EGUYgU="),
+			"keyId" : NumberLong("7012970008481366020")
+		}
+	},
+	"operationTime" : Timestamp(1632924183, 1)
+}
+Begin set featureCompatibilityVersion...
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-0.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017,oprfi-dev-mongo-mongodb-1.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017,oprfi-dev-mongo-mongodb-2.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("69e916e2-6485-45cf-b15d-79d3517454d5") }
+MongoDB server version: 4.4.6
+{
+	"topologyVersion" : {
+		"processId" : ObjectId("6154719a8ef9da53252756ad"),
+		"counter" : NumberLong(8)
+	},
+	"operationTime" : Timestamp(1632924187, 1),
+	"ok" : 0,
+	"errmsg" : "operation was interrupted; Error details: { writeConcern: { w: \"majority\", wtimeout: 0 } }",
+	"code" : 11602,
+	"codeName" : "InterruptedDueToReplStateChange",
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1632924223, 1),
+		"signature" : {
+			"hash" : BinData(0,"ECQ9XuL0tmD/rYx5OtOA61aiKVY="),
+			"keyId" : NumberLong("7012970008481366020")
+		}
+	}
+}
+featureCompatibilityVersion after set:
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-0.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017,oprfi-dev-mongo-mongodb-1.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017,oprfi-dev-mongo-mongodb-2.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("479366b5-a634-490d-806f-a8277f977781") }
+MongoDB server version: 4.4.6
+{
+	"featureCompatibilityVersion" : {
+		"version" : "4.2",
+		"targetVersion" : "4.4"
+	},
+	"ok" : 1,
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1632924234, 2),
+		"signature" : {
+			"hash" : BinData(0,"YbuIUSliuelRfjh2G/4uhpv3Vys="),
+			"keyId" : NumberLong("7012970008481366020")
+		}
+	},
+	"operationTime" : Timestamp(1632924234, 2)
+}
+update votes for hidden member
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-0.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017,oprfi-dev-mongo-mongodb-1.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017,oprfi-dev-mongo-mongodb-2.oprfi-dev-mongo-mongodb-headless.oprfi-dev:27017/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("c85f0160-204c-4e9d-a2ff-5ec9b5c01b6a") }
+MongoDB server version: 4.4.6
+Waiting for postgres to start
+Running psql -U lfp -h oprfi-dev-postgres-postgresql-proxy.oprfi-dev -d postgres -p 5432 -c '\q'
+Postgres is up
+Postgres is up
+CREATE EXTENSION
+NOTICE:  extension "pg_stat_statements" already exists, skipping
+Waiting for dwh postgres to start
+Running psql -U lfp -h oprfi-dev-postgres-dwh-postgresql.oprfi-dev -d postgres -p 5432 -c '\q'
+Postgres is up
+Postgres dwh is up
+CREATE EXTENSION
+16:03:55 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots delete --grace-period 5 --ignore-not-found=true -f ./bin/k8s-manifests/database-client/lfp-tools-database-client.yaml
+secret "database-client-oprfi-dev" deleted
+pod "database-client-oprfi-dev" deleted
+16:04:02 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "700"}}
+configmap/profile patched
+16:04:03 [INFO] Begin upgrade version to 701, target version is 712
+16:04:03 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "701"}}
+configmap/profile patched
+16:04:04 [INFO] Begin upgrade version to 702, target version is 712
+configmap/user-config patched
+configmap/resource-limitation-config patched
+16:04:04 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "702"}}
+configmap/profile patched
+16:04:05 [INFO] Begin upgrade version to 703, target version is 712
+16:04:05 [CMD] ./bin/clients/kubectl/bin/kubectl delete -f ./bin/k8s-manifests/metabase/job-init-data.yaml --ignore-not-found --force --grace-period 0
+warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+error: no matching resources found
+16:04:06 [CMD] ./bin/clients/kubectl/bin/kubectl delete -f ./bin/k8s-manifests/metabase/job-init-data.yaml --ignore-not-found --force --grace-period 0
+warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+16:04:06 [INFO] Generate files by template start, arguments are: ./bin/templates/metabase ./bin/k8s-manifests/metabase --configMap=profile --default-variables-file --customer-variables-file --env=NAMESPACE=oprfi-dev --env=DOCKER_REGISTRY_MIRROR_REPO=hub.service.leandev.com/mirror --configMap=profile --configMap=user-config --configMap=resource-limitation-config --env=WHITELIST=
+16:04:06 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:04:06 [INFO] ConfigMap variable [profile] has been cached before.
+16:04:06 [INFO] Begin fetch ConfigMap [user-config] as template variables.
+16:04:06 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:04:09 [SUCCESS] Generate files by template finish, template path: ./bin/templates/metabase, target path: ./bin/k8s-manifests/metabase
+16:04:09 [INFO] Clean template cache
+NAME                             STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+data-lfp-metabase-postgresql-0   Bound    pvc-db460dad-a306-410f-91cf-7d8a267e3cf3   10Gi       RWO            16kenc         24h
+16:04:09 [INFO] Start Metabase database only...
+16:04:09 [CMD] ./bin/clients/helm/bin/helm install lfp-metabase --values ./bin/k8s-manifests/metabase/lfp-metabase-values.yaml --set metabase.enabled=false --version 1.1.2 leandev-lfp/lfp-metabase
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+NAME: lfp-metabase
+LAST DEPLOYED: Wed Sep 29 16:04:10 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+16:04:11 [INFO] Generate files by template start, arguments are: ./bin/upgrade/703/resources ./bin/k8s-manifests/upgrade_metabase_703 --default-variables-file --customer-variables-file --configMap=profile
+16:04:11 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:04:15 [SUCCESS] Generate files by template finish, template path: ./bin/upgrade/703/resources, target path: ./bin/k8s-manifests/upgrade_metabase_703
+16:04:15 [INFO] Clean template cache
+16:04:15 [CMD] ./bin/clients/kubectl/bin/kubectl delete -f ./bin/k8s-manifests/upgrade_metabase_703 --ignore-not-found
+16:04:15 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/upgrade_metabase_703
+configmap/lfp-metabase-upgrade-script created
+job.batch/lfp-metabase-upgrade-job created
+job.batch/lfp-metabase-upgrade-job condition met
+16:04:34 [SUCCESS] Upgrade Metabase complete
+16:04:34 [CMD] ./bin/clients/kubectl/bin/kubectl delete -f ./bin/k8s-manifests/upgrade_metabase_703 --ignore-not-found
+configmap "lfp-metabase-upgrade-script" deleted
+job.batch "lfp-metabase-upgrade-job" deleted
+16:04:35 [CMD] ./bin/clients/kubectl/bin/kubectl delete -f ./bin/k8s-manifests/metabase/job-init-data.yaml --ignore-not-found --force --grace-period 0
+warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+NAME: lfp-metabase
+LAST DEPLOYED: Wed Sep 29 16:04:10 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+16:04:35 [CMD] ./bin/clients/helm/bin/helm uninstall lfp-metabase
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+release "lfp-metabase" uninstalled
+Waiting for Metabase to stop:  Ok
+Waiting for Metabase database to stop: ..... Ok
+16:04:42 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "703"}}
+configmap/profile patched
+16:04:43 [INFO] Begin upgrade version to 704, target version is 712
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "leandev" chart repository
+...Successfully got an update from the "leandev-lfp" chart repository
+Update Complete. ⎈Happy Helming!⎈
+NAME: oprfi-dev
+LAST DEPLOYED: Wed Sep 29 16:00:50 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+16:04:44 [CMD] ./bin/clients/helm/bin/helm delete oprfi-dev
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+W0929 16:04:44.951964   18338 warnings.go:70] rbac.authorization.k8s.io/v1beta1 RoleBinding is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 RoleBinding
+W0929 16:04:44.973190   18338 warnings.go:70] rbac.authorization.k8s.io/v1beta1 Role is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 Role
+release "oprfi-dev" uninstalled
+Waiting for mongo to stop:  Ok
+16:04:45 [INFO] Mirror hub: hub.service.leandev.com/mirror
+16:04:45 [INFO] Generate files by template start, arguments are: ./bin/templates/database ./bin/k8s-manifests/database --default-variables-file --customer-variables-file --configMap=profile --configMap=user-config --configMap=resource-limitation-config --env=NAMESPACE=oprfi-dev --env=LFP_ENVIRONMENT=STAGING --env=DATABASE_CLIENT_IMAGE_REPOSITORY=hub.service.leandev.com/lfp/database-client --env=DATABASE_CLIENT_IMAGE_TAG=v3.4.0 --env=DATABASE_TOOLS_MASTER_ONLY=false --env=DATABASE_TOOLS_POSTGRES_EXISTING_CLAIM= --env=DOCKER_REGISTRY_MIRROR_REPO=hub.service.leandev.com/mirror --env=DATABASE_TOOLS_POSTGRES_DWH_EXISTING_CLAIM=
+16:04:45 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:04:45 [INFO] Begin fetch ConfigMap [user-config] as template variables.
+16:04:46 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:04:49 [SUCCESS] Generate files by template finish, template path: ./bin/templates/database, target path: ./bin/k8s-manifests/database
+16:04:49 [INFO] Clean template cache
+16:04:49 [INFO] Starting databases ... 
+16:04:49 [CMD] ./bin/clients/helm/bin/helm install oprfi-dev --values ./bin/k8s-manifests/database/lfp-database-values.yaml --set mongo-mongodb.enabled=true,postgres-postgresql.job.autoCreateCluster=false --version 3.0.1 leandev-lfp/lfp-database
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+W0929 16:04:51.769110   18711 warnings.go:70] rbac.authorization.k8s.io/v1beta1 Role is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 Role
+W0929 16:04:51.774855   18711 warnings.go:70] rbac.authorization.k8s.io/v1beta1 RoleBinding is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 RoleBinding
+W0929 16:04:52.036408   18711 warnings.go:70] rbac.authorization.k8s.io/v1beta1 Role is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 Role
+W0929 16:04:52.063518   18711 warnings.go:70] rbac.authorization.k8s.io/v1beta1 RoleBinding is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 RoleBinding
+NAME: oprfi-dev
+LAST DEPLOYED: Wed Sep 29 16:04:50 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Wait for mongo to start ... .pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+.pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+....pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+.pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+ Ok
+16:12:31 [INFO] Initialize MongoDB when needed
+16:12:31 [INFO] Start Database Client on cluster
+16:12:32 [INFO] Generate files by template start, arguments are: ./bin/templates/database-client ./bin/k8s-manifests/database-client --default-variables-file --customer-variables-file --configMap=profile --configMap=user-config --configMap=resource-limitation-config
+16:12:32 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:12:32 [INFO] Begin fetch ConfigMap [user-config] as template variables.
+16:12:32 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:12:34 [SUCCESS] Generate files by template finish, template path: ./bin/templates/database-client, target path: ./bin/k8s-manifests/database-client
+16:12:34 [INFO] Clean template cache
+16:12:34 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots apply -Rf ./bin/k8s-manifests/database-client
+secret/elx-certs unchanged
+secret/database-client-oprfi-dev created
+pod/database-client-oprfi-dev created
+Wait for database tool to start .. Ok
+16:12:37 [INFO] Database client started within cluster, scripts will be put into /leandev/scripts/ and snapshots to /leandev/snapshots
+16:12:37 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots cp -c database-client ./bin/k8s-manifests/database/init-mongo-user-and-hidden-node.js database-client-oprfi-dev:/leandev/scripts/init-mongo-user-and-hidden-node.js
+16:12:38 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- chmod +x /leandev/scripts/init-mongo-user-and-hidden-node.js
+16:12:38 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- waitMongo.sh oprfi-dev-mongo-mongodb-rs.oprfi-dev 27017
+Replica Set detected: rs0
+Root password detected, will check status using it
+running mongo rs0/oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017 --username root --password ***** --authenticationDatabase admin --eval 'db.stats()'
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("3709abdf-cb00-4990-9e3a-22b9867dec12") }
+MongoDB server version: 4.4.6
+{
+	"db" : "test",
+	"collections" : 0,
+	"views" : 0,
+	"objects" : 0,
+	"avgObjSize" : 0,
+	"dataSize" : 0,
+	"storageSize" : 0,
+	"totalSize" : 0,
+	"indexes" : 0,
+	"indexSize" : 0,
+	"scaleFactor" : 1,
+	"fileSize" : 0,
+	"fsUsedSize" : 0,
+	"fsTotalSize" : 0,
+	"ok" : 1,
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1632924752, 1),
+		"signature" : {
+			"hash" : BinData(0,"5U/q1IuWMeR7puyYn4Yew0CE/bc="),
+			"keyId" : NumberLong("7012970008481366020")
+		}
+	},
+	"operationTime" : Timestamp(1632924752, 1)
+}
+Mongo is up
+All servers are running, continue...
+16:12:44 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- mongo --host rs0/oprfi-dev-mongo-mongodb-rs.oprfi-dev /leandev/scripts/init-mongo-user-and-hidden-node.js
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017/?compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("ee653be3-711a-4df7-b9a4-0f2d0c4b45d4") }
+MongoDB server version: 4.4.6
+Already initialted
+16:12:44 [INFO] Wait for Postgres database initialize
+16:12:44 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots cp -c database-client ./bin/k8s-manifests/database/init-postgres-db.sh database-client-oprfi-dev:/leandev/scripts/init-postgres-db.sh
+16:12:45 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- chmod +x /leandev/scripts/init-postgres-db.sh
+16:12:45 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- bash -c /leandev/scripts/init-postgres-db.sh oprfi-dev-postgres-postgresql-proxy.oprfi-dev "$POSTGRES_USER" "$POSTGRES_PASS"
+Waiting for postgres to start
+Creating initial databases
+Creating lfp if not exists
+Creating lfp-loan-main if not exists
+Creating lfp-loan-pending if not exists
+Creating lfp-loan-timer if not exists
+Creating lfp-revolving if not exists
+Creating lfp-deposit-main if not exists
+Creating lfp-deposit-pending if not exists
+Creating lfp-deposit-timer if not exists
+Creating lfp-deposit-mypages-timer if not exists
+Creating camunda-origination if not exists
+Creating kong if not exists
+Creating konga if not exists
+Creating initial user lfpreplication
+Creating initial user glassfish
+CREATE EXTENSION
+NOTICE:  extension "dblink" already exists, skipping
+CREATE EXTENSION
+NOTICE:  extension "pg_stat_statements" already exists, skipping
+Database initialized
+Init timer table for loan timer
+CREATE TABLE
+psql:<stdin>:15: NOTICE:  relation "EJB__TIMER__TBL" already exists, skipping
+GRANT
+Init timer table for deposit timer
+CREATE TABLE
+psql:<stdin>:15: NOTICE:  relation "EJB__TIMER__TBL" already exists, skipping
+GRANT
+Init timer table for deposit mypages timer
+CREATE TABLE
+psql:<stdin>:15: NOTICE:  relation "EJB__TIMER__TBL" already exists, skipping
+GRANT
+Init timer table complete
+16:12:47 [CMD] ./bin/clients/kubectl/bin/kubectl delete jobs -l release=oprfi-dev --ignore-not-found=true
+No resources found
+16:12:47 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots delete --grace-period 5 --ignore-not-found=true -f ./bin/k8s-manifests/database-client/lfp-tools-database-client.yaml
+secret "database-client-oprfi-dev" deleted
+pod "database-client-oprfi-dev" deleted
+16:13:04 [CMD] ./bin/clients/kubectl/bin/kubectl label pods oprfi-dev-postgres-postgresql-proxy-7b6b9cfc56-g8w56 stolon.proxy.open.port=true
+pod/oprfi-dev-postgres-postgresql-proxy-7b6b9cfc56-g8w56 labeled
+16:13:04 [SUCCESS] Database start successfully.
+configmap/oprfi-dev-postgres-dwh-postgresql-extended-configuration patched
+16:13:05 [CMD] ./bin/clients/kubectl/bin/kubectl exec oprfi-dev-postgres-postgresql-proxy-7b6b9cfc56-g8w56 -- stolonctl --cluster-name=oprfi-dev-postgres-postgresql --store-backend kubernetes --kube-resource-kind configmap update --patch { "pgParameters" : {"ssl" : "on","ssl_cert_file":"/certs/server.crt","ssl_key_file":"/certs/server.key","ssl_ca_file":"/certs/ca.crt" } }
+16:13:05 [INFO] Stopping databases ... 
+NAME: oprfi-dev
+LAST DEPLOYED: Wed Sep 29 16:04:50 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+16:13:06 [CMD] ./bin/clients/helm/bin/helm delete oprfi-dev
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+W0929 16:13:08.081693    2780 warnings.go:70] rbac.authorization.k8s.io/v1beta1 RoleBinding is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 RoleBinding
+W0929 16:13:08.101178    2780 warnings.go:70] rbac.authorization.k8s.io/v1beta1 Role is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 Role
+release "oprfi-dev" uninstalled
+Waiting for mongo to stop:  Ok
+Waiting for postgres to stop: .............................. Ok
+Waiting for postgres-dwh to stop:  Ok
+16:13:42 [SUCCESS] Stop database successfully.
+16:13:42 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "704"}}
+configmap/profile patched
+16:13:43 [INFO] Begin upgrade version to 705, target version is 712
+16:13:43 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "705"}}
+configmap/profile patched
+16:13:44 [INFO] Begin upgrade version to 706, target version is 712
+16:13:44 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "706"}}
+configmap/profile patched
+16:13:45 [INFO] Begin upgrade version to 707, target version is 712
+configmap/user-config patched
+configmap/resource-limitation-config patched
+16:13:45 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "707"}}
+configmap/profile patched
+16:13:46 [INFO] Begin upgrade version to 708, target version is 712
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "leandev" chart repository
+...Successfully got an update from the "leandev-lfp" chart repository
+Update Complete. ⎈Happy Helming!⎈
+16:13:47 [INFO] Applying Network Policy.
+16:13:47 [INFO] Generate files by template start, arguments are: ./bin/templates/prepare/network-policy/lfp-product-internal.yaml ./bin/k8s-manifests/prepare/network-policy/lfp-product-internal.yaml --env=NAMESPACE=oprfi-dev
+16:13:50 [SUCCESS] Generate files by template finish, template path: ./bin/templates/prepare/network-policy/lfp-product-internal.yaml, target path: ./bin/k8s-manifests/prepare/network-policy/lfp-product-internal.yaml
+16:13:50 [INFO] Clean template cache
+16:13:50 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/prepare/network-policy/lfp-product-internal.yaml
+networkpolicy.networking.k8s.io/lfp-product-internal-network-policy configured
+networkpolicy.networking.k8s.io/lfp-kong-ingress unchanged
+16:13:50 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "708"}}
+configmap/profile patched
+16:13:51 [INFO] Begin upgrade version to 709, target version is 712
+configmap/resource-limitation-config patched
+16:13:51 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "709"}}
+configmap/profile patched
+16:13:52 [INFO] Begin upgrade version to 710, target version is 712
+16:13:52 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "710"}}
+configmap/profile patched
+16:13:53 [INFO] Begin upgrade version to 711, target version is 712
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "leandev" chart repository
+...Successfully got an update from the "leandev-lfp" chart repository
+Update Complete. ⎈Happy Helming!⎈
+16:13:54 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "711"}}
+configmap/profile patched
+16:13:55 [INFO] Begin upgrade version to 711.1, target version is 712
+16:13:55 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "711.1"}}
+configmap/profile patched
+16:13:56 [INFO] Begin upgrade version to 712, target version is 712
+16:13:56 [CMD] ./bin/clients/kubectl/bin/kubectl patch configMap profile --patch={"data": {"INSTALLED_VERSION": "712"}}
+configmap/profile patched
+16:13:56 [SUCCESS] LFP product has been successfully installed!
+16:13:56 [INFO] Starting kong upgrade ...
+16:13:56 [INFO] Database not exists, will create database.
+16:13:56 [INFO] Mirror hub: hub.service.leandev.com/mirror
+16:13:56 [INFO] Generate files by template start, arguments are: ./bin/templates/database ./bin/k8s-manifests/database --default-variables-file --customer-variables-file --configMap=profile --configMap=user-config --configMap=resource-limitation-config --env=NAMESPACE=oprfi-dev --env=LFP_ENVIRONMENT=STAGING --env=DATABASE_CLIENT_IMAGE_REPOSITORY=hub.service.leandev.com/lfp/database-client --env=DATABASE_CLIENT_IMAGE_TAG=v3.4.0 --env=DATABASE_TOOLS_MASTER_ONLY=false --env=DATABASE_TOOLS_POSTGRES_EXISTING_CLAIM= --env=DOCKER_REGISTRY_MIRROR_REPO=hub.service.leandev.com/mirror --env=DATABASE_TOOLS_POSTGRES_DWH_EXISTING_CLAIM=
+16:13:56 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:13:57 [INFO] Begin fetch ConfigMap [user-config] as template variables.
+16:13:57 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:14:00 [SUCCESS] Generate files by template finish, template path: ./bin/templates/database, target path: ./bin/k8s-manifests/database
+16:14:00 [INFO] Clean template cache
+16:14:00 [INFO] Starting databases ... 
+16:14:00 [CMD] ./bin/clients/helm/bin/helm install oprfi-dev --values ./bin/k8s-manifests/database/lfp-database-values.yaml --set mongo-mongodb.enabled=true,postgres-postgresql.job.autoCreateCluster=false --version 3.0.1 leandev-lfp/lfp-database
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+W0929 16:14:02.850643   11014 warnings.go:70] rbac.authorization.k8s.io/v1beta1 Role is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 Role
+W0929 16:14:02.856572   11014 warnings.go:70] rbac.authorization.k8s.io/v1beta1 RoleBinding is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 RoleBinding
+W0929 16:14:03.141109   11014 warnings.go:70] rbac.authorization.k8s.io/v1beta1 Role is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 Role
+W0929 16:14:03.168735   11014 warnings.go:70] rbac.authorization.k8s.io/v1beta1 RoleBinding is deprecated in v1.17+, unavailable in v1.22+; use rbac.authorization.k8s.io/v1 RoleBinding
+NAME: oprfi-dev
+LAST DEPLOYED: Wed Sep 29 16:14:01 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Wait for mongo to start ... ..pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+.pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+....pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+.pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+.pod/oprfi-dev-mongo-mongodb-0 condition met
+pod/oprfi-dev-mongo-mongodb-1 condition met
+pod/oprfi-dev-mongo-mongodb-2 condition met
+pod/oprfi-dev-mongo-mongodb-hidden-0 condition met
+ Ok
+16:21:49 [INFO] Initialize MongoDB when needed
+16:21:49 [INFO] Start Database Client on cluster
+16:21:49 [INFO] Generate files by template start, arguments are: ./bin/templates/database-client ./bin/k8s-manifests/database-client --default-variables-file --customer-variables-file --configMap=profile --configMap=user-config --configMap=resource-limitation-config
+16:21:49 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:21:49 [INFO] Begin fetch ConfigMap [user-config] as template variables.
+16:21:49 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:21:52 [SUCCESS] Generate files by template finish, template path: ./bin/templates/database-client, target path: ./bin/k8s-manifests/database-client
+16:21:52 [INFO] Clean template cache
+16:21:52 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots apply -Rf ./bin/k8s-manifests/database-client
+secret/elx-certs unchanged
+secret/database-client-oprfi-dev created
+pod/database-client-oprfi-dev created
+Wait for database tool to start .. Ok
+16:21:55 [INFO] Database client started within cluster, scripts will be put into /leandev/scripts/ and snapshots to /leandev/snapshots
+16:21:55 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots cp -c database-client ./bin/k8s-manifests/database/init-mongo-user-and-hidden-node.js database-client-oprfi-dev:/leandev/scripts/init-mongo-user-and-hidden-node.js
+16:21:56 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- chmod +x /leandev/scripts/init-mongo-user-and-hidden-node.js
+16:21:56 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- waitMongo.sh oprfi-dev-mongo-mongodb-rs.oprfi-dev 27017
+Replica Set detected: rs0
+Root password detected, will check status using it
+running mongo rs0/oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017 --username root --password ***** --authenticationDatabase admin --eval 'db.stats()'
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("0f45b09b-e71a-41c5-a03f-36d2f956e567") }
+MongoDB server version: 4.4.6
+{
+	"db" : "test",
+	"collections" : 0,
+	"views" : 0,
+	"objects" : 0,
+	"avgObjSize" : 0,
+	"dataSize" : 0,
+	"storageSize" : 0,
+	"totalSize" : 0,
+	"indexes" : 0,
+	"indexSize" : 0,
+	"scaleFactor" : 1,
+	"fileSize" : 0,
+	"fsUsedSize" : 0,
+	"fsTotalSize" : 0,
+	"ok" : 1,
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1632925314, 1),
+		"signature" : {
+			"hash" : BinData(0,"wkztsT4BKZfJ1V2Eg8CeGgya+24="),
+			"keyId" : NumberLong("7012970008481366020")
+		}
+	},
+	"operationTime" : Timestamp(1632925314, 1)
+}
+Mongo is up
+All servers are running, continue...
+16:22:02 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- mongo --host rs0/oprfi-dev-mongo-mongodb-rs.oprfi-dev /leandev/scripts/init-mongo-user-and-hidden-node.js
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017/?compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("d8c8fee1-96fa-4f72-82ef-2d12463dcb2e") }
+MongoDB server version: 4.4.6
+Already initialted
+16:22:02 [INFO] Wait for Postgres database initialize
+16:22:02 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots cp -c database-client ./bin/k8s-manifests/database/init-postgres-db.sh database-client-oprfi-dev:/leandev/scripts/init-postgres-db.sh
+16:22:03 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- chmod +x /leandev/scripts/init-postgres-db.sh
+16:22:03 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- bash -c /leandev/scripts/init-postgres-db.sh oprfi-dev-postgres-postgresql-proxy.oprfi-dev "$POSTGRES_USER" "$POSTGRES_PASS"
+Waiting for postgres to start
+Creating initial databases
+Creating lfp if not exists
+Creating lfp-loan-main if not exists
+Creating lfp-loan-pending if not exists
+Creating lfp-loan-timer if not exists
+Creating lfp-revolving if not exists
+Creating lfp-deposit-main if not exists
+Creating lfp-deposit-pending if not exists
+Creating lfp-deposit-timer if not exists
+Creating lfp-deposit-mypages-timer if not exists
+Creating camunda-origination if not exists
+Creating kong if not exists
+Creating konga if not exists
+Creating initial user lfpreplication
+Creating initial user glassfish
+CREATE EXTENSION
+NOTICE:  extension "dblink" already exists, skipping
+NOTICE:  extension "pg_stat_statements" already exists, skipping
+CREATE EXTENSION
+Database initialized
+Init timer table for loan timer
+CREATE TABLE
+psql:<stdin>:15: NOTICE:  relation "EJB__TIMER__TBL" already exists, skipping
+GRANT
+Init timer table for deposit timer
+CREATE TABLE
+psql:<stdin>:15: NOTICE:  relation "EJB__TIMER__TBL" already exists, skipping
+GRANT
+Init timer table for deposit mypages timer
+CREATE TABLE
+psql:<stdin>:15: NOTICE:  relation "EJB__TIMER__TBL" already exists, skipping
+GRANT
+Init timer table complete
+16:22:05 [CMD] ./bin/clients/kubectl/bin/kubectl delete jobs -l release=oprfi-dev --ignore-not-found=true
+No resources found
+16:22:05 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots delete --grace-period 5 --ignore-not-found=true -f ./bin/k8s-manifests/database-client/lfp-tools-database-client.yaml
+secret "database-client-oprfi-dev" deleted
+pod "database-client-oprfi-dev" deleted
+16:22:24 [CMD] ./bin/clients/kubectl/bin/kubectl label pods oprfi-dev-postgres-postgresql-proxy-7b6b9cfc56-t4cgh stolon.proxy.open.port=true
+pod/oprfi-dev-postgres-postgresql-proxy-7b6b9cfc56-t4cgh labeled
+16:22:24 [SUCCESS] Database start successfully.
+16:22:25 [INFO] Generate files by template start, arguments are: ./bin/templates/lfp-kong ./bin/k8s-manifests/lfp-kong --configMap=profile --configMap=user-config --configMap=resource-limitation-config --default-variables-file --customer-variables-file
+16:22:25 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:22:25 [INFO] Begin fetch ConfigMap [user-config] as template variables.
+16:22:25 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:22:28 [SUCCESS] Generate files by template finish, template path: ./bin/templates/lfp-kong, target path: ./bin/k8s-manifests/lfp-kong
+16:22:28 [INFO] Clean template cache
+16:22:28 [INFO] Starting kong...
+16:22:28 [CMD] ./bin/clients/helm/bin/helm install oprfi-dev-gateway --namespace oprfi-dev --values ./bin/k8s-manifests/lfp-kong/values.yaml --version 1.1.1 leandev-lfp/konga
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+NAME: oprfi-dev-gateway
+LAST DEPLOYED: Wed Sep 29 16:22:29 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+16:22:32 [INFO] Kong started
+NAME: oprfi-dev-gateway
+LAST DEPLOYED: Wed Sep 29 16:22:29 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+16:22:32 [INFO] Generate files by template start, arguments are: ./bin/templates/lfp-kong ./bin/k8s-manifests/lfp-kong --configMap=profile --configMap=user-config --configMap=resource-limitation-config --default-variables-file --customer-variables-file
+16:22:32 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:22:32 [INFO] Begin fetch ConfigMap [user-config] as template variables.
+16:22:33 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:22:36 [SUCCESS] Generate files by template finish, template path: ./bin/templates/lfp-kong, target path: ./bin/k8s-manifests/lfp-kong
+16:22:36 [INFO] Clean template cache
+16:22:36 [INFO] Starting kong upgrade...
+16:22:36 [CMD] ./bin/clients/helm/bin/helm upgrade oprfi-dev-gateway --namespace oprfi-dev --values ./bin/k8s-manifests/lfp-kong/values.yaml --version 1.1.1 --timeout 600s leandev-lfp/konga
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+Release "oprfi-dev-gateway" has been upgraded. Happy Helming!
+NAME: oprfi-dev-gateway
+LAST DEPLOYED: Wed Sep 29 16:22:37 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 2
+16:22:43 [INFO] Kong upgrade finished
+job.batch/oprfi-dev-gateway-kong-pre-upgrade-migrations condition met
+job.batch/oprfi-dev-gateway-kong-post-upgrade-migrations condition met
+16:22:43 [SUCCESS] Kong upgrade complete
+16:22:43 [INFO] Stopping kong...
+NAME: oprfi-dev-gateway
+LAST DEPLOYED: Wed Sep 29 16:22:37 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 2
+16:22:44 [CMD] ./bin/clients/helm/bin/helm delete oprfi-dev-gateway --namespace oprfi-dev
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+release "oprfi-dev-gateway" uninstalled
+16:22:45 [CMD] ./bin/clients/kubectl/bin/kubectl delete jobs -l app.kubernetes.io/instance=oprfi-dev-gateway --ignore-not-found=true
+job.batch "oprfi-dev-gateway-kong-post-upgrade-migrations" deleted
+job.batch "oprfi-dev-gateway-kong-pre-upgrade-migrations" deleted
+16:22:45 [SUCCESS] Stop kong successfully.
+16:22:45 [INFO] Starting migration service ...
+16:22:45 [INFO] Generate files by template start, arguments are: ./bin/templates/migration/ ./bin/k8s-manifests/migration/ --default-variables-file --customer-variables-file --configMap=profile --configMap=resource-limitation-config --env=CLUSTER_TYPE=Elastx Cluster --env=MIGRATION_CURRENT_VERSION=43
+16:22:45 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:22:45 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:22:48 [SUCCESS] Generate files by template finish, template path: ./bin/templates/migration/, target path: ./bin/k8s-manifests/migration/
+16:22:48 [INFO] Clean template cache
+16:22:48 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/migration/lfp-network-policy-migration.yaml
+networkpolicy.networking.k8s.io/lfp-migration-rsync-network-policy created
+networkpolicy.networking.k8s.io/lfp-migration-postgres-network-policy created
+networkpolicy.networking.k8s.io/lfp-migration-mongo-network-policy created
+networkpolicy.networking.k8s.io/lfp-migration-ingress-network-policy created
+16:22:49 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/migration/migration-database-client.yaml
+persistentvolumeclaim/lfp-migration-snapshots created
+pod/lfp-migration-database-client created
+Wait migration database client startup .......................................................... Ok
+16:23:55 [INFO] Start migration service...
+16:23:55 [INFO] Start Database Client on cluster
+16:23:55 [INFO] Generate files by template start, arguments are: ./bin/templates/database-client ./bin/k8s-manifests/database-client --default-variables-file --customer-variables-file --configMap=profile --configMap=user-config --configMap=resource-limitation-config
+16:23:55 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:23:55 [INFO] Begin fetch ConfigMap [user-config] as template variables.
+16:23:55 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:23:57 [SUCCESS] Generate files by template finish, template path: ./bin/templates/database-client, target path: ./bin/k8s-manifests/database-client
+16:23:57 [INFO] Clean template cache
+16:23:57 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots apply -Rf ./bin/k8s-manifests/database-client
+secret/elx-certs unchanged
+secret/database-client-oprfi-dev created
+pod/database-client-oprfi-dev created
+Wait for database tool to start ... Ok
+16:24:02 [INFO] Database client started within cluster, scripts will be put into /leandev/scripts/ and snapshots to /leandev/snapshots
+16:24:02 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- waitMongo.sh oprfi-dev-mongo-mongodb-rs.oprfi-dev 27017
+Replica Set detected: rs0
+Root password detected, will check status using it
+running mongo rs0/oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017 --username root --password ***** --authenticationDatabase admin --eval 'db.stats()'
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("16d1297b-f7bd-4582-9e2b-a3be1fbf252b") }
+MongoDB server version: 4.4.6
+{
+	"db" : "test",
+	"collections" : 0,
+	"views" : 0,
+	"objects" : 0,
+	"avgObjSize" : 0,
+	"dataSize" : 0,
+	"storageSize" : 0,
+	"totalSize" : 0,
+	"indexes" : 0,
+	"indexSize" : 0,
+	"scaleFactor" : 1,
+	"fileSize" : 0,
+	"fsUsedSize" : 0,
+	"fsTotalSize" : 0,
+	"ok" : 1,
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1632925434, 1),
+		"signature" : {
+			"hash" : BinData(0,"L3FOCXsR2SmucDyE4/tkKshYnuM="),
+			"keyId" : NumberLong("7012970008481366020")
+		}
+	},
+	"operationTime" : Timestamp(1632925434, 1)
+}
+Mongo is up
+All servers are running, continue...
+16:24:07 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- bash -c /leandev/scripts/waitPostgres.sh oprfi-dev-postgres-postgresql-proxy.oprfi-dev 5432 lfp-loan-main "$POSTGRES_USER" "$POSTGRES_PASS"
+Running psql -U lfp -h oprfi-dev-postgres-postgresql-proxy.oprfi-dev -d lfp-loan-main -p 5432 -c '\q'
+Postgres is up
+16:24:08 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- bash -c /leandev/scripts/waitPostgres.sh oprfi-dev-postgres-postgresql-proxy.oprfi-dev 5432 lfp-deposit-main "$POSTGRES_USER" "$POSTGRES_PASS"
+Running psql -U lfp -h oprfi-dev-postgres-postgresql-proxy.oprfi-dev -d lfp-deposit-main -p 5432 -c '\q'
+Postgres is up
+16:24:08 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots delete --grace-period 5 --ignore-not-found=true -f ./bin/k8s-manifests/database-client/lfp-tools-database-client.yaml
+secret "database-client-oprfi-dev" deleted
+pod "database-client-oprfi-dev" deleted
+16:24:16 [INFO] Database is running, skip deploy database.
+16:24:16 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/migration/lfp-resources-migration.yaml
+deployment.apps/lfp-migration-service created
+service/lfp-migration-service created
+ingress.networking.k8s.io/lfp-ingress-migration created
+Wait migration service startup ........ Ok
+16:24:27 [SUCCESS] Migration service is running on https://migration-oprfi-dev.staging.leandev.se/migration/
+16:24:27 [SUCCESS] Please finish migration and stop migration service using command:  ./lfp-tools.sh migrate stop
+(failed reverse-i-search)`stop': ./lfp-tools.sh save ny^Cart-no-dev_$(/bin/date +\%Y\%m\%dT\%H\%M\%S)_$(/usr/bin/git describe --tags)
+kimlin@leandev-staging-bastion:/staging/oprfi-dev/lfp$ ./lfp-tools.sh migrate stop
+16:33:56 [INFO] Full command is: ./lfp-tools.sh migrate stop
+16:33:56 [INFO] Checking clients ...  ./lfp-tools.sh migrate stop
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/kimlin/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/kimlin/.kube/config
+16:33:56 [INFO] helm is installed with up to date version: v3.6.3 (3.0 and above), 
+16:33:57 [INFO] kubectl is installed with up to date version: v1.20.11 (1.17 and above), 
+16:33:57 [INFO] Clients are supported
+16:33:59 [INFO] Mirror hub: hub.service.leandev.com/mirror
+16:33:59 [INFO] lfp-tools is authenticated with user: kimlin
+16:33:59 [INFO] Clean resources for migration...
+16:33:59 [CMD] ./bin/clients/kubectl/bin/kubectl delete --ignore-not-found=true deploy,NetworkPolicies,svc,ingress,pod,pvc -l lfp.product.runtime=migration
+deployment.apps "lfp-migration-service" deleted
+networkpolicy.networking.k8s.io "lfp-migration-ingress-network-policy" deleted
+networkpolicy.networking.k8s.io "lfp-migration-mongo-network-policy" deleted
+networkpolicy.networking.k8s.io "lfp-migration-postgres-network-policy" deleted
+networkpolicy.networking.k8s.io "lfp-migration-rsync-network-policy" deleted
+service "lfp-migration-service" deleted
+ingress.networking.k8s.io "lfp-ingress-migration" deleted
+pod "lfp-migration-database-client" deleted
+pod "lfp-migration-service-5665bffc5f-hmlrn" deleted
+persistentvolumeclaim "lfp-migration-snapshots" deleted
+16:34:44 [SUCCESS] Migration stopped.
+kimlin@leandev-staging-bastion:/staging/oprfi-dev/lfp$ ./lfp-tools.sh start
+16:34:58 [INFO] Full command is: ./lfp-tools.sh start
+16:34:58 [INFO] Checking clients ...  ./lfp-tools.sh start
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/kimlin/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/kimlin/.kube/config
+16:34:58 [INFO] helm is installed with up to date version: v3.6.3 (3.0 and above), 
+16:34:58 [INFO] kubectl is installed with up to date version: v1.20.11 (1.17 and above), 
+16:34:58 [INFO] Clients are supported
+16:34:59 [INFO] Mirror hub: hub.service.leandev.com/mirror
+16:34:59 [INFO] lfp-tools is authenticated with user: kimlin
+16:35:00 [INFO] Prepare to start project: opr in STAGING
+16:35:00 [WARN] Will upgrade current version v6.18.0-build.10 to v6.20.0-alpha.203
+
+Do you want continue? (y/N)> y
+16:35:04 [INFO] Generate files by template start, arguments are: ./bin/templates/pulsar ./bin/k8s-manifests/pulsar --default-variables-file --customer-variables-file --env=DOCKER_REGISTRY_SERVER=hub.service.leandev.com/lfp
+16:35:08 [SUCCESS] Generate files by template finish, template path: ./bin/templates/pulsar, target path: ./bin/k8s-manifests/pulsar
+16:35:08 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/pulsar/pulsar-client.yaml
+pod/pulsar-client created
+Waiting for the pod pulsar-client to start . Ok
+16:35:12 [CMD] ./bin/clients/kubectl/bin/kubectl cp ./bin/k8s-manifests/pulsar/init-pulsar-v2.sh pulsar-client:/init-pulsar.sh
+Init pulsar tenant oprfi-dev  on admin server http://pulsar-broker.vilja-pulsar-v2:8080 ...
+Waiting for pulsar connection.
+Pulsar has started.
+existing namespaces: ["oprfi-dev/invoices","oprfi-dev/lfp-core","oprfi-dev/vilja-core","oprfi-dev/vp-core"]
+Creating namespace msa-core ...
+16:35:13 [CMD] ./bin/clients/kubectl/bin/kubectl delete --grace-period=5 -f ./bin/k8s-manifests/pulsar/pulsar-client.yaml
+pod "pulsar-client" deleted
+16:35:31 [INFO] Generate files by template start, arguments are: ./bin/templates/start ./bin/k8s-manifests/start --configMap=profile --configMap=user-config --configMap=resource-limitation-config --env=NAMESPACE=oprfi-dev --env=LFP_ENVIRONMENT=STAGING --default-variables-file --customer-variables-file ./conf/custom-variables.yaml
+16:35:32 [INFO] Begin fetch ConfigMap [profile] as template variables.
+16:35:32 [INFO] Begin fetch ConfigMap [user-config] as template variables.
+16:35:32 [INFO] Begin fetch ConfigMap [resource-limitation-config] as template variables.
+16:35:41 [SUCCESS] Generate files by template finish, template path: ./bin/templates/start, target path: ./bin/k8s-manifests/start
+16:35:41 [SUCCESS] Template source ./bin/templates/start, target ./bin/k8s-manifests/start has been generated before.
+16:35:41 [INFO] Creating services.
+16:35:42 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/start/lfp-services.yaml
+service/awarentui unchanged
+service/awarent unchanged
+service/configuration unchanged
+service/auth unchanged
+service/changelog unchanged
+service/api unchanged
+service/message unchanged
+service/filetransfer unchanged
+service/filegenerator unchanged
+service/operation unchanged
+service/earchive unchanged
+service/auditlog unchanged
+service/bankid unchanged
+service/payment unchanged
+service/payments unchanged
+service/dwh unchanged
+service/externalparty unchanged
+service/adapter unchanged
+service/metricscollector unchanged
+service/lfp-loan unchanged
+service/credit unchanged
+service/broker unchanged
+service/revolving-loan unchanged
+service/collateral unchanged
+service/collection unchanged
+service/insurance unchanged
+service/ekspres-instore-web unchanged
+service/finnishadapter unchanged
+service/opradapter unchanged
+service/nystartadapter unchanged
+service/ekspres-adapter unchanged
+service/mongo-exporter unchanged
+service/invoices-scheduler unchanged
+service/invoices-service unchanged
+service/application configured
+service/consistency-check created
+service/eci created
+service/loan-account created
+service/bpm-admin-ui unchanged
+service/bpm-template unchanged
+service/bpm-fedelta unchanged
+service/origination unchanged
+service/bpm-task-ui unchanged
+service/lfp-deposit unchanged
+service/lfp-deposit-mypage unchanged
+service/questionnaire unchanged
+service/compliance-lists unchanged
+service/coupon unchanged
+service/mandate unchanged
+service/report unchanged
+service/raisin unchanged
+service/vp-deposit-solutions unchanged
+service/vilja-mypages unchanged
+service/lfp-mypages-style unchanged
+service/nginx-for-ingress unchanged
+service/nginx-matrix unchanged
+service/sftp-local unchanged
+service/konga unchanged
+service/kong-metrics configured
+16:35:43 [INFO] Deploying nginx.
+16:35:43 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/start/lfp-config-nginx.yaml
+configmap/nginx-config configured
+16:35:44 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/start/lfp-deployment-nginx.yaml
+deployment.apps/nginx configured
+16:35:45 [CMD] ./bin/clients/kubectl/bin/kubectl delete pod --force --grace-period 0 --ignore-not-found -l lfp.app.name=nginx
+warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+pod "nginx-69bcc478c5-mmmdb" force deleted
+16:35:45 [INFO] Creating volumes.
+16:35:45 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/start/lfp-volume-claims.yaml
+persistentvolumeclaim/lfp-loan-reports unchanged
+persistentvolumeclaim/lfp-deposit-reports unchanged
+16:35:46 [INFO] Deploying imdg...
+16:35:46 [INFO] IMDG is already running
+16:35:46 [INFO] Start Database Client on cluster
+16:35:46 [INFO] Generate files by template start, arguments are: ./bin/templates/database-client ./bin/k8s-manifests/database-client --default-variables-file --customer-variables-file --configMap=profile --configMap=user-config --configMap=resource-limitation-config
+16:35:47 [INFO] ConfigMap variable [profile] has been cached before.
+16:35:47 [INFO] ConfigMap variable [user-config] has been cached before.
+16:35:47 [INFO] ConfigMap variable [resource-limitation-config] has been cached before.
+16:35:51 [SUCCESS] Generate files by template finish, template path: ./bin/templates/database-client, target path: ./bin/k8s-manifests/database-client
+16:35:51 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots apply -Rf ./bin/k8s-manifests/database-client
+secret/elx-certs unchanged
+secret/database-client-oprfi-dev created
+pod/database-client-oprfi-dev created
+Wait for database tool to start .. Ok
+16:35:55 [INFO] Database client started within cluster, scripts will be put into /leandev/scripts/ and snapshots to /leandev/snapshots
+16:35:55 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- waitMongo.sh oprfi-dev-mongo-mongodb-rs.oprfi-dev 27017
+Replica Set detected: rs0
+Root password detected, will check status using it
+running mongo rs0/oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017 --username root --password ***** --authenticationDatabase admin --eval 'db.stats()'
+MongoDB shell version v4.4.6
+connecting to: mongodb://oprfi-dev-mongo-mongodb-rs.oprfi-dev:27017/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=rs0
+Implicit session: session { "id" : UUID("7867b0bc-e0cb-46cf-88d7-6fd200cd84c2") }
+MongoDB server version: 4.4.6
+{
+	"db" : "test",
+	"collections" : 0,
+	"views" : 0,
+	"objects" : 0,
+	"avgObjSize" : 0,
+	"dataSize" : 0,
+	"storageSize" : 0,
+	"totalSize" : 0,
+	"indexes" : 0,
+	"indexSize" : 0,
+	"scaleFactor" : 1,
+	"fileSize" : 0,
+	"fsUsedSize" : 0,
+	"fsTotalSize" : 0,
+	"ok" : 1,
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1632926154, 1),
+		"signature" : {
+			"hash" : BinData(0,"X/wjYO25WKUKPOfQHKT7n7293wM="),
+			"keyId" : NumberLong("7012970008481366020")
+		}
+	},
+	"operationTime" : Timestamp(1632926154, 1)
+}
+Mongo is up
+All servers are running, continue...
+16:36:01 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- bash -c /leandev/scripts/waitPostgres.sh oprfi-dev-postgres-postgresql-proxy.oprfi-dev 5432 lfp-loan-main "$POSTGRES_USER" "$POSTGRES_PASS"
+Running psql -U lfp -h oprfi-dev-postgres-postgresql-proxy.oprfi-dev -d lfp-loan-main -p 5432 -c '\q'
+Postgres is up
+16:36:01 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots exec database-client-oprfi-dev -c database-client -- bash -c /leandev/scripts/waitPostgres.sh oprfi-dev-postgres-postgresql-proxy.oprfi-dev 5432 lfp-deposit-main "$POSTGRES_USER" "$POSTGRES_PASS"
+Running psql -U lfp -h oprfi-dev-postgres-postgresql-proxy.oprfi-dev -d lfp-deposit-main -p 5432 -c '\q'
+Postgres is up
+16:36:02 [CMD] ./bin/clients/kubectl/bin/kubectl -n lfp-snapshots delete --grace-period 5 --ignore-not-found=true -f ./bin/k8s-manifests/database-client/lfp-tools-database-client.yaml
+secret "database-client-oprfi-dev" deleted
+pod "database-client-oprfi-dev" deleted
+16:36:14 [INFO] Database is running, skip deploy database.
+16:36:14 [INFO] Waiting for imdg to come online ...
+Waiting for imdg to start  Ok
+16:36:14 [INFO] Deploying modules.
+16:36:14 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/start/lfp-config-glassfish.yaml
+configmap/glassfish-config created
+16:36:15 [CMD] ./bin/clients/kubectl/bin/kubectl apply -f ./bin/k8s-manifests/start/lfp-deployment-msa.yaml
+deployment.apps/awarentui created
+deployment.apps/awarent created
+deployment.apps/configuration created
+deployment.apps/auth created
+deployment.apps/changelog created
+deployment.apps/lfp-api-gateway created
+deployment.apps/message created
+deployment.apps/file-transfer created
+deployment.apps/file-generator created
+deployment.apps/operation created
+deployment.apps/earchive created
+deployment.apps/auditlog created
+deployment.apps/bankid created
+deployment.apps/payment created
+deployment.apps/payments created
+deployment.apps/dwh created
+deployment.apps/externalparty created
+deployment.apps/adapter created
+deployment.apps/compliance-lists created
+deployment.apps/vp-metrics-collector created
+deployment.apps/lfp-loan created
+deployment.apps/credit created
+deployment.apps/broker created
+deployment.apps/revolving-loan created
+deployment.apps/lfp-collateral created
+deployment.apps/lfp-collection created
+deployment.apps/insurance created
+deployment.apps/instore-web created
+deployment.apps/finnish-adapter created
+deployment.apps/lfp-opr-adapter created
+deployment.apps/lfp-nystart-adapter created
+deployment.apps/ekspres-adapter created
+deployment.apps/mongo-exporter created
+deployment.apps/invoices-scheduler created
+deployment.apps/invoices-service created
+deployment.apps/vp-application created
+deployment.apps/vp-consistency-check created
+deployment.apps/external-customer-information created
+deployment.apps/vp-loan-account created
+deployment.apps/bpm-admin-ui created
+deployment.apps/bpm-template created
+deployment.apps/bpm-fedelta created
+deployment.apps/lfp-origination created
+deployment.apps/lfp-deposit created
+deployment.apps/lfp-deposit-mypage created
+deployment.apps/questionnaire created
+deployment.apps/coupon created
+deployment.apps/mandate created
+deployment.apps/report created
+deployment.apps/raisin created
+deployment.apps/vp-deposit-solutions created
+deployment.apps/vilja-mypages created
+deployment.apps/lfp-mypages-style created
+deployment.apps/bpm-task-ui created
+16:36:21 [INFO] Deploying kong.
+16:36:22 [INFO] Generate files by template start, arguments are: ./bin/templates/lfp-kong ./bin/k8s-manifests/lfp-kong --configMap=profile --configMap=user-config --configMap=resource-limitation-config --default-variables-file --customer-variables-file
+16:36:22 [INFO] ConfigMap variable [profile] has been cached before.
+16:36:22 [INFO] ConfigMap variable [user-config] has been cached before.
+16:36:22 [INFO] ConfigMap variable [resource-limitation-config] has been cached before.
+16:36:25 [SUCCESS] Generate files by template finish, template path: ./bin/templates/lfp-kong, target path: ./bin/k8s-manifests/lfp-kong
+16:36:25 [INFO] Starting kong...
+16:36:25 [CMD] ./bin/clients/helm/bin/helm install oprfi-dev-gateway --namespace oprfi-dev --values ./bin/k8s-manifests/lfp-kong/values.yaml --version 1.1.1 leandev-lfp/konga
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+NAME: oprfi-dev-gateway
+LAST DEPLOYED: Wed Sep 29 16:36:26 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+16:36:30 [INFO] Kong started
+16:36:30 [INFO] Start Metabase
+error: no matching resources found
+16:36:30 [CMD] ./bin/clients/kubectl/bin/kubectl delete -f ./bin/k8s-manifests/metabase/job-init-data.yaml --ignore-not-found --force --grace-period 0
+warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+16:36:31 [INFO] Generate files by template start, arguments are: ./bin/templates/metabase ./bin/k8s-manifests/metabase --configMap=profile --default-variables-file --customer-variables-file --env=NAMESPACE=oprfi-dev --env=DOCKER_REGISTRY_MIRROR_REPO=hub.service.leandev.com/mirror --configMap=profile --configMap=user-config --configMap=resource-limitation-config --env=WHITELIST=158.174.30.130/31,185.141.30.227/32
+16:36:31 [INFO] ConfigMap variable [profile] has been cached before.
+16:36:31 [INFO] ConfigMap variable [profile] has been cached before.
+16:36:31 [INFO] ConfigMap variable [user-config] has been cached before.
+16:36:31 [INFO] ConfigMap variable [resource-limitation-config] has been cached before.
+16:36:33 [SUCCESS] Generate files by template finish, template path: ./bin/templates/metabase, target path: ./bin/k8s-manifests/metabase
+NAME                             STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+data-lfp-metabase-postgresql-0   Bound    pvc-db460dad-a306-410f-91cf-7d8a267e3cf3   10Gi       RWO            16kenc         25h
+16:36:34 [INFO] Starting Metabase...
+16:36:34 [CMD] ./bin/clients/helm/bin/helm install lfp-metabase --values ./bin/k8s-manifests/metabase/lfp-metabase-values.yaml --version 1.1.2 leandev-lfp/lfp-metabase
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: kube_config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: kube_config
+W0929 16:36:35.656737   15601 warnings.go:70] extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.22+; use networking.k8s.io/v1 Ingress
+W0929 16:36:37.467508   15601 warnings.go:70] extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.22+; use networking.k8s.io/v1 Ingress
+NAME: lfp-metabase
+LAST DEPLOYED: Wed Sep 29 16:36:34 2021
+NAMESPACE: oprfi-dev
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+16:36:37 [SUCCESS] Project started for opr in STAGING
+16:36:37 [INFO] Sending teams notification ... 
+1
+

@@ -1,0 +1,91 @@
+export PATH=/home/kimlin/.local/bin:$PATH
+export EDITOR=vim
+stty erase  
+bindkey -M viins "^A" beginning-of-line
+bindkey -M vicmd "^A" beginning-of-line
+bindkey -M viins "^E" end-of-line
+bindkey -M vicmd "^E" end-of-line 
+bindkey -M viins "^D" delete-char-or-list
+bindkey -M vicmd "^D" delete-char
+bindkey -M viins "^F" backward-delete-char
+bindkey -M vicmd "^F" backward-delete-char
+#bindkey -M viins "^R" redo
+#bindkey -M viins "^U" undo
+bindkey -M viins "^S" vi-change-whole-line
+bindkey -M viins "^H" backward-delete-char
+bindkey -M viins "^?" backward-delete-char
+bindkey -M viins "^[[3~" delete-char
+#bindkey -M viins "^R" vi-history-search-backward
+#bindkey -M viins "^N" vi-repeat-search
+
+
+
+alias zalias='vim $ZSH/custom/alias.zsh'
+alias ls='ls --color=auto'
+alias fuck='$(thefuck $(fc -ln -1))'
+alias spac='sudo pacman -S $1'
+alias upac='sudo pacman -Syu'
+alias pac="sudo pacman"
+alias r1='xfreerdp /w:1600 /h:869 /u:root /v:89.253.123.57  +clipboard'
+alias ownitvpn='sudo openvpn --cd /etc/openvpn/client --config client.ovpn --log-append log --daemon openvpn'
+alias changemac='sudo ip link set dev enp3s0 down &&  sudo ip link set dev enp3s0 address $1 && sudo ip link set dev enp3s0 up'
+alias g='zgrep -if $1'
+alias 1log='cd /var/log'
+alias s='ssh -4t login01.ownit.se ssh $1'
+alias s1='ssh -J login01 sw1.450.dr2.a12.sth "dis mac-ad | inc 1/0/12|1/0/14|1/0/16" |sed -e "/^\*/d" -e "/\*\*/d" -e "/^'
+alias s2='ssh -J login01 sw5.450.dr2.a2.sth "dis dhcp snooping binding | inc 1/0/12|1/0/14|1/0/16" |sed -e "/^\*/d" -e "/\*\*/d" -e "/^^M/d"'
+alias s3='ssh -J login01 sw5.450.dr2.a2.sth "dis logbuffer | inc 1/0/12|1/0/14|1/0/16" |sed -e "/^\*/d" -e "/\*\*/d" -e "/^^M/d"'
+alias monfix='xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --mode 1920x1080 --above eDP1'
+alias bootwork='xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --mode 1920x1080 --above eDP1; sudo netctl switch-to work'
+alias fb='sudo fb-messenger-cli'
+alias ='stty erase \^\?'
+alias ='stty erase \^\H'
+alias pat='pygmentize -g'
+alias -g L=' |less'
+alias -g V=' |vim -'
+alias -g G=' |LC_ALL=C grep -i'
+alias bt="bluetoothctl "
+alias timerep='vim ~/work/vim/TIME/timereport'
+
+function log { $* |& while read out; do echo "$(date '+[%y/%m/%d %H:%M:%S]')" "$out"; done |& tee ;}
+p1ng() { ping $1 $2 |while read pong; do echo $(date +%T): $pong; done; }
+rmssh() { sed -i".bak" '/'$1'/d' ~/.ssh/known_hosts; }
+up() { for i in $(eval echo {1..$1}); do cd ..; done; }
+count_char() { char=$(echo "$1" |wc -c); echo $(($char-1)); }
+pwgen() { PW=$(cat /dev/urandom |LC_ALL=C tr -dc 'a-zA-Z0-9' |head -c 26); echo "26 Chars: $PW"; }
+timr() { 
+    echo -n "Time: $(date +%T) Target: $1 Current: "
+    for ((i=1;i<=$1;i++)); do echo -n "$i" && sleep 1;
+        if [[ $i -ge 100 ]]; then echo -ne "\b\b\b";
+        elif [[ $i -ge 10 ]]; then echo -ne "\b\b";
+        else echo -ne "\b";
+        fi
+    done; 
+    echo ""
+}
+
+#ojnit_add() { 
+#      echo "
+#        key agamaupdate 5F1f3UzSn5sidnGfjMAsLg==
+#        server "37.247.0.22"
+#        zone "ojnit.se"
+#        update add "$1".ojnit.se. 900 A "$2"
+#        send" |nsupdate
+#}
+#agama_add() { 
+#      echo "
+#        key [zone] [key]
+#        server "37.247.0.22"
+#        zone "agama.ownit.se"
+#        update add "$1".agama.ownit.se. 900 A "$2"
+#        send" |nsupdate
+#}
+
+#ojnit_del() { 
+#    echo "
+#    key [zone] [key]
+#    server "37.247.0.22"
+#    zone "ojnit.se"
+#    update delete "$1".ojnit.se. A
+#    send" |nsupdate
+#}

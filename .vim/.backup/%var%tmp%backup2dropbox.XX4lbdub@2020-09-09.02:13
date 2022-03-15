@@ -1,0 +1,2 @@
+#!/bin/bash
+rsync -azv --delete --progress /home/kimlin/Downloads /home/kimlin/Dropbox/vilja_laptop_backup
