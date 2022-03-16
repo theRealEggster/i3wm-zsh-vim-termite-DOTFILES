@@ -30,7 +30,7 @@ mkdir BACKUP/i3wm-zsh-vim-termite-DOTFILES/.vim/.backup
 mkdir BACKUP/i3wm-zsh-vim-termite-DOTFILES/.vim/.swap
 mkdir BACKUP/i3wm-zsh-vim-termite-DOTFILES/.vim/view
 cp .ssh/config BACKUP/i3wm-zsh-vim-termite-DOTFILES/.ssh
-cp -r /usr/share/conky BACKUP/i3wm-zsh-vim-termite-DOTFILES/conky
+cp -r /usr/share/conky BACKUP/i3wm-zsh-vim-termite-DOTFILES/usr/share
 cp .config/termite/config BACKUP/i3wm-zsh-vim-termite-DOTFILES/.config/termite
 cp .config/i3/config BACKUP/i3wm-zsh-vim-termite-DOTFILES/.config/i3
 cp .config/i3status/config BACKUP/i3wm-zsh-vim-termite-DOTFILES/.config/i3status
