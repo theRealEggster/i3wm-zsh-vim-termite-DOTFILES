@@ -139,6 +139,8 @@ zle -N zle-keymap-select
 
 setxkbmap -option caps:escape
 
+autorandr -c 0x7-xrandr-scaling
+
 SSH_ENV="$HOME/.ssh/agent-environment"
 function start_agent {
     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
