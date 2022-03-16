@@ -1,6 +1,0 @@
-Mon May  4 08:59:03 2020 OpenVPN 2.4.7 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] built on Sep  5 2019
-Mon May  4 08:59:03 2020 library versions: OpenSSL 1.1.1f  31 Mar 2020, LZO 2.10
-Mon May  4 08:59:03 2020 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
-[0;1;31mFailed to query password: Timer expired[0m
-Mon May  4 09:00:33 2020 ERROR: Failed retrieving username or password
-Mon May  4 09:00:33 2020 Exiting due to fatal error
