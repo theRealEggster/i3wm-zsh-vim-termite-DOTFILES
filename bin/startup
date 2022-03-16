@@ -1,7 +1,7 @@
 #!/bin/zsh
 i3-msg 'workspace 2:Termite; exec /usr/bin/termite'
 sleep 2
-i3-msg 'workspace 3:Teams; exec /usr/bin/teams'
+i3-msg 'workspace 3:Teams; exec /usr/bin/teams-for-linux'
 sleep 8
 i3-msg 'workspace 9:Spotify; exec /usr/bin/spotify'
 sleep 3

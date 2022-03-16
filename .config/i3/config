@@ -44,7 +44,7 @@ bindsym $mod+d exec "rofi -show run -modi run -location 1 -theme Paper"
 # launch categorized menu
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
+exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
@@ -221,7 +221,7 @@ for_window [class="nm-connection-editor"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 
 # switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
+#for_window [urgent=latest] focus
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -446,7 +446,18 @@ exec --no-startup-id rfkill unblock all
 exec --no-startup-id sleep 1;/bin/startup
 # Close dunst notififacations
 bindsym $mod+space exec dunstctl close
+# Use pactl to adjust volume in PulseAudio.
+set $volume "$(pactl list sinks | grep -i volume | head -1 | awk '{print $5}' | sed -e 's/%//')"
 
+#bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +10%
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+# /bin/volchange.sh is a script that sends out pretty notify-send
+bindsym XF86AudioRaiseVolume exec --no-startup-id volchange.sh volup
+bindsym XF86AudioLowerVolume exec --no-startup-id volchange.sh voldown
+# Revind Audio mute button to Mic mute due to missing mic mute button
+bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+#bindsym XF86AudioMute exec --no-startup-id volchange.sh volmute
 
 assign [class="firefox"] $ws1
 assign [class="Google-chrome"] $ws0
