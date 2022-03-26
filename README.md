@@ -68,6 +68,7 @@ $ cp .local/bin/startup ~/.local/bin/
 $ sudo mv systemd/power* /etc/systemd/user/
 
 + Enable the power timer and service
+
 systemctl --user enable power.timer 
 systemctl --user start power.timer 
 systemctl --user enable power.service
