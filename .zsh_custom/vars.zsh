@@ -18,6 +18,13 @@ alias -g V=' |vim -'
 alias -g G=' |LC_ALL=C grep -i'
 alias bt="bluetoothctl "
 
+decrypt_file() {
+    CRYPT_FILE=$1
+    echo -n "Enter passphrase: "
+    stty -echo 
+    gpg --passphrase-fd 0 --pinentry-mode loopback --decrypt "$CRYPT_FILE" |tar zxv
+    stty echo
+}
 function log { $* |& while read out; do echo "$(date '+[%y/%m/%d %H:%M:%S]')" "$out"; done |& tee ;}
 rmssh() { sed -i".bak" '/'$1'/d' ~/.ssh/known_hosts; }
 up() { for i in $(eval echo {1..$1}); do cd ..; done; }

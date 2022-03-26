@@ -53,6 +53,21 @@ function backup_config {
     read reason_git
     git commit -m "$reason_git - $(date +'%Y-%m-%d %H:%M:%S')"
     git push origin main
+    # Compress the folder and upload a password protected copy to dropbox
+    cd ~/BACKUP
+    BACKUP_DOTFILES="BACKUP_DOTFILES_$(date +'%Y-%m-%d_%H:%M:%S')"
+    tar -cvz BACKUP_DOTFILES |gpg --pinentry-mode loopback -c -o $BACKUP_DOTFILES.tar.gz.gpg
+    # Decrypt file with gpg
+    # Full command: 
+    # stty -echo; gpg --passphrase-fd 0 --pinentry-mode loopback --decrypt FILE.tar.gz.gpg |tar zxv; stty echo
+    # zsh alias: decrypt_file FILE
+    # Move to dropbox
+    mv $BACKUP_DOTFILES.tar.gz.gpg ~/Dropbox/Backup/
+  
+
+
+
+    
 }
 
 # Restore config after pushing to repo

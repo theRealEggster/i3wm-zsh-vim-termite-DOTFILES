@@ -10,7 +10,8 @@ systemctl --user start pulseaudio.service
 systemctl --user start pulseaudio.socket
 systemctl --user enable pulseaudio.socket
 systemctl --user start pulseaudio.socket
-cp -r CERT ~/
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+p -r CERT ~/
 cp -r Pictures ~/
 cp -r work ~/
 cp -r .config/* ~/.config/
