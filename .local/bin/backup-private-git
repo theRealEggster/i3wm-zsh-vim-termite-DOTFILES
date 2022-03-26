@@ -56,10 +56,10 @@ function backup_config {
     # Compress the folder and upload a password protected copy to dropbox
     cd ~/BACKUP
     BACKUP_DOTFILES="BACKUP_DOTFILES_$(date +'%Y-%m-%d_%H:%M:%S')"
-    tar -cvz BACKUP_DOTFILES |gpg --pinentry-mode loopback -c -o $BACKUP_DOTFILES.tar.gz.gpg
+    tar -cz BACKUP_DOTFILES |gpg --pinentry-mode loopback -c -o $BACKUP_DOTFILES.tar.gz.gpg
     # Decrypt file with gpg
     # Full command: 
-    # stty -echo; gpg --passphrase-fd 0 --pinentry-mode loopback --decrypt FILE.tar.gz.gpg |tar zxv; stty echo
+    # stty -echo; gpg --passphrase-fd 0 --pinentry-mode loopback --decrypt FILE.tar.gz.gpg |tar zx; stty echo
     # zsh alias: decrypt_file FILE
     # Move to dropbox
     mv $BACKUP_DOTFILES.tar.gz.gpg ~/Dropbox/Backup/
