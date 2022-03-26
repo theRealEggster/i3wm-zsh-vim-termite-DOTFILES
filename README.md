@@ -74,7 +74,7 @@ systemctl --user enable power.timer
 systemctl --user start power.timer 
 
 systemctl --user enable power.service
-j
+ 
 systemctl --user start power.service
 
 + Done, every 5 minutes a red nagging window will remind you of how much
