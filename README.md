@@ -55,11 +55,14 @@ Full configuration files for my customized setup of i3wm
 ### Systemd ###
  + How to enable battery notifications:
  + Copy service file and timer file to systemd user dir
+ + power.cfg is a battery notification that run with the systemd profiles further down
+$ cp .local/bin/power.sh ~/.local/bin/
+ + Custom i3satus script that displays the cpu temp
+$ cp .local/bin/i3status.sh ~/.local/bin/
+ + Copy this script to autostart programs on boot
+$ cp .local/bin/startup ~/.local/bin/
 
 $ sudo mv systemd/power* /etc/systemd/user/
-+ Copy power script to /bin/
-
-$ sudo cp bin/power.sh /bin/
 
 + Enable the power timer and service
 systemctl --user enable power.timer 
