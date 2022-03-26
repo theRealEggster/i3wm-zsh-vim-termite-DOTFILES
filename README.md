@@ -75,6 +75,6 @@ systemctl --user start power.service
 
 ### Conky ###
 Added configuration files for conky.
-Its almost the same as default fori3-manjaro but updated with correct keybindings
+Its almost the same as default fori3-manjaro but updated with correct keybindings for my setup
 ![conky-info](https://github.com/theRealEggster/i3wm-zsh-vim-termite-DOTFILES/blob/main/Screenshots/conky-info.png?raw=true)
 ![conky-keybindings](https://github.com/theRealEggster/i3wm-zsh-vim-termite-DOTFILES/blob/main/Screenshots/conky-keybindings.png?raw=true)

@@ -1,0 +1,105 @@
+#!/bin/bash
+# check to see is git command line installed in this machine
+IS_GIT_AVAILABLE="$(git --version)"
+if [[ $IS_GIT_AVAILABLE == *"version"* ]]; then
+  echo "Git is Available"
+else
+  echo "Git is not installed"
+  exit 1
+fi
+# Alias
+BACKUP_DIR="$HOME/BACKUP/BACKUP_DOTFILES"
+
+function backup_config {
+    # Check git status
+    cd "$BACKUP_DIR"
+    gs="$(git status | grep -i "modified")"
+    echo "${gs}"
+    # If there is a change 
+    if [[ $gs == *"modified"* ]]; then
+      echo "Pulling down changes before starting"
+    fi
+    # Start at home
+    cd $HOME
+    # Create dirs, lazily just create them if missing. 
+    mkdir -p "$BACKUP_DIR"/.config/termite
+    mkdir -p "$BACKUP_DIR"/.config/i3
+    mkdir -p "$BACKUP_DIR"/.config/i3status
+    mkdir -p "$BACKUP_DIR"/.ssh
+    mkdir -p "$BACKUP_DIR"/.local/bin
+    mkdir -p "$BACKUP_DIR"/CERT
+    mkdir -p "$BACKUP_DIR"/work
+    mkdir -p "$BACKUP_DIR"/systemd
+    mkdir -p "$BACKUP_DIR"/usr/share/conky
+    # copy dotfiles
+    # Change what folders you would like to backup (like .bashrc instead of .zshrc)
+    cp .vimrc .zshrc .zsh_history .Xresources .gitconfig "$BACKUP_DIR" 
+    cp -r .zsh_custom "$BACKUP_DIR"
+    cp -r .vim "$BACKUP_DIR"
+    cp -r .ssh "$BACKUP_DIR"
+    cp -r CERT "$BACKUP_DIR"
+    cp -r work "$BACKUP_DIR"
+    cp -r .local/bin "$BACKUP_DIR"/.local
+    cp -r /usr/share/conky "$BACKUP_DIR"/usr/share/
+    cp .config/termite/config "$BACKUP_DIR"/.config/termite
+    cp .config/i3/config "$BACKUP_DIR"/.config/i3
+    cp .config/i3status/config "$BACKUP_DIR"/.config/i3status
+    cp /etc/systemd/user/power.timer "$BACKUP_DIR"/systemd
+    cp /etc/systemd/user/power.service "$BACKUP_DIR"/systemd
+    
+    # Change to git directory for pushing to repo
+    cd "$BACKUP_DIR"
+    
+    # push to Github with custom git commit comment
+    echo "Adding all files for commit"
+    git add --all
+    echo -n "Enter reason for commit [ENTER]: "
+    read reason_git
+    git commit -m "$reason_git - $(date +'%Y-%m-%d %H:%M:%S')"
+    git push origin main
+}
+
+# Restore config after pushing to repo
+function restore_config { 
+    cd "$BACKUP_DIR"
+    git status
+     
+    git pull
+    cp "$BACKUP_DIR"/.vimrc "$BACKUP_DIR"/.zshrc "$BACKUP_DIR"/.zsh_history  ~/
+    cp "$BACKUP_DIR"/.Xresources "$BACKUP_DIR"/.gitconfig ~/
+    cp -r "$BACKUP_DIR"/.zsh_custom ~/
+    cp -r "$BACKUP_DIR"/.vim ~/
+    # Reload config and restart i3wm
+    echo -n "Reloading i3 config: "
+    i3-msg reload
+    echo -n "Restarting i3wm: "
+    i3-msg restart
+    cp -r "$BACKUP_DIR"/.ssh ~/
+    cp -r "$BACKUP_DIR"/CERT ~/
+    cp -r "$BACKUP_DIR"/work ~/
+    cp -r "$BACKUP_DIR"/.local/bin ~/.local
+    cp "$BACKUP_DIR"/.config/termite/config  ~/.config/termite
+    cp "$BACKUP_DIR"/.config/i3/config ~/.config/i3
+    cp "$BACKUP_DIR"/.config/i3status/config ~/.config/i3status
+    sudo cp -r "$BACKUP_DIR"/usr/share/conky /usr/share
+    # Restart conky
+    sudo pkill conky
+    start_conky_maia >/dev/null 2>&1 && start_conky_green >/dev/null 2>&1
+    sudo cp "$BACKUP_DIR"/systemd/power.timer /etc/systemd/user
+    sudo cp "$BACKUP_DIR"/systemd/power.service /etc/systemd/user/
+    # Reload systemd-user deamon
+    systemctl --user daemon-reload
+}
+
+if [[ $1 == "restore" ]]; then
+    sudo echo "Begin restore from latest git pull"
+    restore_config
+elif [[ $1 == "backup" ]]; then
+    sudo echo "Begin backup for git push to repo"
+    backup_config
+else
+    echo "Use script with following args: 
+     $ backup-private-git restore
+     $ backup-private-git backup"
+fi
+
