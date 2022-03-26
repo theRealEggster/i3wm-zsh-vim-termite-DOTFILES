@@ -2,9 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/kim/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
-lim() { cpulimit -b -p $1 -l80 ;}
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -50,7 +49,7 @@ ZSH_THEME="steeef"
 HIST_STAMPS="|%Y/%m/%d|%H:%M:%S|"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=~/.zsh_custom
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -119,9 +118,6 @@ bindkey -v
 
 
 #
-export SSLKEYLOGFILE=~/.ssl-key.log
-export TERM=xterm-256color
-export SYSTEMD_EDITOR=vim
 unset LSCOLORS
 #export LS_COLORS="di=1;33:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 unset LS_COLORS
@@ -137,19 +133,3 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-setxkbmap -option caps:escape
-
-SSH_ENV="$HOME/.ssh/agent-environment"
-function start_agent {
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-    chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-}
-if [ -f "${SSH_ENV}" ]; then
-    . "${SSH_ENV}" > /dev/null
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-        start_agent;
-    }
-else
-    start_agent;
-fi

@@ -1,5 +1,3 @@
-rfkill unblock all
-
 alias fuck='$(thefuck $(fc -ln -1))'
 alias zalias='vim $ZSH_CUSTOM/vars.zsh'
 alias 'stty erase \^\?'
@@ -25,3 +23,14 @@ rmssh() { sed -i".bak" '/'$1'/d' ~/.ssh/known_hosts; }
 up() { for i in $(eval echo {1..$1}); do cd ..; done; }
 count_char() { char=$(echo "$1" |wc -c); echo $(($char-1)); }
 pwgen() { PW=$(cat /dev/urandom |LC_ALL=C tr -dc 'a-zA-Z0-9' |head -c 26); echo "26 Chars: $PW"; }
+# Limit CPU for a process to %
+limit_pid() { 
+    PID=$1; PERCENTAGE=$2
+    cpu-limit() { cpulimit -p "$PID" -l"$PERCENTAGE" 2>&1 >/dev/null &; } 
+    if [[ -z "$PERCENTAGE" ]]; then 
+        echo "Usage is cpu-limit PID PERCENTAGE: i.e cpu-limit 114212 80" 
+    else 
+        cpulimit -z -p"$PID" -l"$PERCENTAGE"
+    fi
+}
+

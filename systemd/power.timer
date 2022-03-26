@@ -1,5 +1,5 @@
 [Unit]
-Description=Run once a minute
+Description=Run once every 60 seconds
 
 [Timer]
 OnUnitActiveSec=60s

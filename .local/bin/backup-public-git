@@ -1,6 +1,6 @@
 #!/bin/bash
 # check to see is git command line installed in this machine
-I_GIT_AVAILABLE="$(git --version)"
+IS_GIT_AVAILABLE="$(git --version)"
 if [[ $IS_GIT_AVAILABLE == *"version"* ]]; then
   echo "Git is Available"
 else
@@ -24,21 +24,21 @@ mkdir -p "$BACKUP_DIR"/usr/share/conky
 cp .vimrc .zshrc .Xresources "$BACKUP_DIR" 
 cp -r .zsh_custom "$BACKUP_DIR"
 cp -r .vim "$BACKUP_DIR"
-# Remove all backups/swaps from .vim
+# Remove all backups/swaps from .vim, they contain every single change I've made with vim
 rm -rf "$BACKUP_DIR"/.vim/.swap
 rm -rf "$BACKUP_DIR"/.vim/.backup
 rm -rf "$BACKUP_DIR"/.vim/view
-# Recreate the backup and swap folder
-mkdir "$BACKUP_DIR"/.vim/.backup
-mkdir "$BACKUP_DIR"/.vim/.swap
-mkdir "$BACKUP_DIR"/.vim/view
+# Recreate the backup and swap folder so vim doesn't complain
+mkdir -p "$BACKUP_DIR"/.vim/.backup
+mkdir -p "$BACKUP_DIR"/.vim/.swap
+mkdir -p "$BACKUP_DIR"/.vim/view
 # Copy over .ssh/config and remove sensitive info
 cp .ssh/config "$BACKUP_DIR"/.ssh
 sed -i 's/HostName.*/HostName example.com/g' "$BACKUP_DIR"/.ssh/config
 sed -i 's/Hostname.*/HostName example.com/g' "$BACKUP_DIR"/.ssh/config
 sed -i 's/User.*/User example/g' "$BACKUP_DIR"/.ssh/config
 cp -r /usr/share/conky "$BACKUP_DIR"/usr/share
-cp -r .local/bin "$BACKUP_DIR".local/bin
+cp -r .local/bin "$BACKUP_DIR"/.local
 cp .config/termite/config "$BACKUP_DIR"/.config/termite
 cp .config/i3/config "$BACKUP_DIR"/.config/i3
 cp .config/i3status/config "$BACKUP_DIR"/.config/i3status
@@ -46,19 +46,14 @@ cp /etc/systemd/user/power.timer "$BACKUP_DIR"/systemd
 cp /etc/systemd/user/power.service "$BACKUP_DIR"/systemd
 
 cd "$BACKUP_DIR"
-
-git pull
-
 # Check git status
-gs="$(git status | grep -i "modified")"
+gs="$(git status | grep -Ei 'modified|deleted')"
 echo "${gs}"
-# If there is a ncp -r .zshrc .zsh_history .zsh_custom .Xresources .vimrc .vim .config/termite/config .config/i3/config .config/i3/i3status.sh .config/i3status/config .ssh "$BACKUP_DIR" change
-if [[ $gs == *"modified"* ]]; then
-  echo "push"
-fi
-# push to Github
-#for item in *; do git add $item; done
-#for item in .*; do git add $item; done
+
+# Add and push to Github
 git add --all
-git commit -m "New backup `date +'%Y-%m-%d %H:%M:%S'`";
+echo -n "Enter reason for commit [ENTER]: "
+read reason_git
+git commit -m "$reason_git - $(date +'%Y-%m-%d %H:%M:%S')"
+
 git push origin main

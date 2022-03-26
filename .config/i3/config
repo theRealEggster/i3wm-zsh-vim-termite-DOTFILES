@@ -4,8 +4,6 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
-exec --no-startup-id blueman-applet
-
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
@@ -281,7 +279,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-# exec --no-startup-id blueman-applet
+ exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 exec --no-startup-id start_conky_green
@@ -323,7 +321,7 @@ set_from_resource $term_color15    color15
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-	status_command  /usr/bin/i3status.sh
+	status_command  ~/.local/bin/i3status.sh
 	position bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
@@ -443,7 +441,7 @@ exec --no-startup-id sleep 2;i3-msg 'workspace 2:Termite; exec /usr/bin/termite'
 # Unblock bluetooth after boot
 exec --no-startup-id rfkill unblock all
 # Startup applications
-exec --no-startup-id sleep 1;/bin/startup
+exec --no-startup-id sleep 1;~/.local/bin/startup
 # Close dunst notififacations
 bindsym $mod+space exec dunstctl close
 # Use pactl to adjust volume in PulseAudio.
@@ -452,7 +450,7 @@ set $volume "$(pactl list sinks | grep -i volume | head -1 | awk '{print $5}' | 
 #bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +10%
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-# /bin/volchange.sh is a script that sends out pretty notify-send
+# ~/.local/bin/volchange.sh is a script that sends out pretty notify-send
 bindsym XF86AudioRaiseVolume exec --no-startup-id volchange.sh volup
 bindsym XF86AudioLowerVolume exec --no-startup-id volchange.sh voldown
 # Revind Audio mute button to Mic mute due to missing mic mute button
@@ -460,17 +458,21 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE
 #bindsym XF86AudioMute exec --no-startup-id volchange.sh volmute
 
 assign [class="firefox"] $ws1
+assign [class="google-chrome"] $ws0
 assign [class="Google-chrome"] $ws0
 assign [class="Microsoft Teams - Preview"] $ws3
+assign [class="prospect mail"] $ws4
+assign [class="Prospect Mail"] $ws4
 assign [class="teams-for-linux"] $ws3
+assign [class="spotify"] $ws9
 assign [class="Spotify"] $ws9
 
 # Set gnome screenshot bindings
 set $mode_gnomescreenshot [1] Selection | [2] Active window | [3] Whole screen
 mode "$mode_gnomescreenshot" {
-    bindsym --release 1 mode "default", exec gnome-screenshot -cap --file=~/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png
-    bindsym --release 2 mode "default", exec gnome-screenshot -cwp --file=~/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png
-    bindsym --release 3 mode "default", exec gnome-screenshot -pc  --file=~/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png 
+    bindsym --release 1 mode "default", exec gnome-screenshot -cap --file=/home/kim/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png
+    bindsym --release 2 mode "default", exec gnome-screenshot -cwp --file=/home/kim/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png
+    bindsym --release 3 mode "default", exec gnome-screenshot -pc  --file=/home/kim/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png 
 
     bindsym Return mode "default"
     bindsym Escape mode "default"

@@ -13,12 +13,6 @@ BACKUP_DIR="$HOME/BACKUP/BACKUP_DOTFILES"
 function backup_config {
     # Check git status
     cd "$BACKUP_DIR"
-    gs="$(git status | grep -i "modified")"
-    echo "${gs}"
-    # If there is a change 
-    if [[ $gs == *"modified"* ]]; then
-      echo "Pulling down changes before starting"
-    fi
     # Start at home
     cd $HOME
     # Create dirs, lazily just create them if missing. 
@@ -50,6 +44,8 @@ function backup_config {
     # Change to git directory for pushing to repo
     cd "$BACKUP_DIR"
     
+    gs="$(git status | grep -iE 'modified|deleted')"
+    echo "${gs}"
     # push to Github with custom git commit comment
     echo "Adding all files for commit"
     git add --all

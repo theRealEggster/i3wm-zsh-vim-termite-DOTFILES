@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/kim/.oh-my-zsh/custom'
 let g:netrw_dirhist_5='/home/kim/.config/i3status'
 let g:netrw_dirhist_4='/home/kim/.config/nitrogen'
 let g:netrw_dirhist_3='/home/kim/.vim/view'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_0='/home/kim/.oh-my-zsh'
 let g:netrw_dirhist_9='/etc'
 let g:netrw_dirhist_8='/etc/cron.daily'
 let g:netrw_dirhist_7='/home/kim/.config/termite'
-let g:netrw_dirhist_6='/home/kim/Dropbox/lenovo-yoga-x1/latest/home/kimlin/.config/i3status'
