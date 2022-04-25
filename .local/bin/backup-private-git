@@ -33,6 +33,7 @@ function backup_config {
     cp -r .ssh "$BACKUP_DIR"
     cp -r CERT "$BACKUP_DIR"
     cp -r work "$BACKUP_DIR"
+    cp -r .kube "$BACKUP_DIR"
     cp -r .local/bin "$BACKUP_DIR"/.local
     cp -r /usr/share/conky "$BACKUP_DIR"/usr/share/
     cp .config/termite/config "$BACKUP_DIR"/.config/termite

@@ -55,7 +55,7 @@ ZSH_CUSTOM=~/.zsh_custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(kubectl kube-ps1 sudo themes git colorize)
+plugins=(dirhistory kubectl kube-ps1 sudo themes git colorize)
 
 source $ZSH/oh-my-zsh.sh
 

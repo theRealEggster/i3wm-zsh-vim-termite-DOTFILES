@@ -28,5 +28,6 @@ cp -r .zsh_custom ~/
 cp .zsh_history ~/
 cp .zshrc ~/
 chmod +x .local/bin/*
+mkdir .local/bin
 cp .local/bin/* ~/.local/bin/
 chsh -s /bin/zsh

@@ -1,23 +1,3 @@
-alias fuck='$(thefuck $(fc -ln -1))'
-alias zalias='vim $ZSH_CUSTOM/vars.zsh'
-alias 'stty erase \^\?'
-alias 'stty erase \^\H'
-alias ls='ls --color=auto'
-alias ll='ls -laF --color=auto'
-alias fuck='$(thefuck $(fc -ln -1))'
-alias spac='sudo pacman -S $1'
-alias upac='sudo pacman -Syu'
-alias pac="sudo pacman"
-alias changemac='sudo ip link set dev enp3s0 down &&  sudo ip link set dev enp3s0 address $1 && sudo ip link set dev enp3s0 up'
-alias g='zgrep -if $1'
-alias ='stty erase \^\?'
-alias ='stty erase \^\H'
-alias pat='pygmentize -g'
-alias -g L=' |less'
-alias -g V=' |vim -'
-alias -g G=' |LC_ALL=C grep -i'
-alias bt="bluetoothctl "
-
 decrypt_file() {
     CRYPT_FILE=$1
     echo -n "Enter passphrase: "
@@ -40,4 +20,57 @@ limit_pid() {
         cpulimit -z -p"$PID" -l"$PERCENTAGE"
     fi
 }
+
+# Lists all pods that have been restarted within less than 10 minutes and sorts the list
+# kube_restarted takes no argument
+kube_restarted () {
+    kgp -owide --all-namespaces -owide --sort-by=.metadata.creationTimestamp | \
+    grep -E ' [0-6]{1}[0-9]{1,2}m' | \
+    cut -d' ' -f1 |sort -u #|uniq
+}
+# List all pods that have restarted within 9 hours and sorts on uptime
+# kube_restarted takes no argument
+kube_restarted () {
+    kgp -owide --all-namespaces -owide --sort-by=.metadata.creationTimestamp | \
+    grep -E ' ([0-9]{1}[0-9]{1,2}(m|s))|NAMESPACE.*NAME' | \
+    tr -s ' '  |cut -d ' ' -f1,2,6,8 |sort -u |column -t
+}
+# Searches all pods in a namespace for specified pattern
+# kube_getlogs <SSN-Number-Here>
+# Can also search for multiple patterns with:
+# kube_getlogs "<SSN-Number-Here>|<Job-Id-Number>|<foo bar>"
+# Use "za" to open or close a folded section
+kube_getlogs(){
+    pattern="$1"
+    pods=$(kgp -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{end}{"\n\n\n"}')
+    echo "This will take a little while..."
+    echo "Probably around 30 sec to 2 minutes depending on the amount of logs availabe"
+    for podname ($=pods); do
+        if [[ ! "$podname" =~ audit ]]; then
+             echo "####START $podname ####"
+             kubectl logs "$podname" --all-containers=TRUE |grep -iE "$pattern" 2>&1 \
+             |while read logline; do echo "$podname: $logline"; done
+             echo "####END####"
+         fi
+    done |vim -  -c 'execute "normal ggO#### Unfold or fold the sections with '"'za'"' ####"' -c 'execute "normal ggO###############################################"' -c 'execute "normal ggjo###############################################\n"' -c 'execute ":setl foldmethod=marker foldmarker=####START,####END"'
+}
+
+# Get all types of error (error,warning,crit,fatal) logs from current-context, and send it to vim, neatly folding up each section.
+# Use "za" to open or close a folded section
+kube_geterrlogs(){
+    #ns=$1
+    #pods=$(kubectl -n$ns get pods -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{end}{"\n\n\n"}')
+    pods=$(kgp -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{end}{"\n\n\n"}')
+    echo "This will take a little while..."
+    echo "Probably around 30 sec to 2 minutes depending on the amount of logs availabe"
+    for podname ($=pods); do
+        if [[ ! "$podname" =~ audit ]]; then
+        echo "####START $podname ####"
+        kubectl logs $podname --all-containers=TRUE |grep -iE 'error|warning|crit|fatal' 2>&1 \
+        |while read logline; do echo "$podname: $logline"; done
+        echo "####END####"
+        fi
+    done | vim -  -c 'execute "normal ggO#### Unfold or fold the sections with '"'za'"' ####"' -c 'execute "normal ggO###############################################"' -c 'execute "normal ggjo###############################################\n"' -c 'execute ":setl foldmethod=marker foldmarker=####START,####END"'
+}
+
 

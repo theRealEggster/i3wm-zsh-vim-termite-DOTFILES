@@ -27,9 +27,12 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec terminal
 bindsym $mod+Return exec termite
-
+# For qubes: 
+## Start dom0 terminal
+## bindsym $mod+Shift+Return exec xfce4-terminal
+## Start work terminal
+## bindsym $mod+Return exec qvm-run --pass-io work -- termite
 # kill focused window
 bindsym $mod+q kill
 # Kill mouseover 
@@ -38,7 +41,8 @@ bindsym $mod+Shift+q --release exec --no-startup-id xkill
 # start program launcher
 #bindsym $mod+d exec --no-startup-id dmenu_recency
 bindsym $mod+d exec "rofi -show run -modi run -location 1 -theme Paper"
-
+## For qubes, sett rofi theme with rofi-theme-selector
+## bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 # launch categorized menu
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio
@@ -52,12 +56,8 @@ bindsym $mod+Ctrl+m exec pavucontrol
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec palemoon
-bindsym $mod+F3 exec pcmanfm
+bindsym $mod+Ctrl+b exec termite -e 'bmenu'
 # bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec pcmanfm_pkexec
-bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill picom
 bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
@@ -90,8 +90,8 @@ bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+#bindsym $mod+b workspace back_and_forth
+#bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
 bindsym $mod+g split h;exec notify-send 'tile horizontally'
@@ -143,7 +143,7 @@ set $ws6 "6:Six"
 set $ws7 "7:Seven"
 set $ws8 "8:Eight"
 set $ws9 "9:Spotify"
-set $ws0 "10:Google Chrome"
+set $ws0 "10:Brave"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -217,6 +217,14 @@ for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="nm-connection-editor"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
+for_window [class="arandr"] floating enable
+for_window [class="Arandr"] floating enable
+for_window [class="pcmanfm"] floating enable
+for_window [class="Pcmanfm"] floating enable
+for_window [class="KeePassXC"] floating enable
+for_window [class="keepassxc"] floating enable
+for_window [class="gufw.py"] floating enable
+for_window [class="Gufw.py"] floating enable
 
 # switch to workspace with urgent window automatically
 #for_window [urgent=latest] focus
@@ -267,25 +275,6 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-# Lock screen
-bindsym $mod+Escape exec --no-startup-id blurlock 
-
-# Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
-#exec --no-startup-id manjaro-hello
-exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
- exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
-exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 15 -corners 0-0 -cornersize  -locker blurlock
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -424,8 +413,22 @@ popup_during_fullscreen smart
 bindsym $mod+x move workspace to output up
 
 
+# Autostart applications
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
+exec --no-startup-id blueman-applet
+exec --no-startup-id start_conky_maia
+exec --no-startup-id start_conky_green
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+# Start KeePassXC 
+exec --no-startup-id keepassxc
 # Set the background image (handled by nitrogen in manjaro
-exec --no-startup-id feh --bg-scale /home/kim/Pictures/Backgrounds/matteblack.jpg
+exec --no-startup-id feh --bg-scale /home/eggster/Pictures/Backgrounds/matteblack.jpg
 # Start redshift
 exec --no-startup-id "redshift -P -O 2500"
 # Start dropbox
@@ -434,18 +437,27 @@ exec --no-startup-id dropbox start
 exec --no-startup-id xss-lock -- blurlock
 # Lock screen automatically after 15 min
 exec --no-startup-id xautolock -time 15 -locker "blurlock; xset dpms force off"
-# Start Firefox
+# Startup programs
 exec --no-startup-id i3-msg 'workspace 1:Firefox; exec /usr/bin/firefox'
-# Start termite
-exec --no-startup-id sleep 2;i3-msg 'workspace 2:Termite; exec /usr/bin/termite'
+exec --no-startup-id sleep 2; i3-msg 'workspace 2:Termite; exec /usr/bin/termite; exec /usr/bin/termite'
 # Unblock bluetooth after boot
 exec --no-startup-id rfkill unblock all
 # Startup applications
 exec --no-startup-id sleep 1;~/.local/bin/startup
+# Set SE keymap
+exec --no-startup-id setxkbmap -layout se
+# Start volumeicon
+exec --no-startup-id volumeicon
 # Close dunst notififacations
 bindsym $mod+space exec dunstctl close
 # Use pactl to adjust volume in PulseAudio.
 set $volume "$(pactl list sinks | grep -i volume | head -1 | awk '{print $5}' | sed -e 's/%//')"
+# Start filemanager
+bindsym $mod+Shift+m exec pcmanfm
+# Lock screen
+bindsym $mod+Escape exec --no-startup-id blurlock 
+# Start KeePassXC
+bindsym $mod+Ctrl+k exec --no-startup-id keepassxc
 
 #bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +10%
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
@@ -453,8 +465,11 @@ set $volume "$(pactl list sinks | grep -i volume | head -1 | awk '{print $5}' | 
 # ~/.local/bin/volchange.sh is a script that sends out pretty notify-send
 bindsym XF86AudioRaiseVolume exec --no-startup-id volchange.sh volup
 bindsym XF86AudioLowerVolume exec --no-startup-id volchange.sh voldown
-# Revind Audio mute button to Mic mute due to missing mic mute button
-bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# Rebind Audio mute button to Mic mute due to missing mic mute button
+#bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# Use a script instead that displays a message with notify-send of mic status
+bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/mute.sh 
+
 #bindsym XF86AudioMute exec --no-startup-id volchange.sh volmute
 
 assign [class="firefox"] $ws1
@@ -467,12 +482,13 @@ assign [class="teams-for-linux"] $ws3
 assign [class="spotify"] $ws9
 assign [class="Spotify"] $ws9
 
+
 # Set gnome screenshot bindings
 set $mode_gnomescreenshot [1] Selection | [2] Active window | [3] Whole screen
 mode "$mode_gnomescreenshot" {
-    bindsym --release 1 mode "default", exec gnome-screenshot -cap --file=/home/kim/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png
-    bindsym --release 2 mode "default", exec gnome-screenshot -cwp --file=/home/kim/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png
-    bindsym --release 3 mode "default", exec gnome-screenshot -pc  --file=/home/kim/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png 
+    bindsym --release 1 mode "default", exec gnome-screenshot -cap --file=/home/eggster/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png
+    bindsym --release 2 mode "default", exec gnome-screenshot -cwp --file=/home/eggster/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png
+    bindsym --release 3 mode "default", exec gnome-screenshot -pc  --file=/home/eggster/Pictures/Screenshots/Screenshots-$(date +%Y-%m-%d_%H%M).png 
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -480,14 +496,19 @@ mode "$mode_gnomescreenshot" {
 bindsym $mod+p mode "$mode_gnomescreenshot"
 
 # Open floating vim with working dir set to ~/work/vim
-bindsym $mod+BackSpace exec termite -t "vim-float" -e "vim -c 'cd /home/kim/work/vim'"
+bindsym $mod+BackSpace exec termite -t "vim-float" -e "vim -c 'cd /home/eggster/work/vim'"
+# For start a script containing qvm-run command. Neccessary due to quouting problems
+#bindsym $mod+BackSpace exec .local/bin/vimcdwork.sh
 # for urxvt instead of termite
-#bindsym $mod+BackSpace exec urxvt -T "vim-float" -cd ~/work/vim "vim -c 'cd /home/kim/work/vim'"
+#bindsym $mod+BackSpace exec urxvt -T "vim-float" -cd ~/work/vim "vim -c 'cd /home/eggster/work/vim'"
 for_window [title="^vim-float$"] floating enable resize set 500 400
 
 # Open floating HTOP
 bindsym $mod+shift+BackSpace exec termite -t "htop-float" -e "htop"
 for_window [title="^htop-float$"] floating enable resize set 1500 800
+# Open floating GTOP
+bindsym $mod+ctrl+BackSpace exec termite -t "gtop-float" -e "gtop"
+for_window [title="^gtop-float$"] floating enable resize set 1500 800
 
 # Redshsift modes
 bindsym $mod+ctrl+r mode "$mode_redshift"
@@ -506,6 +527,4 @@ mode "$mode_redshift" {
     bindsym Escape mode "default"
 }
 
-# Set floating chrome
-for_window [title=" - Chromium"] floating enable resize set 960 540
 

@@ -9,6 +9,9 @@ export KEYTIMEOUT=1
 export SUDO_ASKPASS=/usr/lib/ssh/ssh-askpass
 export SSLKEYLOGFILE=~/.ssl-key.log
 
+# Source kube-ps1 for kube status in PROMPT
+source ~/.oh-my-zsh/plugins/kube-ps1/kube-ps1.plugin.zsh
+
 # Rebind capslock to escape
 setxkbmap -option caps:escape
 # Start ssh-agent
@@ -79,6 +82,5 @@ else
     red="%F{196}"
     grey="%F{58}"
 fi
-
-PROMPT=$'%{$purple%}%n${PR_RST} at %{$orange%}%m${PR_RST} in %{$grey%}%~${PR_RST} ${${KEYMAP/vicmd/"%F{196%} normal ${PR_RST}"}/(main|viins)/"%F{28%} insert ${PR_RST}"} $vcs_info_msg_0_$(virtualenv_info)
-$ '
+PROMPT=$'%{$purple%}%n${PR_RST} at %{$orange%}%m${PR_RST} in %{$grey%}%~${PR_RST} ${${KEYMAP/vicmd/"%F{196%} normal ${PR_RST}"}/(main|viins)/"%F{28%} insert ${PR_RST}"} $vcs_info_msg_0_$(virtualenv_info) $(kube_ps1)
+'
