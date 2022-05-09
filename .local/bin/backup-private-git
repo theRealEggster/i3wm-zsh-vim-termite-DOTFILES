@@ -15,7 +15,10 @@ function backup_config {
     cd "$BACKUP_DIR"
     # Start at home
     cd $HOME
+    # Change owner of all files to eggster
+    sudo chown -R eggster ~/
     # Create dirs, lazily just create them if missing. 
+    mkdir -p "$BACKUP_DIR"/etc/initcpio/hooks
     mkdir -p "$BACKUP_DIR"/.config/termite
     mkdir -p "$BACKUP_DIR"/.config/i3
     mkdir -p "$BACKUP_DIR"/.config/i3status
@@ -27,9 +30,11 @@ function backup_config {
     mkdir -p "$BACKUP_DIR"/usr/share/conky
     # copy dotfiles
     # Change what folders you would like to backup (like .bashrc instead of .zshrc)
+    sudo cp /etc/fstab /etc/crypttab "$BACKUP_DIR"/etc 
+    sudo cp /etc/initcpio/hooks/openswap "$BACKUP_DIR"/etc/initcpio/hooks/
     cp .vimrc .zshrc .zsh_history .Xresources .gitconfig "$BACKUP_DIR" 
     cp -r .zsh_custom "$BACKUP_DIR"
-    cp -r .vim "$BACKUP_DIR"
+    sudo cp -r .vim "$BACKUP_DIR"
     cp -r .ssh "$BACKUP_DIR"
     cp -r CERT "$BACKUP_DIR"
     cp -r work "$BACKUP_DIR"
@@ -41,6 +46,7 @@ function backup_config {
     cp .config/i3status/config "$BACKUP_DIR"/.config/i3status
     cp /etc/systemd/user/power.timer "$BACKUP_DIR"/systemd
     cp /etc/systemd/user/power.service "$BACKUP_DIR"/systemd
+    sudo chown -R eggster:eggster "$BACKUP_DIR"
     
     # Change to git directory for pushing to repo
     cd "$BACKUP_DIR"
@@ -49,21 +55,21 @@ function backup_config {
     echo "${gs}"
     # push to Github with custom git commit comment
     echo "Adding all files for commit"
-    git add --all
-    echo -n "Enter reason for commit [ENTER]: "
-    read reason_git
-    git commit -m "$reason_git - $(date +'%Y-%m-%d %H:%M:%S')"
-    git push origin main
+    #git add --all
+    #echo -n "Enter reason for commit [ENTER]: "
+    #read reason_git
+    #git commit -m "$reason_git - $(date +'%Y-%m-%d %H:%M:%S')"
+    #git push origin main
     # Compress the folder and upload a password protected copy to dropbox
-    cd ~/BACKUP
+    cd $HOME/BACKUP
     BACKUP_DOTFILES="BACKUP_DOTFILES_$(date +'%Y-%m-%d_%H:%M:%S')"
     tar -cz BACKUP_DOTFILES |gpg --pinentry-mode loopback -c -o $BACKUP_DOTFILES.tar.gz.gpg
+    mv $BACKUP_DOTFILES.tar.gz.gpg ~/Dropbox/Backup/dell-xps-15
     # Decrypt file with gpg
     # Full command: 
     # stty -echo; gpg --passphrase-fd 0 --pinentry-mode loopback --decrypt FILE.tar.gz.gpg |tar zx; stty echo
     # zsh alias: decrypt_file FILE
     # Move to dropbox
-    mv $BACKUP_DOTFILES.tar.gz.gpg ~/Dropbox/Backup/
   
 
 

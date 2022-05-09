@@ -3,7 +3,7 @@ Description=Check battery and display red notification if under 20%
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash /home/kim/.local/bin/power.sh
+ExecStart=/bin/bash /home/eggster/.local/bin/power.sh
 
 [Install]
 WantedBy=multi-user.target

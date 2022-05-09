@@ -8,11 +8,12 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 1
+default_border pixel 4
+#default_border normal
 default_floating_border normal
 
 # Hide borders
-hide_edge_borders none
+hide_edge_borders smart
 
 # change borders
 bindsym $mod+u border none
@@ -77,10 +78,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left 696 px
+bindsym $mod+Shift+j move down 
+bindsym $mod+Shift+k move up 
+bindsym $mod+Shift+l move right 696 px
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -341,7 +342,7 @@ bar {
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  client.focused          #FF0000 #FF0000 #FF0000 #FF0000     #FF0000
   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
   client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
@@ -425,8 +426,8 @@ exec --no-startup-id start_conky_maia
 exec --no-startup-id start_conky_green
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-# Start KeePassXC 
-exec --no-startup-id keepassxc
+# Start 1password
+exec --no-startup-id 1password --silent
 # Set the background image (handled by nitrogen in manjaro
 exec --no-startup-id feh --bg-scale /home/eggster/Pictures/Backgrounds/matteblack.jpg
 # Start redshift
@@ -438,7 +439,7 @@ exec --no-startup-id xss-lock -- blurlock
 # Lock screen automatically after 15 min
 exec --no-startup-id xautolock -time 15 -locker "blurlock; xset dpms force off"
 # Startup programs
-exec --no-startup-id i3-msg 'workspace 1:Firefox; exec /usr/bin/firefox'
+#exec --no-startup-id i3-msg 'workspace 1:Firefox; exec /usr/bin/firefox'
 exec --no-startup-id sleep 2; i3-msg 'workspace 2:Termite; exec /usr/bin/termite; exec /usr/bin/termite'
 # Unblock bluetooth after boot
 exec --no-startup-id rfkill unblock all
@@ -502,13 +503,22 @@ bindsym $mod+BackSpace exec termite -t "vim-float" -e "vim -c 'cd /home/eggster/
 # for urxvt instead of termite
 #bindsym $mod+BackSpace exec urxvt -T "vim-float" -cd ~/work/vim "vim -c 'cd /home/eggster/work/vim'"
 for_window [title="^vim-float$"] floating enable resize set 500 400
+for_window [title="^vim-float$"] move position center
+for_window [title="^vim-float$"] sticky enable
 
 # Open floating HTOP
 bindsym $mod+shift+BackSpace exec termite -t "htop-float" -e "htop"
 for_window [title="^htop-float$"] floating enable resize set 1500 800
+for_window [title="^htop-float$"] move position center
 # Open floating GTOP
 bindsym $mod+ctrl+BackSpace exec termite -t "gtop-float" -e "gtop"
 for_window [title="^gtop-float$"] floating enable resize set 1500 800
+for_window [title="^htop-float$"] move position center
+# Open calendar
+bindsym $mod+ctrl+shift+BackSpace exec termite --hold -t "cal-float" -e "cal -3w"
+for_window [title="^cal-float$"] floating enable resize set 700 200
+for_window [title="^cal-float$"] move position center
+
 
 # Redshsift modes
 bindsym $mod+ctrl+r mode "$mode_redshift"
@@ -526,5 +536,4 @@ mode "$mode_redshift" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
 

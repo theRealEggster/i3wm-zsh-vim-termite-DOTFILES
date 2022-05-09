@@ -19,3 +19,8 @@ alias pat='pygmentize -g'
 alias -g L=' |less'
 alias -g V=' |vim -'
 alias -g G=' |LC_ALL=C grep -i'
+alias so="source ~/.zshrc"
+alias s=sudo
+alias sv="sudo vim"
+
+

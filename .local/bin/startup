@@ -1,4 +1,6 @@
 #!/bin/zsh
+sleep 2
+i3-msg 'workspace 1:Firefox; exec /usr/bin/firefox'
 sleep 3
 i3-msg 'workspace 3:Teams; exec /usr/bin/teams-for-linux'
 sleep 2

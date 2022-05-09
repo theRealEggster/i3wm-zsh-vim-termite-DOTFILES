@@ -23,7 +23,7 @@ mkdir -p "$BACKUP_DIR"/usr/share/conky
 # Change what folders you would like to backup (like .bashrc instead of .zshrc)
 cp .vimrc .zshrc .Xresources "$BACKUP_DIR" 
 cp -r .zsh_custom "$BACKUP_DIR"
-cp -r .vim "$BACKUP_DIR"
+sudo cp -r .vim "$BACKUP_DIR"
 # Remove all backups/swaps from .vim, they contain every single change I've made with vim
 rm -rf "$BACKUP_DIR"/.vim/.swap
 rm -rf "$BACKUP_DIR"/.vim/.backup

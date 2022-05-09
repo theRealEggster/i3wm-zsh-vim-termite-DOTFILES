@@ -1,17 +1,22 @@
-decrypt_file() {
+function decrypt_file() {
     CRYPT_FILE=$1
     echo -n "Enter passphrase: "
     stty -echo 
     gpg --passphrase-fd 0 --pinentry-mode loopback --decrypt "$CRYPT_FILE" |tar zxv
     stty echo
 }
+
+#Find files and redirect output to dev/null
+function f() {sudo find / -type f -iname "$1" 2>/dev/null ;}
+#Find folders and redirect output to dev/null
+function fd() { sudo find / -type d -iname "*$1*" 2>/dev/null ;}
 function log { $* |& while read out; do echo "$(date '+[%y/%m/%d %H:%M:%S]')" "$out"; done |& tee ;}
-rmssh() { sed -i".bak" '/'$1'/d' ~/.ssh/known_hosts; }
-up() { for i in $(eval echo {1..$1}); do cd ..; done; }
-count_char() { char=$(echo "$1" |wc -c); echo $(($char-1)); }
-pwgen() { PW=$(cat /dev/urandom |LC_ALL=C tr -dc 'a-zA-Z0-9' |head -c 26); echo "26 Chars: $PW"; }
+function rmssh() { sed -i".bak" '/'$1'/d' ~/.ssh/known_hosts; }
+function up() { for i in $(eval echo {1..$1}); do cd ..; done; }
+function count_char() { char=$(echo "$1" |wc -c); echo $(($char-1)); }
+function pwgen() { PW=$(cat /dev/urandom |LC_ALL=C tr -dc 'a-zA-Z0-9' |head -c 26); echo "26 Chars: $PW"; }
 # Limit CPU for a process to %
-limit_pid() { 
+function limit_pid() { 
     PID=$1; PERCENTAGE=$2
     cpu-limit() { cpulimit -p "$PID" -l"$PERCENTAGE" 2>&1 >/dev/null &; } 
     if [[ -z "$PERCENTAGE" ]]; then 

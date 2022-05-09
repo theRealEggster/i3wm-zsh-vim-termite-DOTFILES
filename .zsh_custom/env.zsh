@@ -14,6 +14,11 @@ source ~/.oh-my-zsh/plugins/kube-ps1/kube-ps1.plugin.zsh
 
 # Rebind capslock to escape
 setxkbmap -option caps:escape
+# Enable Tap To Drag
+xinput set-prop 11 350 1
+# Enable Tap To Drag lock
+xinput set-prop 11 352 1
+
 # Start ssh-agent
 SSH_ENV="$HOME/.ssh/agent-environment"
 function start_agent {
