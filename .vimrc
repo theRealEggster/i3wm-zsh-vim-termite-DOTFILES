@@ -10,7 +10,7 @@ set shiftwidth=4
 set softtabstop=2
 set ruler
 set nonu
-set mouse=a
+set mouse=
 set laststatus=2
 set incsearch
 let g:airline_theme='minimalist'
