@@ -1,0 +1,41 @@
+conky.config = {
+	alignment = 'bottom_left',
+	background = true,
+	color2 = '5D7B86',
+	cpu_avg_samples = 2,
+	default_color = 'F9FAF9',
+	double_buffer = true,
+	font = 'Source Code Pro Medium:size=10',
+	draw_shades = false,
+	gap_x = 25,
+	gap_y = 45,
+	minimum_width = 200,
+	no_buffers = true,
+	own_window = true,
+	own_window_type = 'override',
+	own_window_transparent = true,
+	update_interval = 2.0,
+	use_xft = true,
+}
+conky.text = [[
+${font}${color2}mod+d                 ${color}${font Source Code Pro:bold:size=10}- Dmenu
+${font}${color2}mod+Ctrl+b            ${color}${font Source Code Pro:bold:size=10}- Bmenu
+${font}${color2}mod+Esc               ${color}${font Source Code Pro:bold:size=10}- Lock screen
+${font}${color2}mod+q                 ${color}${font Source Code Pro:bold:size=10}- Kill focused
+${font}${color2}mod+Shift+q           ${color}${font Source Code Pro:bold:size=10}- Kill mouse over
+${font}${color2}mod+Shift+Space       ${color}${font Source Code Pro:bold:size=10}- Toggle floating
+${font}${color2}mod+Ctrl+m            ${color}${font Source Code Pro:bold:size=10}- Open pavucontrol
+${font}${color2}mod+p                 ${color}${font Source Code Pro:bold:size=10}- Take a screenshot
+${font}${color2}mod+Enter             ${color}${font Source Code Pro:bold:size=10}- Open new terminal
+${font}${color2}mod+Shift+Backspace   ${color}${font Source Code Pro:bold:size=10}- Open floating HTOP
+${font}${color2}mod+Ctrl+Backspace    ${color}${font Source Code Pro:bold:size=10}- Open floating GTOP
+${font}${color2}mod+space             ${color}${font Source Code Pro:bold:size=10}- Kill dunst notificifations
+${font}${color2}mod+Backspace         ${color}${font Source Code Pro:bold:size=10}- Open floating vim scratchpad
+${font}${color2}mod+v                 ${color}${font Source Code Pro:bold:size=10}- Toggle split vertical
+${font}${color2}mod+g                 ${color}${font Source Code Pro:bold:size=10}- Toggle split horizontal
+${font}${color2}mod+1-0               ${color}${font Source Code Pro:bold:size=10}- Switch to workspace 1-0
+${font}${color2}mod+Ctrl+1-0          ${color}${font Source Code Pro:bold:size=10}- Send to workspace 1-0
+${font}${color2}mod+Shift+e           ${color}${font Source Code Pro:bold:size=10}- Exit
+
+${font}${color2}Default Mod = ${color}${font Source Code Pro:bold:size=10}<Super>
+]]

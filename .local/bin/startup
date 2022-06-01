@@ -1,15 +1,14 @@
 #!/bin/zsh
-sleep 2
 i3-msg 'workspace 1:Firefox; exec /usr/bin/firefox'
 sleep 3
-i3-msg 'workspace 3:Teams; exec /usr/bin/teams-for-linux'
+i3-msg 'workspace 3:Teams; exec /usr/bin/teams'
 sleep 2
 i3-msg 'workspace 4:Email; exec /usr/local/bin/prospect-mail'
 sleep 2
 i3-msg 'workspace 9:Spotify; exec /usr/bin/spotify'
+sleep 4
 # Limit spoify to 20% CPU
 SPOTIFY_PID=$(ps aux |grep -E "/opt/spotify/spotify$" |tr -s ' ' |cut -d' ' -f2)
 (cpulimit -z -p$SPOTIFY_PID -l20 2>&1 >/dev/null &)
-sleep 3
 i3-msg 'workspace 10:Brave; exec /usr/bin/brave'
 

@@ -15,6 +15,10 @@ set laststatus=2
 set incsearch
 let g:airline_theme='minimalist'
 colo PaperColor
+"setl foldmethod=marker foldmarker=####START,####END"
+setl foldmethod=marker 
+setl foldmarker=####START,####END
+
 nnoremap g{ vipo<Esc>
 nnoremap g} vipoo<Esc>
 " Notes to self
@@ -44,6 +48,10 @@ iab <expr> ddd strftime("%Y-%m-%d")
 noremap -time "=strftime("%H:%M:%S")<CR>P
 iab <expr> ttt strftime("%H:%M:%S")
 iab <expr> ddt strftime("%Y-%m-%d %H:%M:%S -")
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " Save folds
 augroup remember_folds
   autocmd!
@@ -98,17 +106,17 @@ command! PrettyXML call DoPrettyXML()
 call plug#begin("~/.vim/plugged")
 
 " Declare the list of plugins.
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/vim-plug'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-" Install synax highlight for shell
-Plug 'josa42/coc-sh'
 " File Explorer for Vim
 Plug 'weirongxu/coc-explorer'
 " Indexes the file
-Plug 'neoclide/coc-tabnine'
-" zsh integration
-Plug 'tjdevries/coc-zsh'
+ Plug 'neoclide/coc-tabnine'
+ " zsh integration
+ Plug 'tjdevries/coc-zsh'
+ " Smooth scrolling
+ Plug 'terryma/vim-smooth-scroll'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 " Notes to self

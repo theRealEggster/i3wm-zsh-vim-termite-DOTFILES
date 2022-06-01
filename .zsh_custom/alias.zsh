@@ -18,9 +18,10 @@ alias ='stty erase \^\H'
 alias pat='pygmentize -g'
 alias -g L=' |less'
 alias -g V=' |vim -'
-alias -g G=' |LC_ALL=C grep -i'
+alias -g G=' |LC_ALL=C grep -iE'
 alias so="source ~/.zshrc"
 alias s=sudo
 alias sv="sudo vim"
+alias tp="trash-put"
 
 

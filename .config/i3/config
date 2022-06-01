@@ -59,8 +59,8 @@ bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left 696 px
-bindsym $mod+Shift+j move down 
-bindsym $mod+Shift+k move up 
+bindsym $mod+Shift+j move down 325 px
+bindsym $mod+Shift+k move up  325 px
 bindsym $mod+Shift+l move right 696 px
 
 # alternatively, you can use the cursor keys:
@@ -200,6 +200,7 @@ for_window [class="KeePassXC"] floating enable
 for_window [class="keepassxc"] floating enable
 for_window [class="gufw.py"] floating enable
 for_window [class="Gufw.py"] floating enable
+for_window [class="Yad"] floating enable
 
 # switch to workspace with urgent window automatically
 #for_window [urgent=latest] focus
@@ -224,7 +225,7 @@ mode "$mode_shutdown" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+c mode "$mode_shutdown"
+bindsym $mod+Insert mode "$mode_shutdown"
 
 
 # Resize window (you can also use the mouse for that)
@@ -285,7 +286,10 @@ set_from_resource $term_color15    color15
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-	status_command  ~/.local/bin/i3status.sh
+	#status_command  i3status
+	#status_command  ~/.local/bin/i3status.sh  
+        font xft:Inconsolata Regular 12
+        status_command i3blocks -c ~/.config/i3blocks/config
 	position bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
@@ -329,7 +333,7 @@ bar {
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
+gaps inner 8
 gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -398,7 +402,9 @@ assign [class="teams-for-linux"] $ws3
 assign [class="spotify"] $ws9
 assign [class="Spotify"] $ws9
 
-
+############################
+### Config i3 menus here ###
+############################
 # Set gnome screenshot bindings
 set $mode_gnomescreenshot [1] Selection | [2] Active window | [3] Whole screen
 mode "$mode_gnomescreenshot" {
@@ -409,10 +415,8 @@ mode "$mode_gnomescreenshot" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+p mode "$mode_gnomescreenshot"
 
 # Redshsift modes
-bindsym $mod+ctrl+r mode "$mode_redshift"
 set $mode_redshift Set colour temperature: (a)uto, (r)eset, (2)500K, (3)000K, (4)000K, (5)000K
 set $kill_redshift pkill -9 redshift;
 mode "$mode_redshift" {
@@ -431,20 +435,25 @@ mode "$mode_redshift" {
 ##############################
 ### Autostart applications ###
 ##############################
+# Not sure if this is needed...
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+# Start picom
+exec --no-startup-id picom -b
+# Start nm-applet
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
+# Start pacmac-tray to get notififacations for updates
 exec --no-startup-id pamac-tray
+# Start clippboard manager
 exec --no-startup-id clipit
+# Start the bluetooth applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id start_conky_maia
-exec --no-startup-id start_conky_green
+# Start custom conky config
+exec --no-startup-id start_conky_eggster
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 # Start 1password
 exec --no-startup-id 1password --silent
-# Set the background image (handled by nitrogen in manjaro
+# Set the background image
 exec --no-startup-id feh --bg-scale /home/eggster/Pictures/Backgrounds/matteblack.jpg
 # Start redshift
 exec --no-startup-id "redshift -P -O 2500"
@@ -452,40 +461,17 @@ exec --no-startup-id "redshift -P -O 2500"
 exec --no-startup-id dropbox start
 # Lock screen after suspend
 exec --no-startup-id xss-lock -- blurlock
-# Lock screen automatically after 15 min
-exec --no-startup-id xautolock -time 15 -locker "blurlock; xset dpms force off"
-# Startup programs
-#exec --no-startup-id i3-msg 'workspace 1:Firefox; exec /usr/bin/firefox'
+# Lock screen automatically after 10 min and shutoff screen
+exec --no-startup-id xautolock -time 10 -locker "blurlock; xset dpms force off"
 exec --no-startup-id sleep 2; i3-msg 'workspace 2:Termite; exec /usr/bin/termite; exec /usr/bin/termite'
 # Unblock bluetooth after boot
 exec --no-startup-id rfkill unblock all
 # Startup applications
-exec --no-startup-id sleep 1;~/.local/bin/startup
+exec --no-startup-id ~/.local/bin/startup
 # Set SE keymap
 exec --no-startup-id setxkbmap -layout se
 # Start volumeicon
-exec --no-startup-id volumeicon
-# Close dunst notififacations
-bindsym $mod+space exec dunstctl close
-# Start filemanager
-bindsym $mod+Shift+m exec pcmanfm
-# Lock screen
-bindsym $mod+Escape exec --no-startup-id blurlock 
-# Start KeePassXC
-bindsym $mod+Ctrl+k exec --no-startup-id keepassxc
-
-#bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +10%
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-# ~/.local/bin/volchange.sh is a script that sends out pretty notify-send
-bindsym XF86AudioRaiseVolume exec --no-startup-id volchange.sh volup
-bindsym XF86AudioLowerVolume exec --no-startup-id volchange.sh voldown
-# Rebind Audio mute button to Mic mute due to missing mic mute button
-#bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-#bindsym XF86AudioMute exec --no-startup-id volchange.sh volmute
-# Use a script instead that displays a message with notify-send of mic status
-bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/mute.sh 
-
+#exec --no-startup-id volumeicon
 
 #####################################
 ### Define all keyboard shortcuts ###
@@ -504,9 +490,29 @@ bindsym $mod+Ctrl+m exec pavucontrol
 bindsym $mod+Ctrl+b exec termite -e 'bmenu'
 # Open floating vim with working dir set to ~/work/vim
 bindsym $mod+BackSpace exec termite -t "vim-float" -e "vim -c 'cd /home/eggster/work/vim'"
-### For qubes
-### For start a script containing qvm-run command. Neccessary due to quouting problems
-###bindsym $mod+BackSpace exec .local/bin/vimcdwork.sh
+# Close dunst notififacations
+bindsym $mod+space exec dunstctl close
+# Start filemanager
+bindsym $mod+Shift+m exec pcmanfm
+# Lock screen
+bindsym $mod+Escape exec --no-startup-id blurlock 
+# Screenshot tool
+bindsym $mod+p mode "$mode_gnomescreenshot"
+# Redshift modes
+bindsym $mod+ctrl+r mode "$mode_redshift"
+##################
+# Audio shortcuts#
+##################
+#bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +10%
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+# ~/.local/bin/volchange.sh is a script that sends out pretty notify-send
+bindsym XF86AudioRaiseVolume exec --no-startup-id volchange.sh volup
+bindsym XF86AudioLowerVolume exec --no-startup-id volchange.sh voldown
+# Rebind Audio mute button to Mic mute due to missing mic mute button
+#bindsym XF86AudioMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# Use a script instead that displays a message with notify-send of mic status
+bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/mute.sh 
 # for urxvt instead of termite
 #bindsym $mod+BackSpace exec urxvt -T "vim-float" -cd ~/work/vim "vim -c 'cd /home/eggster/work/vim'"
 for_window [title="^vim-float$"] floating enable resize set 500 400

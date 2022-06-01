@@ -17,8 +17,10 @@ if [ $# -ne 1 ]; then
 fi
 getnewvol () {
     # return a percentage
-    CURVOL=`pactl list sinks | grep -i volume | head -1 | awk '{print $5}' | sed -e 's/%//'`
-    if [ `pactl list sinks  | grep Mute | awk '{print $2}'` = 'yes' ]; then
+    DEFAULT_SINK=$(pactl get-default-sink)
+    CURVOL=$(pactl list sinks | grep -A10 "${DEFAULT_SINK}" |grep -v Monitor |grep -i volume | head -1 | awk '{print $5}' | sed -e 's/%//')
+
+    if [ $(pactl list sinks |grep -A10 "${DEFAULT_SINK}"  | grep Mute | awk '{print $2}') = 'yes' ]; then
         echo "Muted"
         ICON=audio-volume-muted
         return

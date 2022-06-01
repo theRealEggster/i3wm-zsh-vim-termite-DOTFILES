@@ -1,0 +1,139 @@
+#!/bin/bash
+IS_DROPBOX_RUNNING="$(dropbox-cli status 2>&1 >/dev/null)"
+if [[ "${IS_DROPBOX_RUNNING}" == *"isn't"* ]]; then
+    echo "Dropbox not running, starting it now"
+    $(dropbox 2>&1 >/dev/null) &
+else
+  echo "Dropbox is running."
+fi
+# Alias
+BACKUP_DIR="${HOME}/BACKUP/BACKUP_DOTFILES"
+BACKUP_DOTFILES="BACKUP_DOTFILES_$(date +'%Y-%m-%d_%H:%M:%S')"
+LATEST_BACKUP="$(ls -1t ~/Dropbox/Backup/HP-470-G8/current |head -n1)"
+LATEST_BACKUP="$(echo "~/Dropbox/Backup/HP-470-G8/current/${LATEST_BACKUP}")"
+        
+# Check password
+PASSWORD_CHECK() {
+    echo
+    echo -n "Enter password: "
+    read -s "PASSWORD"
+    echo
+    echo -n "Enter password again: "
+    read -s "PASSWORD2"
+    echo
+}
+
+# The backup to dropbox function
+function backup_config {
+    # Start at home
+    cd "${HOME}"
+    # Change owner of all files to eggster
+    sudo chown -R eggster "${HOME}"
+    # Create dirs, lazily just create them if missing. 
+    mkdir -p "${BACKUP_DIR}"/etc/initcpio/hooks
+    mkdir -p "${BACKUP_DIR}"/.config/termite
+    mkdir -p "${BACKUP_DIR}"/.config/i3
+    mkdir -p "${BACKUP_DIR}"/.config/i3status
+    mkdir -p "${BACKUP_DIR}"/.ssh
+    mkdir -p "${BACKUP_DIR}"/.local/bin
+    mkdir -p "${BACKUP_DIR}"/CERT
+    mkdir -p "${BACKUP_DIR}"/work
+    mkdir -p "${BACKUP_DIR}"/systemd
+    mkdir -p "${BACKUP_DIR}"/usr/share/conky
+    # copy dotfiles
+    # Change what folders you would like to backup (like .bashrc instead of .zshrc)
+    sudo cp /etc/fstab /etc/crypttab "${BACKUP_DIR}"/etc 
+    sudo cp /etc/initcpio/hooks/openswap "${BACKUP_DIR}"/etc/initcpio/hooks/
+    cp .vimrc .zshrc .zsh_history .Xresources .gitconfig "${BACKUP_DIR}" 
+    cp -r .zsh_custom "${BACKUP_DIR}"
+    sudo cp -r .vim "${BACKUP_DIR}"
+    cp -r .ssh "${BACKUP_DIR}"
+    cp -r CERT "${BACKUP_DIR}"
+    cp -r work "${BACKUP_DIR}"
+    cp -r .kube "${BACKUP_DIR}"
+    cp -r .local/bin "${BACKUP_DIR}"/.local
+    cp -r /usr/share/conky "${BACKUP_DIR}"/usr/share/
+    cp .config/termite/config "${BACKUP_DIR}"/.config/termite
+    cp .config/i3/config "${BACKUP_DIR}"/.config/i3
+    cp .config/i3status/config "${BACKUP_DIR}"/.config/i3status
+    cp /etc/systemd/user/power.timer "${BACKUP_DIR}"/systemd
+    cp /etc/systemd/user/power.service "${BACKUP_DIR}"/systemd
+    sudo chown -R eggster:eggster "${BACKUP_DIR}"
+    
+    cd "${HOME}"/BACKUP
+    # Password verification loop 
+    while true; do
+        PASSWORD_CHECK
+        if [[ "${PASSWORD}" != "${PASSWORD2}" ]]; then
+            echo "Passwords do not match, try again."
+        else
+            break
+        fi
+    done
+    
+    # Compress the folder and upload a password protected copy to dropbox
+    tar -cz BACKUP_DOTFILES |gpg --pinentry-mode loopback --passphrase "${PASSWORD}" -c -o "${BACKUP_DOTFILES}".tar.gz.gpg
+    unset PASSWORD
+    unset PASSWORD2
+    mv ~/Dropbox/Backup/HP-470-G8/current/* ~/Dropbox/Backup/HP-470-G8/old/
+    mv "${BACKUP_DOTFILES}".tar.gz.gpg ~/Dropbox/Backup/HP-470-G8/current
+    ls -lth ~/Dropbox/Backup/HP-470-G8/current 
+    # Decrypt file with gpg
+    # Full command: 
+    # stty -echo; gpg --passphrase-fd 0 --pinentry-mode loopback --decrypt FILE.tar.gz.gpg |tar zx; stty echo
+    # zsh alias: decrypt_file FILE
+    # Move to dropbox
+}
+
+# Restore config after pushing to repo
+function restore_config { 
+    mkdir -p "${HOME}/BACKUP"
+    echo -n "Enter Password: "
+    stty -echo
+        gpg --passphrase-fd 0 --pinentry-mode loopback --decrypt "${LATEST_BACKUP}"|tar zx -C "${HOME}/BACKUP/"
+    stty echo
+    
+    cd "${BACKUP_DIR}"
+    cp "${BACKUP_DIR}"/.Xresources "${BACKUP_DIR}"/.gitconfig ~/
+    cp -r "${BACKUP_DIR}"/.zsh_custom ~/
+    cp -r "${BACKUP_DIR}"/.vim ~/
+    cp -r "${BACKUP_DIR}"/.ssh ~/
+    cp -r "${BACKUP_DIR}"/CERT ~/
+    cp -r "${BACKUP_DIR}"/work ~/
+    cp -r "${BACKUP_DIR}"/.local/bin ~/.local
+    cp "${BACKUP_DIR}"/.config/termite/config  ~/.config/termite
+    cp "${BACKUP_DIR}"/.config/i3/config ~/.config/i3
+    cp "${BACKUP_DIR}"/.config/i3status/config ~/.config/i3status
+    # Reload config and restart i3wm
+    echo -n "Reloading i3 config: "
+    echo i3-msg reload
+    echo -n "Restarting i3: "
+    echo i3-msg restart
+    echo sudo cp -r "${BACKUP_DIR}"/usr/share/conky /usr/share
+    # Restart conky
+    if which conky 2>&1 >/dev/null; then
+        echo "Restarting Conky"
+        echo sudo pkill conky
+        echo start_conky_maia >/dev/null 2>&1 
+        echo start_conky_green >/dev/null 2>&1
+    else 
+        echo "Conky not found"
+    fi
+    echo sudo cp "${BACKUP_DIR}"/systemd/power.timer /etc/systemd/user
+    echo sudo cp "${BACKUP_DIR}"/systemd/power.service /etc/systemd/user/
+    # Reload systemd-user deamon
+    echo systemctl --user daemon-reload
+}
+
+if [[ "$1" == "restore" ]]; then
+    sudo echo "Begin restore from latest dropbox archive"
+    restore_config
+elif [[ "$1" == "backup" ]]; then
+    sudo echo "Begin backup to dropbox archive"
+    backup_config
+else
+    echo "Use script with following args: 
+     $ backup-private restore
+     $ backup-private backup"
+fi
+

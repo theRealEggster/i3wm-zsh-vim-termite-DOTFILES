@@ -1,0 +1,3 @@
+[submodule "i3blocks"]
+	path = i3blocks
+	url = /home/eggster/BACKUP/i3wm-zsh-vim-termite-DOTFILES/.config/i3blocks

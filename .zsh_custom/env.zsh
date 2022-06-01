@@ -8,6 +8,8 @@ export SYSTEMD_EDITOR=vim
 export KEYTIMEOUT=1
 export SUDO_ASKPASS=/usr/lib/ssh/ssh-askpass
 export SSLKEYLOGFILE=~/.ssl-key.log
+setopt +o nomatch
+
 
 # Source kube-ps1 for kube status in PROMPT
 source ~/.oh-my-zsh/plugins/kube-ps1/kube-ps1.plugin.zsh
@@ -19,21 +21,22 @@ xinput set-prop 11 350 1
 # Enable Tap To Drag lock
 xinput set-prop 11 352 1
 
+## Usin 1passwords ssh-agent instead
 # Start ssh-agent
-SSH_ENV="$HOME/.ssh/agent-environment"
-function start_agent {
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-    chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-}
-if [ -f "${SSH_ENV}" ]; then
-    . "${SSH_ENV}" > /dev/null
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-        start_agent;
-    }
-else
-    start_agent;
-fi
+#SSH_ENV="$HOME/.ssh/agent-environment"
+#function start_agent {
+#    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+#    chmod 600 "${SSH_ENV}"
+#    . "${SSH_ENV}" > /dev/null
+#}
+#if [ -f "${SSH_ENV}" ]; then
+#    . "${SSH_ENV}" > /dev/null
+#    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+#        start_agent;
+#    }
+#else
+#    start_agent;
+#fi
 
 # Custom bindings for bash like keybindings while in BOTH vim insert and command mode
 # i.e ctrl+a to go to beginning of line and ctrl+e for end of line
@@ -58,9 +61,7 @@ bindkey -M viins "^R" vi-history-search-backward
 bindkey -M vicmd "^R" vi-history-search-backward
 bindkey -M viins "^N" vi-repeat-search
 bindkey -M vicmd "^N" vi-repeat-search
-bindkey -M viins '^[^M' self-insert-unmeta
-
-
+bindkey -M viins '^[^M' self-insert-ndunmeta
 
 #unset  LSCOLORS
 unset  LS_COLORS
@@ -87,5 +88,6 @@ else
     red="%F{196}"
     grey="%F{58}"
 fi
-PROMPT=$'%{$purple%}%n${PR_RST} at %{$orange%}%m${PR_RST} in %{$grey%}%~${PR_RST} ${${KEYMAP/vicmd/"%F{196%} normal ${PR_RST}"}/(main|viins)/"%F{28%} insert ${PR_RST}"} $vcs_info_msg_0_$(virtualenv_info) $(kube_ps1)
+
+PROMPT=$'%{$purple%}%n${PR_RST} at %{$orange%}%m${PR_RST} in %{$grey%}%~${PR_RST}${${KEYMAP/vicmd/"%F{196%} normal ${PR_RST}"}/(main|viins)/"%F{28%} insert ${PR_RST}"}$(kube_ps1) ${vcs_info_msg_0_//[()tags\\/]/}$(virtualenv_info)
 '

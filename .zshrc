@@ -48,6 +48,8 @@ ZSH_THEME="steeef"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="|%Y/%m/%d|%H:%M:%S|"
 
+# Autocomplete
+
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=~/.zsh_custom
 

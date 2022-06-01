@@ -5,7 +5,15 @@ function decrypt_file() {
     gpg --passphrase-fd 0 --pinentry-mode loopback --decrypt "$CRYPT_FILE" |tar zxv
     stty echo
 }
-
+# Error log function
+err() {
+  if [[ $? != '0' ]]; then
+      echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
+  else
+     
+      echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&1
+  fi
+}
 #Find files and redirect output to dev/null
 function f() {sudo find / -type f -iname "$1" 2>/dev/null ;}
 #Find folders and redirect output to dev/null
