@@ -8,7 +8,7 @@ Full configuration files for my customized setup of i3wm
     you are in (command/insert)
  + Multiline prompt
  
-![Prompt](https://github.com/realMoonMoon/i3wm-zsh-vim-termite-DOTFILES/blob/main/Screenshots/prompt.png?raw=true)
+![Prompt](https://github.com/theRealEggster/i3wm-zsh-vim-termite-DOTFILES/blob/5f7fad74794b469e94f7fe7d0cf6f1b203e20ac9/Screenshots/Screenshots-2022-06-01_0829.png?raw=true)
 
 ### VIM ###
  + Backups enabled with every write, saved in ~/.vim/.backup
