@@ -48,7 +48,7 @@ cp -r .local/bin "$BACKUP_DIR"/.local
 cp .config/termite/config "$BACKUP_DIR"/.config/termite
 cp .config/i3/config "$BACKUP_DIR"/.config/i3
 cp .config/i3status/config "$BACKUP_DIR"/.config/i3status
-cp -r .config/i3blocks "$BACKUP_DIR"/.config
+cp .config/i3blocks/config "$BACKUP_DIR"/.config/i3blocks
 cp /etc/systemd/user/power.timer "$BACKUP_DIR"/systemd
 cp /etc/systemd/user/power.service "$BACKUP_DIR"/systemd
 
@@ -59,7 +59,6 @@ echo "${gs}"
 
 # Add and push to Github
 git add --all
-git submodule add "$BACKUP_DIR"/.config/i3blocks
 echo -n "Enter reason for commit [ENTER]: "
 read reason_git
 git commit -m "$reason_git - $(date +'%Y-%m-%d %H:%M:%S')"
