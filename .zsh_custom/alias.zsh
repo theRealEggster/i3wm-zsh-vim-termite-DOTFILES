@@ -23,5 +23,6 @@ alias so="source ~/.zshrc"
 alias s=sudo
 alias sv="sudo vim"
 alias tp="trash-put"
+alias fl="flask run"
 
 

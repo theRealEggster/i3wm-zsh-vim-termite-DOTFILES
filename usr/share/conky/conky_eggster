@@ -50,7 +50,7 @@ ${goto 25}$color2${top_mem name 10}$alignr$color${top_mem mem_res 10}
 ${voffset 10}${goto 10}${color}${font Source Code Pro Medium:size=12}Swap$alignr${font} ${swap} / ${font}${swapfree}
 ${voffset 10}${goto 0}${font Source Code Pro Mediumsize=12}${color}$alignr${execi 10000 awk -F= '/TION/ {print $2}' /etc/lsb-release |sed 's/"//g'} \
 ${execi 10000 awk -F= '/EASE=/ {printf $2" "} /NAME/ {print $2}' /etc/lsb-release}
-${voffset 10}${goto 50}${color}${font Source Code Pro Mediumsize=12}${execi 1200 whoami}${font}${color2}@${color}${font Source Code Pro Medium:size=12}${nodename}
-${alignr}${color2}${font Source Code Pro Medium:size=12}Uptime: ${font}${color}${uptime_short}
-${voffset 5}${color2}${font Source Code Pro Medium:size=12}${alignr}Kernel: ${font}${color}${kernel}
+${voffset 10}${goto 10}${color}${font Source Code Pro Mediumsize=12}${execi 1200 whoami}${font}${color2}@${color}${font Source Code Pro Medium:size=12}${nodename}
+${alignr}${goto 10}${color}${font Source Code Pro Medium:size=12}Uptime: ${font}${color2}${uptime_short}
+${voffset 5}${goto 10}${color}${font Source Code Pro Medium:size=12}${alignr}Kernel: ${font}${color2}${kernel}
 ]]
