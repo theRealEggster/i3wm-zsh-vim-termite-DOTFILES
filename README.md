@@ -30,7 +30,9 @@ Full configuration files for my customized setup of i3wm
 
  + Easy keybind for opening up a floating vim window with $mod+Backspace
    and a specified starting directory making it easy to dump notes in one folder
- + Uses i3blocks instead of i3status
+ + Uses i3blocks instead of i3status. Couldnt figure out how to include the blocklets though. 
+   Download them with: git clone https://github.com/vivien/i3blocks-contrib ~/.config/i3blocks
+
  + Battery left indicator via notify-send in a simple systemd service
  + Take screenshots with $mod+p
  + Named workspaces for what goes on in each area
