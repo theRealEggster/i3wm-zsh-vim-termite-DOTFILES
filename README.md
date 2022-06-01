@@ -22,33 +22,30 @@ Full configuration files for my customized setup of i3wm
  + Basic white background color with very readable colors
 ![Overlook](https://github.com/realMoonMoon/i3wm-zsh-vim-termite-DOTFILES/blob/main/Screenshots/terminal-windows.png?raw=true)
 ### i3wm ###
- + i3-gaps with a heavily modified config
+ + i3-gaps with a heavily modified config. Like a red outline of the active window.
  + Movement keys rebound to HJKL instead of JKL;
- + Close windows with $mod+q instead of $mod+Shift+q (although the 
+ + Close windows with $mod+q instead of $mod+Shift+q (although the $mod+shift+q kills the mouseover window)
  + Custom rofi launcher instead of dmenu, still bound to $mod+d
  ![rofi](https://github.com/realMoonMoon/i3wm-zsh-vim-termite-DOTFILES/blob/main/Screenshots/rofi.png?raw=true)
 
  + Easy keybind for opening up a floating vim window with $mod+Backspace
    and a specified starting directory making it easy to dump notes in one folder
- + Custom shell script for i3status
+ + Uses i3blocks instead of i3status
  + Battery left indicator via notify-send in a simple systemd service
-   $mod+Shift+q works by killing the window under the mouse pointer
  + Take screenshots with $mod+p
  + Named workspaces for what goes on in each area
- + Auto start of applications via shell script "bin/startup" bound to $mod+s
+ + Auto start of applications via shell script "bin/startup"
    By clevere use of i3-msg and some sleep magic
    Due to applications spawning all over the place i let i3wm start up Firefox on it's own
-   plus one Terminal. The script then spawns a second Terminal, Teams, Spotify, Google Chrome.
+   plus one Terminal. The script then spawns a second Terminal, Teams, Spotify, Brave browser
    All windows spawn on their assigned workspace
  + Blurlock instead of i3lock, a little fancier. Locks screen after suspend/hibernate and 
    after 15 minutes of AFK
  + Close dunst messages with $mod+space
 
-### i3bar/i3status ###
- + Custom shell script ".config/i3/i3status.sh" that acts as a wrapper around i3status making it 
-   possible to add the CPU temperature via "sensors" to the bar
- + Added name of the current day + week number to date field
- + Shows VPN status
+### i3bar/i3blocks ###
+ + Added name of the current day + week number to date field + clickable for a calendar pop up
+ + Shows VPN status if active
  + Red battery indicator text if below 20%
 
 
@@ -57,10 +54,6 @@ Full configuration files for my customized setup of i3wm
  + Copy service file and timer file to systemd user dir
  + power.cfg is a battery notification that run with the systemd profiles further down
 
-$ cp .local/bin/power.sh ~/.local/bin/
- + Custom i3satus script that displays the cpu temp
-
-$ cp .local/bin/i3status.sh ~/.local/bin/
  + Copy this script to autostart programs on boot
 
 $ cp .local/bin/startup ~/.local/bin/
